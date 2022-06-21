@@ -47,7 +47,7 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
-  li {
+  li, ol {
     list-style: none;
   }
 

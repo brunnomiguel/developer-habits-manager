@@ -1,7 +1,12 @@
+import { UserProvider } from "./User";
 import { ModalProvider } from "./Modal";
 
 const Providers = ({ children }) => {
-  return <ModalProvider>{children}</ModalProvider>;
+  return (
+    <UserProvider>
+      <ModalProvider>{children}</ModalProvider>
+    </UserProvider>
+  );
 };
 
 export default Providers;

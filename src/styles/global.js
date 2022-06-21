@@ -44,9 +44,9 @@ export default createGlobalStyle`
 
     /*fonts*/
 
-    --font-share-tech: font-family: 'Share Tech', sans-serif;
-    --font-share-mono: font-family: 'Share Tech Mono', monospace;
-    --font-lexend: font-family: 'Lexend Deca', sans-serif;
+    --font-share-tech: 'Share Tech', sans-serif;
+    --font-share-mono: 'Share Tech Mono', monospace;
+    --font-lexend: 'Lexend Deca', sans-serif;
   }
 
   body {

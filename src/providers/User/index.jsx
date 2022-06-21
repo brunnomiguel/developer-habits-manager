@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { toast } from "react-toastify/dist/core";
+import { toast } from "react-toastify";
 
 import api from "../../services/api";
 

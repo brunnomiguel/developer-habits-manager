@@ -34,9 +34,19 @@ export default createGlobalStyle`
     /*error*/
     --red-error: #C41431;
 
+    /* white */
+
+    --white-1: #FFFFFF;
+
     /* gradient pallet */
     --gradient-dark: #2A9898;
     --gradient-light: #5FE1C9;
+
+    /*fonts*/
+
+    --font-share-tech: font-family: 'Share Tech', sans-serif;
+    --font-share-mono: font-family: 'Share Tech Mono', monospace;
+    --font-lexend: font-family: 'Lexend Deca', sans-serif;
   }
 
   body {
@@ -47,7 +57,7 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
-  li, ol {
+  li {
     list-style: none;
   }
 
@@ -56,11 +66,11 @@ export default createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Share Tech', sans-serif;
+    font-family: var(--font-share-tech);
   }
 
   label {
-    font-family: 'Share Tech Mono', monospace;
+    font-family:  var(--font-labels);
   }
 
 `;

@@ -22,24 +22,32 @@ export default createGlobalStyle`
     --gray-3: #DADADA;
     --gray-4: #D9D9D9;
     --gray-5: #E8E8E8;
+    --gray-6: #EAEAEA;
 
     /*black pallet*/
     --black-1: #000000;
     --black-2: #1A202C;
 
     /*link*/
-    --blue-link: #2B6CB0
+    --blue-link: #2B6CB0;
+
+    /*error*/
+    --red-error: #C41431;
 
     /* gradient pallet */
     --gradient-dark: #2A9898;
     --gradient-light: #5FE1C9;
   }
 
+  body {
+    background-color: var(--gray-6);
+  }
+
   button {
     cursor: pointer;
   }
 
-  li {
+  li, ol {
     list-style: none;
   }
 

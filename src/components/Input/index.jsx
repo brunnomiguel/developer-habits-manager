@@ -4,7 +4,9 @@ function Input({ label, name, register, error, ...rest }) {
   return (
     <Container>
       <div>
-        {label} {!!error && <span> {error} </span>}{" "}
+        <label htmlFor={name}>
+          {label} {!!error && <span> {error} </span>}
+        </label>
       </div>
 
       <InputContainer isErrored={!!error}>

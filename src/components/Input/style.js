@@ -32,7 +32,7 @@ export const InputContainer = styled.div`
   ${(props) =>
     props.isErrored &&
     css`
-      border-color: var(--red-error);
+      border: 3px solid var(--red-error);
     `}
 
   input {

@@ -5,6 +5,10 @@ export const Container = styled.div`
   text-align: left;
   width: 280px;
   height: 80px;
+
+  @media(max-width: 720px) {
+    width: 410px;
+  }
 `;
 
 export const InputContainer = styled.div`
@@ -18,7 +22,7 @@ export const InputContainer = styled.div`
   width: 100%;
   height: 50px;
 
-  :hover {
+  &:hover {
     border: 2px solid var(--green-1);
   }
 

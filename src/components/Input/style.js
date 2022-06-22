@@ -5,8 +5,9 @@ export const Container = styled.div`
   text-align: left;
   width: 100%;
   height: 80px;
-
-  
+  label{
+    font-family: var(--font-share-mono);
+  }
 `;
 
 export const InputContainer = styled.div`
@@ -19,6 +20,10 @@ export const InputContainer = styled.div`
   display: flex;
   width: 100%;
   height: 50px;
+
+  input{
+    font-family: var(--font-share-mono);
+  }
 
   &:hover {
     border: 2px solid var(--green-1);
@@ -35,6 +40,7 @@ export const InputContainer = styled.div`
     flex: 1;
     border: none;
     color: var(--black-1);
+    font-family: var(--font-share-mono);
     &::placeholder {
       color: var(--gray);
     }

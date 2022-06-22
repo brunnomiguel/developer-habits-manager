@@ -2,19 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
-import Provider from "./provider";
-import App from "./App";
-import Input from "./components/Input";
+import Providers from "./providers";
 
+import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider>
-        <Input />
+      <Providers>
         <App />
-      </Provider>
+      </Providers>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
+

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const Container = styled.div`
   margin: 10px 0 10px 0;
@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 280px;
   height: 80px;
 
-  @media(max-width: 720px) {
+  @media (max-width: 720px) {
     width: 410px;
   }
 `;
@@ -25,6 +25,12 @@ export const InputContainer = styled.div`
   &:hover {
     border: 2px solid var(--green-1);
   }
+
+  ${(props) =>
+    props.isErrored &&
+    css`
+      border-color: var(--red-error);
+    `}
 
   input {
     background: transparent;

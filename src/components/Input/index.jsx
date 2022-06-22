@@ -1,10 +1,13 @@
 import { Container, InputContainer } from "./style";
 
-function Input( { label, name, register, ...rest } ) {
+function Input({ label, name, register, error, ...rest }) {
   return (
     <Container>
-      <div>{label}</div>
-      <InputContainer>
+      <div>
+        {label} {!!error && <span> {error} </span>}{" "}
+      </div>
+
+      <InputContainer isErrored={!!error}>
         <input {...register(name)} {...rest} />
       </InputContainer>
     </Container>

@@ -16,7 +16,7 @@ const SignIn = () => {
   const { signIn } = useContext(UserContext);
 
   const formSchema = yup.object().shape({
-    user: yup.string().required("Campo obrigatório!"),
+    username: yup.string().required("Campo obrigatório!"),
     password: yup.string().required("Campo obrigatório!"),
   });
 
@@ -45,8 +45,8 @@ const SignIn = () => {
               label="Nome de Usuário:"
               placeholder="Digite seu nome de usuário"
               register={register}
-              name="user"
-              error={errors.user?.message}
+              name="username"
+              error={errors.username?.message}
             />
             <Input
               label="Senha:"

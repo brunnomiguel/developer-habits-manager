@@ -11,14 +11,12 @@ export const Container = styled.button`
     props.modal ? 'var(--green-1)' : 'var(--green-2)'
     )}; 
 
-    width: ${(props) => (props.loginDesk ? '410px' :
-    props.loginMobile ? '280px' :
+    width: ${(props) => (
     props.ativMetaDesk ? '160px' : 
     props.ativMetaMobile ? '90px' :
     props.addDesk ? '100px' :
     props.editDesk ? '62px' : 
-    props.modal ? '222px' : 
-    props.menuMobile ? '126px' : '35px'
+    props.small ? '35px' : '100%'
     )}; 
 
     height: ${(props) => (props.loginDesk ? '60px' :
@@ -31,11 +29,12 @@ export const Container = styled.button`
     props.menuMobile ? '42' : '30px'
     )}; 
 
-    font-family: ${(props) => (props.loginDesk ? 'var(--font-share-tech)' :
-    props.loginMobile ? 'var(--font-share-tech)' :
-    props.ativMetaDesk ? 'var(--font-lexend)' : 
-    props.ativMetaMobile ? 'var(--font-lexend)' :
-    props.modal ? 'var(--font-share-tech)' : 
-    props.menuMobile ? 'var(--font-lexend)' : 'var(--font-lexend)'
-    )};    
+    font-family: ${(props) => (props.share ? 'var(--font-share-tech)' : 
+    'var(--font-lexend)'
+    )}; 
+
+    color: ${(props) => (props.white ? 'var(--white-1)' :
+    'var(x)')}; 
+    
+    border-radius: 5px;
 `;

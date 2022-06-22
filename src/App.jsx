@@ -2,7 +2,8 @@ import GlobalStyle from "./styles/global";
 
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import Select from "./components/Select";
+
+import SelectComponent from "./components/Select";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         draggable
         pauseOnHover
       />
+      <SelectComponent />
     </>
   );
 };

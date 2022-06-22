@@ -6,6 +6,7 @@ export const Container = styled.div`
 
 export const LabelContainer = styled.div`
   width: 100%;
+  margin-bottom: 15px;
 `;
 
 export const Select = styled.select`

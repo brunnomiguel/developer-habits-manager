@@ -1,18 +1,17 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const Container = styled.div`
   margin: 10px 0 10px 0;
   text-align: left;
-  width: 280px;
+  width: 100%;
   height: 80px;
-
-  @media(max-width: 720px) {
-    width: 410px;
+  label{
+    font-family: var(--font-share-mono);
   }
 `;
 
 export const InputContainer = styled.div`
-  background: var(--gray-5);
+  background: var(--white-1);
   border-radius: 5px;
   border: none;
   margin-top: 5px;
@@ -22,15 +21,26 @@ export const InputContainer = styled.div`
   width: 100%;
   height: 50px;
 
+  input{
+    font-family: var(--font-share-mono);
+  }
+
   &:hover {
     border: 2px solid var(--green-1);
   }
+
+  ${(props) =>
+    props.isErrored &&
+    css`
+      border: 3px solid var(--red-error);
+    `}
 
   input {
     background: transparent;
     flex: 1;
     border: none;
     color: var(--black-1);
+    font-family: var(--font-share-mono);
     &::placeholder {
       color: var(--gray);
     }

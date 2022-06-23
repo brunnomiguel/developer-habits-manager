@@ -1,8 +1,7 @@
 import { Container, ImgContainer, Content } from "./styles";
-import { FiChevronLeft } from "react-icons/fi";
 import Dev from "../../assets/img/dev.png";
-import { useHistory } from "react-router-dom";
 import Button from "../../components/Button";
+import { useHistory } from "react-router-dom";
 
 const LandingPage = () => {
   const history = useHistory();
@@ -32,7 +31,7 @@ const LandingPage = () => {
         <Button loginMobile share white onClick={() => handleSignIn()}>
           Login
         </Button>
-        <Button loginMobile share white OnClick={() => handleSignUp()}>
+        <Button loginMobile share white onClick={() => handleSignUp()}>
           Cadastre-se
         </Button>
       </Content>

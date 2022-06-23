@@ -10,7 +10,7 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("@DHM/token") || "");
-  const [user, setUser] = useState(localStorage.getItem("DHM/user") || "");
+  const [user, setUser] = useState(localStorage.getItem("DHM/user",) || "");
 
   const history = useHistory();
 

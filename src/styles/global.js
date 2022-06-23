@@ -25,7 +25,7 @@ export default createGlobalStyle`
     --gray-6: #EAEAEA;
 
     /*black pallet*/
-    x: #000000;
+    --black-1: #000000;
     --black-2: #1A202C;
 
     /*link*/

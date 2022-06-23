@@ -24,7 +24,7 @@ const SignUp = () => {
       .min(8, "Senha com menos de 8 caracteres")
       .matches(
         "^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[$*&%@#])",
-        "Sua senha precisa conter: 1 letra maiscúla, 1 letra minúscula, 1 número e 1 símbolo: $*&%@#  "
+        "Senha preicsa ser forte: 1 letra maiscúla/minúscula, 1 número e 1 símbolo: $*&%@#"
       ),
     confirmPassword: yup
       .string()
@@ -70,7 +70,7 @@ const SignUp = () => {
             placeholder="Nome de usuário"
             register={register}
             name="username"
-            label="Usuário"
+            label="Usuário: "
             error={errors.username?.message}
             type="text"
           />
@@ -79,7 +79,7 @@ const SignUp = () => {
             placeholder="Email"
             register={register}
             name="email"
-            label="Email"
+            label="Email: "
             error={errors.email?.message}
             type="text"
           />
@@ -88,7 +88,7 @@ const SignUp = () => {
             placeholder="Senha"
             register={register}
             name="password"
-            label="Senha"
+            label="Senha: "
             error={errors.password?.message}
             type="password"
           />
@@ -97,7 +97,7 @@ const SignUp = () => {
             placeholder="Confirmar senha"
             register={register}
             name="confirmPassword"
-            label="Confirmar Senha"
+            label="Confirmar Senha: "
             error={errors.confirmPassword?.message}
             type="password"
           />

@@ -10,7 +10,10 @@ function Input({ label, name, register, error, ...rest }) {
       </div>
 
       <InputContainer isErrored={!!error}>
-        <input {...register(name)} {...rest} />
+        <input
+          {...(register !== undefined && { ...register(name) })}
+          {...rest}
+        />
       </InputContainer>
     </Container>
   );

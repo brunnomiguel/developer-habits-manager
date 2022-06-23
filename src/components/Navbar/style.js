@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.header`
@@ -71,3 +72,8 @@ export const Content = styled.div`
     }
   }
 `;
+
+export const NavLink = styled(Link)`
+  border-bottom: ${(props) => (props.selected ? "1px solid #fff" : "none")};
+  padding-bottom: ${(props) => (props.selected ? "1px" : "none")};
+`

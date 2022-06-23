@@ -21,10 +21,6 @@ export const InputContainer = styled.div`
   width: 100%;
   height: 50px;
 
-  input{
-    font-family: var(--font-share-mono);
-  }
-
   &:hover {
     border: 2px solid var(--green-1);
   }

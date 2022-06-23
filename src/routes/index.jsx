@@ -1,16 +1,25 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
+import Route from "./protectedRoute";
+
+// import { useContext } from "react";
+// import { UserContext } from "../providers/User";
+
 import LandingPage from "../pages/LandingPage";
 import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
 import Habits from "../pages/Habits";
+// import NotFound from "../pages/NotFound";
 
 const Routes = () => {
+  // const { token } = useContext(UserContext);
+
   return (
     <Switch>
       <Route exact path="/" component={LandingPage} />
-      <Route exact path="/SignUp" component={SignUp} />
-      <Route exact path="/SignIn" component={SignIn} />
-      <Route exact path="/Habits" component={Habits} />
+      <Route path="/SignUp" component={SignUp} />
+      <Route path="/SignIn" component={SignIn} />
+      <Route isPrivate path="/Habits" component={Habits} />
+      {/* <Route isPrivate={!!token} component={NotFound} /> */}
     </Switch>
   );
 };

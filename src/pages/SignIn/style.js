@@ -91,6 +91,10 @@ export const ContentAnimation = styled.div`
     }
     button {
       font-size: 20px;
+
+      &:hover {
+        opacity: 0.7;
+      }
     }
   }
 `;

@@ -1,10 +1,10 @@
-import jwtDecode from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { toast } from "react-toastify";
-
+import jwtDecode from "jwt-decode";
 import api from "../../services/api";
+
+import { toast } from "react-toastify";
 
 export const UserContext = createContext();
 
@@ -32,7 +32,6 @@ export const UserProvider = ({ children }) => {
   async function searchUser() {
     if (token) {
       const responseUser = await api.get(`/users/${decodeJwt.user_id}/`);
-      console.log(responseUser.data);
       const { username } = responseUser.data;
       setUser(username);
       localStorage.setItem("DHM/user", username);

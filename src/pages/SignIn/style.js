@@ -90,7 +90,6 @@ export const ContentAnimation = styled.div`
       font-size: 20px;
     }
     button {
-      width: 100%;
       font-size: 20px;
     }
   }

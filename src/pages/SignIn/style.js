@@ -4,6 +4,7 @@ import LoginImage from "../../assets/img/dev.png";
 export const Container = styled.div`
   min-height: 100vh;
   width: 100%;
+  
   display: flex;
   justify-content: space-around;
   align-items: stretch;
@@ -100,8 +101,7 @@ export const ContentAnimation = styled.div`
 export const BackgroundImage = styled.div`
   @media (min-width: 1100px) {
     margin: 0;
-      background: url(${LoginImage}) no-repeat center;
-      width:700px;
-      /* height: 505px; */
+    background: url(${LoginImage}) no-repeat center;
+    width:700px;
   }
 `;

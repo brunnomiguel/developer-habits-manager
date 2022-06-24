@@ -14,7 +14,17 @@ export const Container = styled.header`
     rgba(42, 152, 152, 1) 18%,
     rgba(95, 225, 201, 1) 100%
   );
-  color: var(--white-1);
+
+  h2 {
+    cursor: pointer;
+  }
+  
+  h2,
+  svg,
+  a {
+    color: var(--white-1);
+    cursor: pointer;
+  }
 
   @media (min-width: 720px) {
     padding: 20px 0 20px 0;
@@ -62,7 +72,7 @@ export const Content = styled.div`
       }
 
       a {
-        color: inherit;
+        color: var(--white-1);
         font-weight: 600;
       }
 
@@ -76,4 +86,4 @@ export const Content = styled.div`
 export const NavLink = styled(Link)`
   border-bottom: ${(props) => (props.selected ? "1px solid #fff" : "none")};
   padding-bottom: ${(props) => (props.selected ? "1px" : "none")};
-`
+`;

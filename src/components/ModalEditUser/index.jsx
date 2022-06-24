@@ -7,19 +7,20 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-import api from "../../services/api";
-
-import { toast } from "react-toastify";
+import { UserContext } from "../../providers/User";
 
 import Input from "../Input";
 import Button from "../Button";
 
-import jwt_Decode from "jwt-decode";
+import { FiX } from "react-icons/fi";
 
-const ModalEditUser = () => {
-  const userId = localStorage.getItem("@DHM/token");
-
-  const decode = jwt_Decode(userId).user_id;
+const ModalEditUser = ({ id = "modalEditUser" }) => {
+  const closeModalEvent = (event) => {
+    if (event.target.id === id) {
+      setEditUser(false);
+    }
+  };
+  const { updateUser } = useContext(UserContext);
 
   const { setEditUser } = useContext(ModalContext);
 
@@ -36,17 +37,19 @@ const ModalEditUser = () => {
   } = useForm({ resolver: yupResolver(editSchema) });
 
   const handleUpdateUser = (data) => {
-    api.patch(`/user/${decode}/`, data).then((_) =>{
-      
-    });
+    updateUser(data);
+    reset();
+    setEditUser(false);
   };
 
   return (
-    <Modal>
+    <Modal id={id} onClick={closeModalEvent}>
       <Container>
         <Header>
           <h3>Editar suas informções</h3>
-          <button onClick={() => setEditUser(false)}>X</button>
+          <button onClick={() => setEditUser(false)}>
+            <FiX />
+          </button>
         </Header>
         <Content>
           <form onSubmit={handleSubmit(handleUpdateUser)}>
@@ -54,8 +57,18 @@ const ModalEditUser = () => {
               register={register}
               name={"username"}
               label={"Novo nome de Usuário"}
+              error={errors.username?.message}
             />
-            <Input register={register} name={"email"} label={"Novo e-mail"} />
+
+            <Input
+              register={register}
+              name={"email"}
+              label={"Novo e-mail"}
+              error={errors.email?.message}
+            />
+            <Button loginDesk white onSubmit={() => handleUpdateUser()}>
+              Editar suas informações
+            </Button>
           </form>
         </Content>
       </Container>

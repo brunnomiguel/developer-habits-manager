@@ -1,27 +1,27 @@
-import { Switch } from "react-router-dom";
-import Route from "./protectedRoute";
+// import { Switch } from "react-router-dom";
+// import Route from "./protectedRoute";
 
-// import { useContext } from "react";
-// import { UserContext } from "../providers/User";
+// // import { useContext } from "react";
+// // import { UserContext } from "../providers/User";
 
-import LandingPage from "../pages/LandingPage";
-import SignUp from "../pages/SignUp";
-import SignIn from "../pages/SignIn";
-import Habits from "../pages/Habits";
-// import NotFound from "../pages/NotFound";
+// import LandingPage from "../pages/LandingPage";
+// import SignUp from "../pages/SignUp";
+// import SignIn from "../pages/SignIn";
+// import Habits from "../pages/Habits";
+// // import NotFound from "../pages/NotFound";
 
-const Routes = () => {
-  // const { token } = useContext(UserContext);
+// const Routes = () => {
+//   // const { token } = useContext(UserContext);
 
-  return (
-    <Switch>
-      <Route exact path="/" component={LandingPage} />
-      <Route path="/SignUp" component={SignUp} />
-      <Route path="/SignIn" component={SignIn} />
-      <Route isPrivate path="/Habits" component={Habits} />
-      {/* <Route isPrivate={!!token} component={NotFound} /> */}
-    </Switch>
-  );
-};
+//   return (
+//     <Switch>
+//       <Route exact path="/" component={LandingPage} />
+//       <Route path="/SignUp" component={SignUp} />
+//       <Route path="/SignIn" component={SignIn} />
+//       <Route isPrivate path="/Habits" component={Habits} />
+//       {/* <Route isPrivate={!!token} component={NotFound} /> */}
+//     </Switch>
+//   );
+// };
 
-export default Routes;
+// export default Routes;

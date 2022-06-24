@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import Button from "../Button";
 
 const CardHabito = ({
-  date,
+  id,
   title,
   category,
   editFunction,
@@ -14,14 +14,14 @@ const CardHabito = ({
     // ao clicar no concluir, executa a função do botão concluir recebida por props
     // e também executa o toast sucess para avisar que a atividade foi concluida
     concludeFunction();
-    toast.success("Atividade concluida");
+    toast.success("Hábito deletado");
   }
 
   return (
     <ContainerGeral>
-      <span>{date}</span>
-      <hr></hr>
+      
       <p>{title}</p>
+      <hr></hr>
       <span>{category}</span>
       <div>
         <Button onclick={()=> editFunction()}>icone editar</Button>
@@ -31,3 +31,4 @@ const CardHabito = ({
   );
 };
 export default CardHabito;
+// lembrete para o reges de senha, adicionar o ponto e virgula como caractere especial

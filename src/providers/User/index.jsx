@@ -10,7 +10,7 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("@DHM/token") || "");
-  const [user, setUser] = useState(localStorage.getItem("DHM/user",) || "");
+  const [user, setUser] = useState(localStorage.getItem("DHM/user") || "");
 
   const history = useHistory();
 
@@ -38,12 +38,27 @@ export const UserProvider = ({ children }) => {
     }
   }
 
+  const updateUser = (data) => {
+    api
+      .patch(`/users/${decodeJwt.user_id}/`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((_) => {
+        toast.success("Usuário Atualizado");
+        localStorage.setItem("DHM/user", data.username);
+        setUser(data.username);
+      })
+      .catch((_) => {
+        toast.error(`Ops, Algo deu errado 😔`);
+      });
+  };
+
   useEffect(() => {
     searchUser();
   }, [token]);
 
   return (
-    <UserContext.Provider value={{ token, user, signIn }}>
+    <UserContext.Provider value={{ token, user, setUser, signIn, updateUser }}>
       {children}
     </UserContext.Provider>
   );

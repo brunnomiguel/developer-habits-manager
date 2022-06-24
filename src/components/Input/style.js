@@ -1,28 +1,42 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  margin: 10px 0 10px 0;
+  width: ${(props) => (props.search ? "70%" : "100%")};
+  height: ${(props) => (props.search ? "0px" : "80px")};
+  margin: ${(props) => (props.search ? "none" : "10px 0 10px 0")};
+
   text-align: left;
-  width: 100%;
-  height: 80px;
-  label{
+  label {
     font-family: var(--font-share-mono);
+    span {
+      ${(props) =>
+        props.isErrored &&
+        css`
+          color: var(--red-error);
+        `}
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    width: ${(props) => (props.search ? "419px" : "100%")};
   }
 `;
 
 export const InputContainer = styled.div`
-  background: var(--white-1);
+  background: ${(props) =>
+    props.search ? "var(--green-2)" : "var(--white-1)"};
+  height: ${(props) => (props.search ? "37px" : props.modal ? "36px" : "50px")};
+  margin-top: ${(props) => (props.search ? "0" : "5px")};
+
   border-radius: 5px;
   border: none;
-  margin-top: 5px;
   color: var(--black-1);
   padding: 5px;
   display: flex;
   width: 100%;
-  height: 50px;
 
   &:hover {
-    border: 2px solid var(--green-1);
+    border: ${(props) => (props.search ? "none" : "2px solid var(--green-1)")};
   }
 
   ${(props) =>
@@ -36,9 +50,18 @@ export const InputContainer = styled.div`
     flex: 1;
     border: none;
     color: var(--black-1);
-    font-family: var(--font-share-mono);
+
+    font-family: ${(props) =>
+      props.search ? "var(--font-lexend)" : "var(--font-share-mono)"};
+
     &::placeholder {
-      color: var(--gray);
+      color: var(--black-2);
     }
+  }
+
+  svg {
+    display: ${(props) => (props.search ? "block" : "none")};
+    margin: 2px 11px;
+    color: var(--white-1);
   }
 `;

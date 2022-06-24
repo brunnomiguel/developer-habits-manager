@@ -19,7 +19,6 @@ const CardHabito = ({
 
   return (
     <ContainerGeral>
-      
       <p>{title}</p>
       <hr></hr>
       <span>{category}</span>

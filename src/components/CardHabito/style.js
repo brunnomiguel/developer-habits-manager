@@ -8,8 +8,22 @@ export const ContainerGeral = styled.div`
   text-align: left;
   width: 250px;
   height: 250px;
+  margin-bottom: 38px;
   border-radius: 5px none;
   box-shadow: 3px 3px 3px 3px var(--gray-2);
+
+  @media screen and (min-width: 600px) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  @media screen and (min-width: 769px) {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  @media screen and (min-width: 900px) {
+    margin-left: 97px;
+    margin-right: 97px;
+  }
 
   span {
     color: var(--gray-2);

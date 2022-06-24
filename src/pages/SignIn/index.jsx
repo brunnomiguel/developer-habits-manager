@@ -65,7 +65,7 @@ const SignIn = () => {
           </p>
         </ContentAnimation>
       </Content>
-      <BackgroundImage />
+      <BackgroundImage></BackgroundImage>
     </Container>
   );
 };

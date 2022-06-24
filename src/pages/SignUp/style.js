@@ -95,5 +95,6 @@ export const ImageContent = styled.div`
       background: url(${devImage}) no-repeat center;
       width:700px;
       height: 505px;
+  }
 
 `;

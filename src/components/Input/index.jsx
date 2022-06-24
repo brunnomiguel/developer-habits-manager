@@ -1,9 +1,9 @@
 import { Container, InputContainer } from "./style";
 
 function Input({
+  children,
   label,
   name,
-  icon: Icon,
   search = false,
   register,
   error,
@@ -18,11 +18,11 @@ function Input({
       </div>
 
       <InputContainer isErrored={!!error} search={search}>
-        {Icon && <Icon size={20} />}
         <input
           {...(register !== undefined && { ...register(name) })}
           {...rest}
         />
+        <button>{!!children && children}</button>
       </InputContainer>
     </Container>
   );

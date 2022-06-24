@@ -12,18 +12,20 @@ export const HabitsProvider = ({ children }) => {
   const [habits, setHabits] = useState([]);
 
   async function loadHabits() {
-    const responseHabits = await api.get("/habits/personal/", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    if (token) {
+      const responseHabits = await api.get("/habits/personal/", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-    const dataHabits = responseHabits.data;
+      const dataHabits = responseHabits.data;
 
-    setHabits(dataHabits);
+      setHabits(dataHabits);
+    }
   }
 
   useEffect(() => {
     loadHabits();
-  }, [habits]);
+  }, []);
 
   const decodeJWT = token && jwtDecode(token);
 
@@ -36,7 +38,6 @@ export const HabitsProvider = ({ children }) => {
       .post("/habits/", data, { headers: { Authorization: `Bearer ${token}` } })
       .then((_) => loadHabits());
   };
-
 
   return (
     <HabitsContext.Provider value={{ habits, addNewHabit }}>

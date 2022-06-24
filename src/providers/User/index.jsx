@@ -38,7 +38,7 @@ export const UserProvider = ({ children }) => {
     }
   }
 
-  const updateUser = (data) => {
+  const updateUser = (data, closeEdit) => {
     api
       .patch(`/users/${decodeJwt.user_id}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -47,11 +47,13 @@ export const UserProvider = ({ children }) => {
         toast.success("Usuário Atualizado");
         localStorage.setItem("DHM/user", data.username);
         setUser(data.username);
+        closeEdit(true)
       })
       .catch((_) => {
         toast.error(`Ops, Algo deu errado 😔`);
       });
   };
+
 
   useEffect(() => {
     searchUser();

@@ -20,6 +20,7 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
       setEditUser(false);
     }
   };
+
   const { updateUser } = useContext(UserContext);
 
   const { setEditUser } = useContext(ModalContext);
@@ -36,10 +37,15 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
     reset,
   } = useForm({ resolver: yupResolver(editSchema) });
 
+  const closeEdit = (erro) => {
+    if (erro === true) {
+      reset();
+      setEditUser(false);
+    }
+  };
+
   const handleUpdateUser = (data) => {
-    updateUser(data);
-    reset();
-    setEditUser(false);
+    updateUser(data, closeEdit);
   };
 
   return (

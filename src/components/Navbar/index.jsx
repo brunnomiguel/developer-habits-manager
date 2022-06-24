@@ -5,28 +5,43 @@ import { Container, Content, NavLink } from "./style";
 
 import { useContext } from "react";
 
-import {UserContext} from "../../providers/User"
+import { UserContext } from "../../providers/User";
+
+import { ModalContext } from "../../providers/Modal";
+import ModalEditUser from "../ModalEditUser";
 
 const Navbar = () => {
+  const { setEditUser, editUser } = useContext(ModalContext);
 
-  
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext);
+
+  const logout = () => {
+    localStorage.clear();
+  };
+
   return (
     <Container>
       <Content>
-        <h2><FiUser/>Olá, {user}</h2>
-
+        <h2 onClick={() => setEditUser(true)}>
+          <FiUser />
+          Olá, {user}
+        </h2>
         <nav>
           <ul>
-            <NavLink selected={pathname === "/groups"} to="/groups">Grupos</NavLink>
-            <NavLink selected={pathname === "/Habits"} to="/Habits">Hábitos</NavLink>
+            <NavLink selected={pathname === "/groups"} to="/groups">
+              Grupos
+            </NavLink>
+            <NavLink selected={pathname === "/Habits"} to="/Habits">
+              Hábitos
+            </NavLink>
           </ul>
         </nav>
 
-        <FiLogIn />
+        <FiLogIn onClick={() => logout()} />
       </Content>
+      {editUser && <ModalEditUser />}
     </Container>
   );
 };

@@ -22,10 +22,11 @@ const CardHabito = ({ habit }) => {
       <p>{title}</p>
       <hr></hr>
       <span>{category}</span>
+      <span>{difficulty}</span>
       <span>Quanto Alcançou - {how_much_achieved}</span>
       <div>
         <Button white ativMetaDesk onClick={() => setEditHabit(true)}><FiEdit size={20} /></Button>
-        <span></span>
+        
         <Button white ativMetaDesk onClick={() => deleteHabit(id)}><FiDelete size={20} /></Button>
         {editHabit && <ModalEditHabit habitId={id} />}
       </div>

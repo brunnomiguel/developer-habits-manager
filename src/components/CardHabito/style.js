@@ -41,16 +41,14 @@ export const ContainerGeral = styled.div`
     background-color: var(--gray-4);
   }
   div {
+    width: 100%;
+
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 50%;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    span {
-      margin-left: 10px;
-      margin-right: 10px;
+    justify-content: center;
+
+    button {
+      width: 50px;
+      margin: 5px;
     }
   }
 `;

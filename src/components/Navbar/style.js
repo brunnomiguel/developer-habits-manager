@@ -74,6 +74,7 @@ export const Content = styled.div`
       a {
         color: var(--white-1);
         font-weight: 600;
+        font-family: var(--font-lexend);
       }
 
       a + a {

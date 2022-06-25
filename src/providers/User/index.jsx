@@ -47,20 +47,21 @@ export const UserProvider = ({ children }) => {
         toast.success("Usuário Atualizado");
         localStorage.setItem("DHM/user", data.username);
         setUser(data.username);
-        closeEdit(true)
+        closeEdit(true);
       })
       .catch((_) => {
         toast.error(`Ops, Algo deu errado 😔`);
       });
   };
 
-
   useEffect(() => {
     searchUser();
-  }, [token]);
+  }, []);
 
   return (
-    <UserContext.Provider value={{ token, user, setUser, signIn, updateUser }}>
+    <UserContext.Provider
+      value={{ token, setToken, user, setUser, signIn, updateUser }}
+    >
       {children}
     </UserContext.Provider>
   );

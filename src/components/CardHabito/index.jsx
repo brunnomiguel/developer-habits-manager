@@ -1,23 +1,17 @@
 import { ContainerGeral } from "./style";
 import { toast } from "react-toastify";
 import Button from "../Button";
+import { useContext } from "react";
+import { HabitsContext } from "../../providers/Habits";
+import { ModalContext } from "../../providers/Modal";
 
 const CardHabito = ({
-  // id,
-  // title,
-  // category,
-  editFunction,
-  habit,
-  concludeFunction,
+  habit
 }) => {
-  const { id, title, category } = habit;
+  const { id, title, category, difficulty, how_much_achieved } = habit;
 
-  const toastFinished = (concludeFunction) => {
-    // ao clicar no concluir, executa a função do botão concluir recebida por props
-    // e também executa o toast sucess para avisar que a atividade foi concluida
-    concludeFunction();
-    toast.success("Hábito deletado");
-  };
+  const { deleteHabit } = useContext(HabitsContext);
+  const { setEditHabit } = useContext(ModalContext);
 
   return (
     <ContainerGeral>
@@ -25,11 +19,10 @@ const CardHabito = ({
       <hr></hr>
       <span>{category}</span>
       <div>
-        <Button onclick={() => editFunction()}>icone editar</Button>
-        <Button onclick={() => toastFinished()}>icone concluir</Button>
+        <Button onclick={() => setEditHabit(true)}>icone editar</Button>
+        <Button onclick={() => deleteHabit(id)}>icone concluir</Button>
       </div>
     </ContainerGeral>
   );
 };
 export default CardHabito;
-// lembrete para o reges de senha, adicionar o ponto e virgula como caractere especial

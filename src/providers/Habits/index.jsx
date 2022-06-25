@@ -40,6 +40,23 @@ export const HabitsProvider = ({ children }) => {
       .then((_) => loadHabits());
   };
 
+  const updateHabit = (data, habitId) => {
+    const { how_much_achieved } = data;
+    if (how_much_achieved === 100) {
+      data.achieved = true;
+    } else {
+      data.achieved = false;
+    }
+    api
+      .patch(`/habits/${habitId}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((_) => {
+        toast.success("Hábito atualizado");
+        loadHabits();
+      });
+  };
+
   const deleteHabit = (habitId) => {
     api
       .delete(`/habits/${habitId}/`, {
@@ -48,7 +65,8 @@ export const HabitsProvider = ({ children }) => {
       .then((_) => {
         toast.success("Hábito excluído");
         loadHabits();
-      });
+      })
+      .catch((_) => toast.error("Ops... O hábito não foi identificado."));
   };
 
   return (

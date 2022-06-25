@@ -19,18 +19,15 @@ import Navbar from "../../components/Navbar";
 import Button from "../../components/Button";
 import CardHabito from "../../components/CardHabito";
 
-import { useContext } from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
 
 const Habits = () => {
   const { habits, setHabits } = useContext(HabitsContext);
-  console.log(habits);
 
   const [displayHabits, setDisplayHabits] = useState(habits);
-  console.log(displayHabits);
 
-  const [inputHabits, setInputHabits] = useState([]);
+  const [inputHabits, setInputHabits] = useState("");
 
   const searchHabit = (inputHabits) => {
     inputHabits = inputHabits.toLocaleLowerCase();
@@ -40,10 +37,9 @@ const Habits = () => {
         habit.category.toLocaleLowerCase() === inputHabits
     );
     setDisplayHabits(filteredHabit);
-    console.log(displayHabits);
-    setInputHabits([]);
+    setInputHabits("");
   };
-
+  
   return (
     <Container>
       <Navbar />
@@ -77,8 +73,8 @@ const Habits = () => {
       </InputBttnContainer>
       <CardsContainer>
         <>
-          {displayHabits.map((habit, id) => {
-            return <CardHabito key={id} habit={habit} />;
+          {displayHabits.map((habit) => {
+            return <CardHabito key={habits.id} habit={habit} />;
           })}
         </>
       </CardsContainer>

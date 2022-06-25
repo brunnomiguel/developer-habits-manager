@@ -38,6 +38,7 @@ export const HabitsProvider = ({ children }) => {
     api
       .post("/habits/", data, { headers: { Authorization: `Bearer ${token}` } })
       .then((_) => loadHabits());
+    toast.success("Hábito criado com sucesso");
   };
 
   const updateHabit = (data, habitId) => {

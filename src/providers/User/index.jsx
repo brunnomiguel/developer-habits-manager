@@ -30,12 +30,12 @@ export const UserProvider = ({ children }) => {
   const decodeJwt = token && jwtDecode(token);
 
   async function searchUser() {
-    if (token) {
+    
       const responseUser = await api.get(`/users/${decodeJwt.user_id}/`);
       const { username } = responseUser.data;
       setUser(username);
       localStorage.setItem("DHM/user", username);
-    }
+    
   }
 
   const updateUser = (data, closeEdit) => {
@@ -55,7 +55,7 @@ export const UserProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    searchUser();
+    token && searchUser();
   }, [token]);
 
   return (

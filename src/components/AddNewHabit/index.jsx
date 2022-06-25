@@ -51,6 +51,7 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
         <div className="adjustment">
           <form onSubmit={handleSubmit(onSubmitFunction)}>
             <Input
+              modal
               placeholder="Digite o título"
               register={register}
               name="title"
@@ -60,6 +61,7 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
             />
 
             <Input
+              modal
               placeholder="Digite a categoria"
               register={register}
               name="category"
@@ -69,6 +71,7 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
             />
 
             <Input
+              modal
               placeholder="Digite a frequência"
               register={register}
               name="frequency"

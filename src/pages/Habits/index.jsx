@@ -28,7 +28,7 @@ const Habits = () => {
   const { habits } = useContext(HabitsContext);
   const { addNewHabit, setAddNewHabit } = useContext(ModalContext);
 
-  const [displayHabits, setDisplayHabits] = useState(habits);
+  const [displayHabits, setDisplayHabits] = useState([]);
 
   const [inputHabits, setInputHabits] = useState("");
 
@@ -40,7 +40,6 @@ const Habits = () => {
         habit.category.toLocaleLowerCase() === inputHabits
     );
     setDisplayHabits(filteredHabit);
-    setInputHabits("");
   };
 
   return (
@@ -75,7 +74,7 @@ const Habits = () => {
         </AddBttn>
       </InputBttnContainer>
       <CardsContainer>
-        {displayHabits.length === 0
+        {inputHabits === ""
           ? habits.map((habit) => {
               return <CardHabito key={habit.id} habit={habit} />;
             })

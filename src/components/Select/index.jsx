@@ -7,11 +7,6 @@ const SelectComponent = ({ register, errors, ...rest }) => {
     <Container>
       <LabelContainer>
         <label>Dificuldade</label>
-        {/* {!!errors.dificult?.message && (
-          <span style={{ color: "#c53030" }}>
-            -{errors.dificult.message}
-          </span>
-        )} */}
       </LabelContainer>
       <Select
         name="dificult"

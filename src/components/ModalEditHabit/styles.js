@@ -14,25 +14,26 @@ export const Container = styled.div`
         align-items: center;
 
         .container {
-            background-color: #D9D9D9;
+            background-color: var(--gray-4);
             width: 280px;
             height: 200px;
-            border-radius: 2px;
+            border-radius: 5px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
         .header {
-            background-color: #5FE1C9;
+            background-color: var(--green-2);
             height: 46px;
             width: 280px;
             margin-top: 0px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Share Tech';
+            font-family: var(--font-share-mono);
             font-size: 20px;
+            border-radius: 5px;
         }
 
         span {
@@ -43,27 +44,50 @@ export const Container = styled.div`
             align-items: center;
         }
 
+        .close {
+            background: none;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
         p {
            display: flex;
            width: 280px;
            margin-left: 53px;
            margin-top: 10px;
            margin-bottom: 10px;
-           font-family: 'Share Tech Mono';
+           font-family: var(--font-share-mono);
            font-size: 15px;
         }
 
         h6 {
             display: flex;
             justify-content: space-between;
+            width: 10px;
         }
 
         input {
-            width: 235px;
+            width: 230px;
         }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-        button {
-          background: none;
+            .kJFvbR {
+                height: 30px;
+                margin-top: 5px;
+
+                div {
+                    width: 0px;
+                }
+            }
+
+            .kVWMBm {
+                height: 30px;
+                margin-top: 0px;
+            }
         }
 
         .signals {
@@ -72,20 +96,15 @@ export const Container = styled.div`
             justify-content: space-between;
             align-items: center;
             height: 15px;
-            font-family: 'Share Tech';
+            font-family: var(--font-share-tech);
             font-size: 15px;
         }
-
+       
         .update {
-            width: 222px;
+            width: 240px;
             height: 40px;
-            border: none;
-            margin-top: 25px;
-            background: #027373;
-            color: white;
-            font-family: 'Share Tech';
+            margin-top: 15px;     
             font-size: 15px;
-            border-radius: 5px;
         }
     }
 `;

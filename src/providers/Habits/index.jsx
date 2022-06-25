@@ -4,6 +4,7 @@ import api from "../../services/api";
 import jwtDecode from "jwt-decode";
 
 import { UserContext } from "../User";
+import { toast } from "react-toastify";
 
 export const HabitsContext = createContext();
 
@@ -12,18 +13,20 @@ export const HabitsProvider = ({ children }) => {
   const [habits, setHabits] = useState([]);
 
   async function loadHabits() {
-    const responseHabits = await api.get("/habits/personal/", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    if (token) {
+      const responseHabits = await api.get("/habits/personal/", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-    const dataHabits = responseHabits.data;
+      const dataHabits = responseHabits.data;
 
-    setHabits(dataHabits);
+      setHabits(dataHabits);
+    }
   }
 
   useEffect(() => {
     loadHabits();
-  }, [habits]);
+  }, []);
 
   const decodeJWT = token && jwtDecode(token);
 
@@ -37,9 +40,19 @@ export const HabitsProvider = ({ children }) => {
       .then((_) => loadHabits());
   };
 
-
+  const deleteHabit = (habitId) => {
+    api
+      .delete(`/habits/${habitId}/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((_) => {
+        toast.success("Hábito excluído");
+        loadHabits();
+      });
+  };
+  
   return (
-    <HabitsContext.Provider value={{ habits, addNewHabit }}>
+    <HabitsContext.Provider value={{ habits, addNewHabit, deleteHabit }}>
       {children}
     </HabitsContext.Provider>
   );

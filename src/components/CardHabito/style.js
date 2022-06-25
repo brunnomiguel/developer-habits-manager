@@ -11,7 +11,7 @@ export const ContainerGeral = styled.div`
   height: 250px;
   margin-bottom: 38px;
   border-radius: 5px none;
-  box-shadow: 3px 3px 3px 3px var(--gray-2);
+  box-shadow: 1px 1px 3px var(--gray-2);
 
   @media screen and (min-width: 600px) {
     margin-left: 20px;
@@ -28,14 +28,17 @@ export const ContainerGeral = styled.div`
 
   span {
     color: var(--gray-2);
+    margin-bottom: 20px;
   }
   p {
     color: #000000;
   }
   hr {
-    width: 100%;
-    border: 0;
+    margin: 5px 0 5px 0;
+    width: 80%;
+    border: 2px;
     height: 2px;
+    background-color: var(--gray-4);
   }
   div {
     display: flex;
@@ -43,5 +46,11 @@ export const ContainerGeral = styled.div`
     justify-content: space-around;
     width: 50%;
     margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    span {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
   }
 `;

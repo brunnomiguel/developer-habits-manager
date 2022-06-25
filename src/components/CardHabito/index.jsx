@@ -5,6 +5,10 @@ import { useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
 import { ModalContext } from "../../providers/Modal";
 
+import {
+  FiEdit, FiDelete
+} from "react-icons/fi";
+
 const CardHabito = ({ habit }) => {
   const { id, title, category, difficulty, how_much_achieved } = habit;
 
@@ -17,8 +21,9 @@ const CardHabito = ({ habit }) => {
       <hr></hr>
       <span>{category}</span>
       <div>
-        <Button onclick={() => setEditHabit(true)}>icone editar</Button>
-        <Button onclick={() => deleteHabit(id)}>icone concluir</Button>
+        <Button white ativMetaDesk onclick={() => setEditHabit(true)}><FiEdit size={20} /></Button>
+        <span></span>
+        <Button white ativMetaDesk onclick={() => deleteHabit(id)}><FiDelete size={20} /></Button>
       </div>
     </ContainerGeral>
   );

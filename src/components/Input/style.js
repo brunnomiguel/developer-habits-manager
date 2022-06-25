@@ -45,7 +45,7 @@ export const InputContainer = styled.div`
       border: 3px solid var(--red-error);
     `}
 
-  button {
+  div {
     display: ${(props) => (props.search ? "block" : "none")};
     width: 35px;
     background: var(--green-1);

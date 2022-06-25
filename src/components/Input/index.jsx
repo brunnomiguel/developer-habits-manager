@@ -22,7 +22,7 @@ function Input({
           {...(register !== undefined && { ...register(name) })}
           {...rest}
         />
-        <button>{!!children && children}</button>
+        <div>{!!children && children}</div>
       </InputContainer>
     </Container>
   );

@@ -40,7 +40,6 @@ const Habits = () => {
         habit.category.toLocaleLowerCase() === inputHabits
     );
     setDisplayHabits(filteredHabit);
-    setInputHabits("");
   };
 
   return (

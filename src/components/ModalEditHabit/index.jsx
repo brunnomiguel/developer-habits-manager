@@ -1,24 +1,21 @@
 import { useContext, useState } from "react";
-import { ModalContext} from "../../providers/Modal";
+
 import { Container } from "./styles";
-import Button from '../Button';
 import { FiX } from "react-icons/fi";
+
+import { ModalContext} from "../../providers/Modal";
+import { HabitsContext } from "../../providers/Habits";
+
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { HabitsContext } from "../../providers/Habits";
 
-//verificar o id do card habit......
+import Button from '../Button';
 
 const ModalEditHabit = ({ id = "modalEditHabit", habitId }) => {
   const { setEditHabit } = useContext(ModalContext);
   const { updateHabit } = useContext(HabitsContext);
   const [valor, setValor] = useState(0)
-  
-  function onChange(ev) {
-    const { value } = ev.target;
-    setValor(value);
-  }
 
    const editSchema = yup.object().shape({
     how_much_achieved: yup.number(),
@@ -27,7 +24,6 @@ const ModalEditHabit = ({ id = "modalEditHabit", habitId }) => {
   const {
     register,
     handleSubmit,
-    /*formState: { },*/
   } = useForm({ resolver: yupResolver(editSchema) });
 
   const handleOutsideClick = (event) => {
@@ -37,8 +33,8 @@ const ModalEditHabit = ({ id = "modalEditHabit", habitId }) => {
   }
 
   const update= (data) => {
-    updateHabit(data, habitId); 
-    console.log(data)
+    updateHabit(data, habitId);
+    setEditHabit(false);
   }
 
   return (
@@ -70,7 +66,7 @@ const ModalEditHabit = ({ id = "modalEditHabit", habitId }) => {
                           defaultValue= {valor}
                           min="0"
                           max="100"
-                          onChange={onChange}
+                          onChange={(ev) => setValor(ev.target.value)}
                           {...register("how_much_achieved")}
                   />
                   <datalist id="tickmarks">

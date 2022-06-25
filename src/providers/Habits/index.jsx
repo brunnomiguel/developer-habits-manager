@@ -49,7 +49,7 @@ export const HabitsProvider = ({ children }) => {
       data.achieved = false;
     }
     api
-      .patch(`/habits/${habitId}`, data, {
+      .patch(`/habits/${habitId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {

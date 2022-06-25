@@ -17,8 +17,12 @@ import {
 import Input from "../../components/Input";
 import Navbar from "../../components/Navbar";
 import Button from "../../components/Button";
+import { useContext } from "react";
+import { ModalContext } from "../../providers/Modal";
+import AddNewHabit from "../../components/AddNewHabit";
 
 const Habits = () => {
+  const { addNewHabit, setAddNewHabit } = useContext(ModalContext);
   return (
     <Container>
       <Navbar />
@@ -52,6 +56,9 @@ const Habits = () => {
           <FiChevronRight size={20} />
         </Button>
       </PageButtons>
+
+      <button onClick={() => setAddNewHabit(true)}>abrir modal</button>
+      {addNewHabit ? <AddNewHabit /> : null}
     </Container>
   );
 };

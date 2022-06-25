@@ -56,7 +56,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     searchUser();
-  }, []);
+  }, [token]);
 
   return (
     <UserContext.Provider

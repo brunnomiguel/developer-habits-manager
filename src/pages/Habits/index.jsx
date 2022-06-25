@@ -18,12 +18,15 @@ import Input from "../../components/Input";
 import Navbar from "../../components/Navbar";
 import Button from "../../components/Button";
 import CardHabito from "../../components/CardHabito";
+import AddNewHabit from "../../components/AddNewHabit";
 
 import { useState, useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
+import { ModalContext } from "../../providers/Modal";
 
 const Habits = () => {
-  const { habits, setHabits } = useContext(HabitsContext);
+  const { habits } = useContext(HabitsContext);
+  const { addNewHabit, setAddNewHabit } = useContext(ModalContext);
 
   const [displayHabits, setDisplayHabits] = useState(habits);
 
@@ -39,7 +42,7 @@ const Habits = () => {
     setDisplayHabits(filteredHabit);
     setInputHabits("");
   };
-  
+
   return (
     <Container>
       <Navbar />
@@ -47,7 +50,7 @@ const Habits = () => {
         <h2>Seus Hábitos</h2>
         <AddBttn>
           <span>Adicione um novo hábito</span>
-          <Button white>
+          <Button white onClick={() => setAddNewHabit(true)}>
             <FiPlus size={20} />
           </Button>
         </AddBttn>
@@ -66,17 +69,19 @@ const Habits = () => {
         </Input>
         <AddBttn>
           <span>Adicione um novo hábito</span>
-          <Button white>
+          <Button white onClick={() => setAddNewHabit(true)}>
             <FiPlus size={20} />
           </Button>
         </AddBttn>
       </InputBttnContainer>
       <CardsContainer>
-        <>
-          {displayHabits.map((habit) => {
-            return <CardHabito key={habits.id} habit={habit} />;
-          })}
-        </>
+        {displayHabits.length === 0
+          ? habits.map((habit) => {
+              return <CardHabito key={habit.id} habit={habit} />;
+            })
+          : displayHabits.map((habit) => {
+              return <CardHabito key={habit.id} habit={habit} />;
+            })}
       </CardsContainer>
       <PageButtons>
         <Button white>
@@ -87,6 +92,7 @@ const Habits = () => {
           <FiChevronRight size={20} />
         </Button>
       </PageButtons>
+      {addNewHabit && <AddNewHabit />}
     </Container>
   );
 };

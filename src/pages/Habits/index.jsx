@@ -3,15 +3,16 @@ import {
   CardsContainer,
   Tittle,
   AddBttn,
-  InputTest,
-  Card,
   PageButtons,
   InputBttnContainer,
 } from "./styles";
 
-import { FiChevronLeft } from "react-icons/fi";
-import { FiChevronRight } from "react-icons/fi";
-import { FiPlus } from "react-icons/fi";
+import {
+  FiChevronLeft,
+  FiChevronRight,
+  FiPlus,
+  FiSearch,
+} from "react-icons/fi";
 
 import Input from "../../components/Input";
 import Navbar from "../../components/Navbar";
@@ -31,8 +32,9 @@ const Habits = () => {
         </AddBttn>
       </Tittle>
       <InputBttnContainer>
-        {/* <InputTest placeholder="Buscar Hábitos" /> */}
-        <Input placeholder="Buscar Hábitos" />
+        <Input search placeholder="Buscar Hábitos">
+          <FiSearch />
+        </Input>
         <AddBttn>
           <span>Adicione um novo hábito</span>
           <Button white>
@@ -40,14 +42,7 @@ const Habits = () => {
           </Button>
         </AddBttn>
       </InputBttnContainer>
-      <CardsContainer>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </CardsContainer>
+      <CardsContainer></CardsContainer>
       <PageButtons>
         <Button white>
           <FiChevronLeft size={20} />

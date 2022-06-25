@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerGeral = styled.div`
+  font-family: var(--font-share-tech);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,23 +29,19 @@ export const ContainerGeral = styled.div`
   span {
     color: var(--gray-2);
   }
-  p{
+  p {
     color: #000000;
   }
   hr {
-    width: 90%;
+    width: 100%;
     border: 0;
     height: 2px;
-    background-image: linear-gradient(
-      to right,
-      transparent,
-      #434334,
-      transparent
-    );
   }
-  div{
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     width: 50%;
-    text-align: center;
     margin-top: 10px;
   }
 `;

@@ -5,9 +5,7 @@ import { useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
 import { ModalContext } from "../../providers/Modal";
 
-const CardHabito = ({
-  habit
-}) => {
+const CardHabito = ({ habit }) => {
   const { id, title, category, difficulty, how_much_achieved } = habit;
 
   const { deleteHabit } = useContext(HabitsContext);

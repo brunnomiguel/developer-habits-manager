@@ -1,24 +1,23 @@
 import { FiUser, FiLogIn } from "react-icons/fi";
-import { useLocation } from "react-router-dom";
-
 import { Container, Content, NavLink } from "./style";
 
+import { useLocation } from "react-router-dom";
+
 import { useContext } from "react";
-
 import { UserContext } from "../../providers/User";
-
 import { ModalContext } from "../../providers/Modal";
+
 import ModalEditUser from "../ModalEditUser";
 
 const Navbar = () => {
+  const { setToken, user } = useContext(UserContext);
   const { setEditUser, editUser } = useContext(ModalContext);
 
   const { pathname } = useLocation();
 
-  const { user } = useContext(UserContext);
-
   const logout = () => {
     localStorage.clear();
+    setToken("");
   };
 
   return (
@@ -38,8 +37,7 @@ const Navbar = () => {
             </NavLink>
           </ul>
         </nav>
-
-        <FiLogIn onClick={() => logout()} />
+        <FiLogIn onClick={logout} />
       </Content>
       {editUser && <ModalEditUser />}
     </Container>

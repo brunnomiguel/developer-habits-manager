@@ -27,11 +27,11 @@ export const InputContainer = styled.div`
     props.search ? "var(--green-2)" : "var(--white-1)"};
   height: ${(props) => (props.search ? "37px" : props.modal ? "36px" : "50px")};
   margin-top: ${(props) => (props.search ? "0" : "5px")};
+  padding: ${(props) => (props.search ? "0 0 0 10px" : "5px")};
 
   border-radius: 5px;
   border: none;
   color: var(--black-1);
-  padding: 5px;
   display: flex;
   width: 100%;
 
@@ -44,6 +44,21 @@ export const InputContainer = styled.div`
     css`
       border: 3px solid var(--red-error);
     `}
+
+  div {
+    display: ${(props) => (props.search ? "block" : "none")};
+    width: 35px;
+    background: var(--green-1);
+    display: flex;
+    justify-content: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    &:hover {
+      opacity: 0.7;
+      transition: 0.2s ease-out;
+    }
+  }
 
   input {
     background: transparent;
@@ -61,7 +76,8 @@ export const InputContainer = styled.div`
 
   svg {
     display: ${(props) => (props.search ? "block" : "none")};
-    margin: 2px 11px;
     color: var(--white-1);
+    height: 37px;
+    width: 20px;
   }
 `;

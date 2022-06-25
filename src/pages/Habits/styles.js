@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   background-color: var(--white-1);
-  /* height: 100vh; */
-  height: 100%;
-  /* width: 100vmax; */
+  height: 100vh;
 `;
 
 export const Tittle = styled.div`
@@ -22,6 +20,7 @@ export const Tittle = styled.div`
 
 export const AddBttn = styled.div`
   display: flex;
+  align-items: baseline;
   gap: 11px;
 
   span {
@@ -34,31 +33,10 @@ export const AddBttn = styled.div`
   }
 
   @media screen and (min-width: 600px) {
-    span {
-      font-family: var(--font-lexend);
-      font-size: 20px;
-    }
-
     button {
       display: none;
     }
   }
-`;
-
-export const InputTest = styled.input`
-  width: 252px;
-  height: 37px;
-  background-color: var(--green-2);
-  border-radius: 5px;
-  font-size: 20px;
-  padding-left: 52px;
-  font-family: var(--font-lexend);
-  color: var(--gray-1);
-  margin-bottom: 20px;
-  /* margin-left: 20px;
-  margin-right: 20px; */
-  display: flex;
-  justify-content: center;
 `;
 
 export const CardsContainer = styled.div`
@@ -99,10 +77,10 @@ export const Card = styled.div`
 
 export const PageButtons = styled.div`
   display: flex;
-  flex-direction: row;
   gap: 2px;
   justify-content: center;
   padding-bottom: 20px;
+  align-self: flex-end;
 
   button {
     width: 35px;
@@ -125,19 +103,24 @@ export const PageButtons = styled.div`
 export const InputBttnContainer = styled.div`
   display: flex;
   align-items: baseline;
-  justify-content: stretch;
+  justify-content: center;
 
   button {
     display: none;
   }
 
   @media screen and (min-width: 600px) {
-    justify-content: center;
+    justify-content: space-around;
+    height: 37px;
 
     button {
       display: block;
+      height: 37px;
+      width: 37px;
     }
+  }
 
+  @media screen and (min-width: 769px) {
     span {
       display: block;
       font-family: var(--font-lexend);

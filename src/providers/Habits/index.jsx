@@ -50,9 +50,11 @@ export const HabitsProvider = ({ children }) => {
         loadHabits();
       });
   };
-  
+
   return (
-    <HabitsContext.Provider value={{ habits, addNewHabit, deleteHabit }}>
+    <HabitsContext.Provider
+      value={{ habits, setHabits, addNewHabit, deleteHabit }}
+    >
       {children}
     </HabitsContext.Provider>
   );

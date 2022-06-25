@@ -41,6 +41,18 @@ export const InputContainer = styled.div`
       border: 3px solid var(--red-error);
     `}
 
+  input {
+    background: transparent;
+    flex: 1;
+    border: none;
+    color: var(--black-1);
+    font-family: ${(props) =>
+      props.search ? "var(--font-lexend)" : "var(--font-share-mono)"};
+    &::placeholder {
+      color: var(--black-2);
+    }
+  }
+
   div {
     display: ${(props) => (props.search ? "block" : "none")};
     width: 35px;
@@ -54,23 +66,12 @@ export const InputContainer = styled.div`
       opacity: 0.7;
       transition: 0.2s ease-out;
     }
-  }
 
-  input {
-    background: transparent;
-    flex: 1;
-    border: none;
-    color: var(--black-1);
-    font-family: ${(props) =>
-      props.search ? "var(--font-lexend)" : "var(--font-share-mono)"};
-    &::placeholder {
-      color: var(--black-2);
+    svg {
+      display: ${(props) => (props.search ? "block" : "none")};
+      color: var(--white-1);
+      height: 37px;
+      width: 20px;
     }
-  }
-  svg {
-    display: ${(props) => (props.search ? "block" : "none")};
-    color: var(--white-1);
-    height: 37px;
-    width: 20px;
   }
 `;

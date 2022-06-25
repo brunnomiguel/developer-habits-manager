@@ -3,19 +3,21 @@ import { toast } from "react-toastify";
 import Button from "../Button";
 
 const CardHabito = ({
-  id,
-  title,
-  category,
+  // id,
+  // title,
+  // category,
   editFunction,
+  habit,
   concludeFunction,
 }) => {
+  const { id, title, category } = habit;
 
   const toastFinished = (concludeFunction) => {
     // ao clicar no concluir, executa a função do botão concluir recebida por props
     // e também executa o toast sucess para avisar que a atividade foi concluida
     concludeFunction();
     toast.success("Hábito deletado");
-  }
+  };
 
   return (
     <ContainerGeral>
@@ -23,8 +25,8 @@ const CardHabito = ({
       <hr></hr>
       <span>{category}</span>
       <div>
-        <Button onclick={()=> editFunction()}>icone editar</Button>
-        <Button onclick={()=> toastFinished()} >icone concluir</Button>
+        <Button onclick={() => editFunction()}>icone editar</Button>
+        <Button onclick={() => toastFinished()}>icone concluir</Button>
       </div>
     </ContainerGeral>
   );

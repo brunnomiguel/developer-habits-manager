@@ -17,8 +17,33 @@ import {
 import Input from "../../components/Input";
 import Navbar from "../../components/Navbar";
 import Button from "../../components/Button";
+import CardHabito from "../../components/CardHabito";
+
+import { useContext } from "react";
+import { useState } from "react";
+import { HabitsContext } from "../../providers/Habits";
 
 const Habits = () => {
+  const { habits, setHabits } = useContext(HabitsContext);
+  console.log(habits);
+
+  const [displayHabits, setDisplayHabits] = useState(habits);
+  console.log(displayHabits);
+
+  const [inputHabits, setInputHabits] = useState([]);
+
+  const searchHabit = (inputHabits) => {
+    inputHabits = inputHabits.toLocaleLowerCase();
+    const filteredHabit = habits.filter(
+      (habit) =>
+        habit.title.toLocaleLowerCase() === inputHabits ||
+        habit.category.toLocaleLowerCase() === inputHabits
+    );
+    setDisplayHabits(filteredHabit);
+    console.log(displayHabits);
+    setInputHabits([]);
+  };
+
   return (
     <Container>
       <Navbar />
@@ -32,7 +57,15 @@ const Habits = () => {
         </AddBttn>
       </Tittle>
       <InputBttnContainer>
-        <Input search placeholder="Buscar Hábitos">
+        <Input
+          placeholder="Buscar Hábitos"
+          type="text"
+          value={inputHabits}
+          onChange={(ev) => setInputHabits(ev.target.value)}
+          searchHabit={searchHabit}
+          inputHabits={inputHabits}
+          search
+        >
           <FiSearch />
         </Input>
         <AddBttn>
@@ -42,7 +75,13 @@ const Habits = () => {
           </Button>
         </AddBttn>
       </InputBttnContainer>
-      <CardsContainer></CardsContainer>
+      <CardsContainer>
+        <>
+          {displayHabits.map((habit, id) => {
+            return <CardHabito key={id} habit={habit} />;
+          })}
+        </>
+      </CardsContainer>
       <PageButtons>
         <Button white>
           <FiChevronLeft size={20} />

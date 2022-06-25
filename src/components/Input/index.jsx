@@ -4,6 +4,7 @@ function Input({
   children,
   label,
   name,
+  modal = false,
   search = false,
   register,
   error,
@@ -19,14 +20,12 @@ function Input({
         </label>
       </div>
 
-      <InputContainer isErrored={!!error} search={search}>
+      <InputContainer modal={modal} isErrored={!!error} search={search}>
         <input
           {...(register !== undefined && { ...register(name) })}
           {...rest}
         />
-        <div onClick={() => searchHabit(inputHabits)}>
-          {!!children && children}
-        </div>
+        {!! children && <div onClick={() => searchHabit(inputHabits)}>{children}</div>}
       </InputContainer>
     </Container>
   );

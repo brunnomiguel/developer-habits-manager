@@ -7,9 +7,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { HabitsContext } from "../../providers/Habits";
-import Input from "../Input";
 
-const ModalEditHabit = ({ id }) => {
+//verificar o id do card habit......
+
+const ModalEditHabit = ({ id = "modalEditHabit", habitId }) => {
   const { setEditHabit } = useContext(ModalContext);
   const { updateHabit } = useContext(HabitsContext);
   const [valor, setValor] = useState(0)
@@ -17,7 +18,6 @@ const ModalEditHabit = ({ id }) => {
   function onChange(ev) {
     const { value } = ev.target;
     setValor(value);
-    console.log(valor)
   }
 
    const editSchema = yup.object().shape({
@@ -30,9 +30,20 @@ const ModalEditHabit = ({ id }) => {
     /*formState: { },*/
   } = useForm({ resolver: yupResolver(editSchema) });
 
+  const handleOutsideClick = (event) => {
+    if (event.target.id === id) {
+      setEditHabit(false)
+    }
+  }
+
+  const update= (data) => {
+    updateHabit(data, habitId); 
+    console.log(data)
+  }
+
   return (
     <Container>
-        <div className="modal">
+        <div className="modal" id={id} onClick={handleOutsideClick}>
             <div className="container">
                 <div className='header'>
                     <span>Atualize sua evolução</span>
@@ -52,8 +63,8 @@ const ModalEditHabit = ({ id }) => {
                     <h6>90</h6>
                     <h6>100%</h6>
                 </div>
-                <form onSubmit={handleSubmit()}>
-                  <Input  type="range"
+                <form onSubmit={handleSubmit(update)}>
+                  <input  type="range"
                           list="tickmarks"
                           name='cont'
                           defaultValue= {valor}

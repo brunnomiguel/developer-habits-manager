@@ -7,6 +7,8 @@ function Input({
   search = false,
   register,
   error,
+  searchHabit,
+  inputHabits,
   ...rest
 }) {
   return (
@@ -22,7 +24,9 @@ function Input({
           {...(register !== undefined && { ...register(name) })}
           {...rest}
         />
-        <div>{!!children && children}</div>
+        <div onClick={() => searchHabit(inputHabits)}>
+          {!!children && children}
+        </div>
       </InputContainer>
     </Container>
   );

@@ -17,12 +17,29 @@ import {
 import Input from "../../components/Input";
 import Navbar from "../../components/Navbar";
 import Button from "../../components/Button";
-import { useContext } from "react";
-import { ModalContext } from "../../providers/Modal";
-import AddNewHabit from "../../components/AddNewHabit";
+import CardHabito from "../../components/CardHabito";
+
+import { useState, useContext } from "react";
+import { HabitsContext } from "../../providers/Habits";
 
 const Habits = () => {
-  const { addNewHabit, setAddNewHabit } = useContext(ModalContext);
+  const { habits, setHabits } = useContext(HabitsContext);
+
+  const [displayHabits, setDisplayHabits] = useState(habits);
+
+  const [inputHabits, setInputHabits] = useState("");
+
+  const searchHabit = (inputHabits) => {
+    inputHabits = inputHabits.toLocaleLowerCase();
+    const filteredHabit = habits.filter(
+      (habit) =>
+        habit.title.toLocaleLowerCase() === inputHabits ||
+        habit.category.toLocaleLowerCase() === inputHabits
+    );
+    setDisplayHabits(filteredHabit);
+    setInputHabits("");
+  };
+  
   return (
     <Container>
       <Navbar />
@@ -36,7 +53,15 @@ const Habits = () => {
         </AddBttn>
       </Tittle>
       <InputBttnContainer>
-        <Input search placeholder="Buscar Hábitos">
+        <Input
+          placeholder="Buscar Hábitos"
+          type="text"
+          value={inputHabits}
+          onChange={(ev) => setInputHabits(ev.target.value)}
+          searchHabit={searchHabit}
+          inputHabits={inputHabits}
+          search
+        >
           <FiSearch />
         </Input>
         <AddBttn>
@@ -46,7 +71,13 @@ const Habits = () => {
           </Button>
         </AddBttn>
       </InputBttnContainer>
-      <CardsContainer></CardsContainer>
+      <CardsContainer>
+        <>
+          {displayHabits.map((habit) => {
+            return <CardHabito key={habits.id} habit={habit} />;
+          })}
+        </>
+      </CardsContainer>
       <PageButtons>
         <Button white>
           <FiChevronLeft size={20} />
@@ -56,9 +87,6 @@ const Habits = () => {
           <FiChevronRight size={20} />
         </Button>
       </PageButtons>
-
-      <button onClick={() => setAddNewHabit(true)}>abrir modal</button>
-      {addNewHabit ? <AddNewHabit /> : null}
     </Container>
   );
 };

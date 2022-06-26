@@ -13,15 +13,15 @@ export const HabitsProvider = ({ children }) => {
   const [habits, setHabits] = useState([]);
 
   async function loadHabits() {
-    
-      const responseHabits = await api.get("/habits/personal/", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+    const responseHabits = await api.get("/habits/personal/", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
-      const dataHabits = responseHabits.data.filter(habit => habit.achieved === false);
+    const dataHabits = responseHabits.data.filter(
+      (habit) => habit.achieved === false
+    );
 
-      setHabits(dataHabits);
-  
+    setHabits(dataHabits);
   }
 
   useEffect(() => {

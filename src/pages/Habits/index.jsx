@@ -17,7 +17,7 @@ import {
 import Input from "../../components/Input";
 import Navbar from "../../components/Navbar";
 import Button from "../../components/Button";
-import CardHabito from "../../components/CardHabito";
+import CardHabit from "../../components/CardHabit";
 import AddNewHabit from "../../components/AddNewHabit";
 
 import { useState, useContext } from "react";
@@ -34,11 +34,14 @@ const Habits = () => {
 
   const searchHabit = (inputHabits) => {
     inputHabits = inputHabits.toLocaleLowerCase();
-    const filteredHabit = habits.filter(
-      (habit) =>
-        habit.title.toLocaleLowerCase() === inputHabits ||
-        habit.category.toLocaleLowerCase() === inputHabits
-    );
+    const filteredHabit = habits.filter((habit) => {
+      if (
+        habit.title.toLocaleLowerCase().includes(inputHabits) ||
+        habit.category.toLocaleLowerCase().includes(inputHabits)
+      ) {
+        return habit;
+      }
+    });
     setDisplayHabits(filteredHabit);
   };
 
@@ -59,7 +62,10 @@ const Habits = () => {
           placeholder="Buscar Hábitos"
           type="text"
           value={inputHabits}
-          onChange={(ev) => setInputHabits(ev.target.value)}
+          onChange={(ev) => {
+            setInputHabits(ev.target.value)
+            searchHabit(ev.target.value)
+          }}
           searchHabit={searchHabit}
           inputHabits={inputHabits}
           search
@@ -76,10 +82,10 @@ const Habits = () => {
       <CardsContainer>
         {inputHabits === ""
           ? habits.map((habit) => {
-              return <CardHabito key={habit.id} habit={habit} />;
+              return <CardHabit key={habit.id} habit={habit} />;
             })
           : displayHabits.map((habit) => {
-              return <CardHabito key={habit.id} habit={habit} />;
+              return <CardHabit key={habit.id} habit={habit} />;
             })}
       </CardsContainer>
       <PageButtons>

@@ -25,7 +25,9 @@ function Input({
           {...(register !== undefined && { ...register(name) })}
           {...rest}
         />
-        {!! children && <div onClick={() => searchHabit(inputHabits)}>{children}</div>}
+        {!!children && (
+          <div onClick={() => searchHabit(inputHabits)}>{children}</div>
+        )}
       </InputContainer>
     </Container>
   );

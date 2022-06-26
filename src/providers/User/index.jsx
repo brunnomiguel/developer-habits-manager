@@ -21,7 +21,6 @@ export const UserProvider = ({ children }) => {
         const { access } = res.data;
         setToken(access);
         localStorage.setItem("@DHM/token", access);
-        toast.success("Login realizado com sucesso");
         history.push("/habits");
       })
       .catch((_) => toast.error("Usuário ou senha inválidos!"));
@@ -30,12 +29,10 @@ export const UserProvider = ({ children }) => {
   const decodeJwt = token && jwtDecode(token);
 
   async function searchUser() {
-    
-      const responseUser = await api.get(`/users/${decodeJwt.user_id}/`);
-      const { username } = responseUser.data;
-      setUser(username);
-      localStorage.setItem("DHM/user", username);
-    
+    const responseUser = await api.get(`/users/${decodeJwt.user_id}/`);
+    const { username } = responseUser.data;
+    setUser(username);
+    localStorage.setItem("DHM/user", username);
   }
 
   const updateUser = (data, closeEdit) => {

@@ -1,17 +1,15 @@
 import { Container, ImgContainer, Content } from "./styles";
+
 import Dev from "../../assets/img/dev.png";
 import Button from "../../components/Button";
+
 import { useHistory } from "react-router-dom";
 
 const LandingPage = () => {
   const history = useHistory();
 
-  const handleSignIn = () => {
-    history.push("/SignIn");
-  };
-
-  const handleSignUp = () => {
-    history.push("/SignUp");
+  const handleNavigate = (path) => {
+    history.push(path);
   };
 
   return (
@@ -28,10 +26,20 @@ const LandingPage = () => {
           estudo, crie também atividades e metas nos seus grupos e as matenha
           atualizadas de acordo com seu progresso.
         </p>
-        <Button loginMobile share white onClick={() => handleSignIn()}>
+        <Button
+          loginMobile
+          share
+          white
+          onClick={() => handleNavigate("/SignIn")}
+        >
           Login
         </Button>
-        <Button loginMobile share white onClick={() => handleSignUp()}>
+        <Button
+          loginMobile
+          share
+          white
+          onClick={() => handleNavigate("/SignUp")}
+        >
           Cadastre-se
         </Button>
       </Content>

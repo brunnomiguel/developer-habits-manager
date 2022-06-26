@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerGeral = styled.div`
+export const Container = styled.div`
   font-family: var(--font-share-tech);
   display: flex;
   flex-direction: column;

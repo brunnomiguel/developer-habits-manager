@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-  background: ${(props) =>
+  background-color: ${(props) =>
     props.loginDesk
       ? "var(--green-1)"
       : props.loginMobile

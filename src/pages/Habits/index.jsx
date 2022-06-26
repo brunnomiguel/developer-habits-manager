@@ -29,7 +29,6 @@ const Habits = () => {
   const { addNewHabit, setAddNewHabit } = useContext(ModalContext);
 
   const [displayHabits, setDisplayHabits] = useState([]);
-
   const [inputHabits, setInputHabits] = useState("");
 
   const searchHabit = (inputHabits) => {
@@ -63,8 +62,8 @@ const Habits = () => {
           type="text"
           value={inputHabits}
           onChange={(ev) => {
-            setInputHabits(ev.target.value)
-            searchHabit(ev.target.value)
+            setInputHabits(ev.target.value);
+            searchHabit(ev.target.value);
           }}
           searchHabit={searchHabit}
           inputHabits={inputHabits}

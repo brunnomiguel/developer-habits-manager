@@ -1,4 +1,5 @@
-import { ContainerGeral } from "./style";
+import { Container } from "./style";
+import { FiEdit, FiDelete } from "react-icons/fi";
 
 import { useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
@@ -7,8 +8,6 @@ import { ModalContext } from "../../providers/Modal";
 import ModalEditHabit from "../ModalEditHabit";
 import Button from "../Button";
 
-import { FiEdit, FiDelete } from "react-icons/fi";
-
 const CardHabit = ({ habit }) => {
   const { id, title, category, difficulty, how_much_achieved } = habit;
 
@@ -16,7 +15,7 @@ const CardHabit = ({ habit }) => {
   const { editHabit, setEditHabit } = useContext(ModalContext);
 
   return (
-    <ContainerGeral>
+    <Container>
       <p>{title}</p>
       <hr></hr>
       <span>{category}</span>
@@ -32,7 +31,7 @@ const CardHabit = ({ habit }) => {
         </Button>
         {editHabit && <ModalEditHabit habitId={id} />}
       </div>
-    </ContainerGeral>
+    </Container>
   );
 };
 export default CardHabit;

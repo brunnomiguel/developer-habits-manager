@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 import api from "../../services/api";
-import jwtDecode from "jwt-decode";
 
 import { UserContext } from "../User";
 import { toast } from "react-toastify";
@@ -9,7 +8,7 @@ import { toast } from "react-toastify";
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
-  const { token } = useContext(UserContext);
+  const { token, decodeJwt } = useContext(UserContext);
   const [habits, setHabits] = useState([]);
 
   async function loadHabits() {
@@ -28,10 +27,8 @@ export const HabitsProvider = ({ children }) => {
     token && loadHabits();
   }, [token]);
 
-  const decodeJWT = token && jwtDecode(token);
-
   const addNewHabit = (data) => {
-    data.user = decodeJWT.user_id;
+    data.user = decodeJwt.user_id;
     data.achieved = false;
     data.how_much_achieved = 0;
 

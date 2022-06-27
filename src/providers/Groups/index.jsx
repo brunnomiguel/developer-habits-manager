@@ -8,6 +8,7 @@ export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
   const { token, decodeJwt } = useContext(UserProvider);
+
   const [allGroups, setAllGroups] = useState([]);
   const [groupsSubscribed, setGroupsSubscribed] = useState([]);
   const [userCreatedGroups, setUserCreatedGroups] = useState([]);
@@ -80,6 +81,19 @@ export const GroupsProvider = ({ children }) => {
       .catch((_) => toast.error("Você já está inscrito nesse grupo!"));
   };
 
+  const unSubscribeGroup = (groupId) => {
+    api
+      .delete(`/groups/${groupId}/unsubscribe/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((_) => {
+        toast.success("Desinscrição realizada!");
+        loadAllGroups();
+        loadSubscribedUserGroups();
+      })
+      .catch((_) => toast.error("Você não está inscrito nesse grupo."));
+  };
+
   return (
     <GroupsContext
       value={{
@@ -89,6 +103,7 @@ export const GroupsProvider = ({ children }) => {
         createNewGroup,
         editGroup,
         subscribeToTheGroup,
+        unSubscribeGroup,
       }}
     >
       {children}

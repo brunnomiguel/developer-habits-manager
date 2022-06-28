@@ -1,7 +1,8 @@
 import { createContext, useState, useContext } from "react";
-import { toast } from "react-toastify";
-import api from "../../services/api";
 import { UserContext } from "../User";
+
+import api from "../../services/api";
+import { toast } from "react-toastify";
 
 export const GoalsContext = createContext();
 
@@ -45,8 +46,22 @@ export const GoalsProvider = ({ children }) => {
       .catch((_) => toast.error("Ops... algo deu errado."));
   };
 
+  const deleteGoal = (goalId, groupId) => {
+    api
+      .delete(`/goals/${goalId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((_) => {
+        toast.success("Meta excluída!");
+        loadGoals(groupId);
+      })
+      .catch((_) => toast.error("Ops... algo deu errado."));
+  };
+
   return (
-    <GoalsContext.Provider value={{ goals, loadGoals, addNewGoal }}>
+    <GoalsContext.Provider
+      value={{ goals, loadGoals, addNewGoal, updateGoal, deleteGoal }}
+    >
       {children}
     </GoalsContext.Provider>
   );

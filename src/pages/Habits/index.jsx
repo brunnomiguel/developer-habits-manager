@@ -29,7 +29,6 @@ const Habits = () => {
   const { addNewHabit, setAddNewHabit } = useContext(ModalContext);
 
   const [displayHabits, setDisplayHabits] = useState([]);
-
   const [inputHabits, setInputHabits] = useState("");
 
   const searchHabit = (inputHabits) => {
@@ -83,15 +82,6 @@ const Habits = () => {
               return <CardHabito key={habit.id} habit={habit} />;
             })}
       </CardsContainer>
-      <PageButtons>
-        <Button white>
-          <FiChevronLeft size={20} />
-        </Button>
-        <span>2</span>
-        <Button white>
-          <FiChevronRight size={20} />
-        </Button>
-      </PageButtons>
       {addNewHabit && <AddNewHabit />}
     </Container>
   );

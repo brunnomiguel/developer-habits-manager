@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 import api from "../../services/api";
-import jwtDecode from "jwt-decode";
 
 import { UserContext } from "../User";
 import { toast } from "react-toastify";
@@ -9,29 +8,28 @@ import { toast } from "react-toastify";
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
-  const { token } = useContext(UserContext);
+  const { token, decodeJwt } = useContext(UserContext);
   const [habits, setHabits] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   async function loadHabits() {
-    
-      const responseHabits = await api.get("/habits/personal/", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+    const responseHabits = await api.get("/habits/personal/", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
-      const dataHabits = responseHabits.data.filter(habit => habit.achieved === false);
-
-      setHabits(dataHabits);
-  
+    const dataHabits = responseHabits.data.filter(
+      (habit) => habit.achieved === false
+    );
+    setLoading(false);
+    setHabits(dataHabits);
   }
 
   useEffect(() => {
     token && loadHabits();
   }, [token]);
 
-  const decodeJWT = token && jwtDecode(token);
-
   const addNewHabit = (data) => {
-    data.user = decodeJWT.user_id;
+    data.user = decodeJwt.user_id;
     data.achieved = false;
     data.how_much_achieved = 0;
 
@@ -49,7 +47,7 @@ export const HabitsProvider = ({ children }) => {
       data.achieved = false;
     }
     api
-      .patch(`/habits/${habitId}`, data, {
+      .patch(`/habits/${habitId}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
@@ -72,7 +70,14 @@ export const HabitsProvider = ({ children }) => {
 
   return (
     <HabitsContext.Provider
-      value={{ habits, setHabits, addNewHabit, deleteHabit, updateHabit }}
+      value={{
+        habits,
+        setHabits,
+        loading,
+        addNewHabit,
+        deleteHabit,
+        updateHabit,
+      }}
     >
       {children}
     </HabitsContext.Provider>

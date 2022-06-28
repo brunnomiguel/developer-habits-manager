@@ -3,10 +3,12 @@ import { Container, SignupData, ImageContent } from "./style";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+
 import { toast } from "react-toastify";
 import api from "../../services/api";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+
+import { useHistory, Link } from "react-router-dom";
+
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 
@@ -102,7 +104,7 @@ const SignUp = () => {
             type="password"
           />
 
-          <Button loginDesk white share>
+          <Button loginDesk white share type="submit">
             Cadastrar
           </Button>
         </form>

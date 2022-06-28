@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const ContainerGeral = styled.div`
+export const Container = styled.div`
+  font-family: var(--font-share-tech);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +11,7 @@ export const ContainerGeral = styled.div`
   height: 250px;
   margin-bottom: 38px;
   border-radius: 5px none;
-  box-shadow: 3px 3px 3px 3px var(--gray-2);
+  box-shadow: 1px 1px 3px var(--gray-2);
 
   @media screen and (min-width: 600px) {
     margin-left: 20px;
@@ -27,24 +28,27 @@ export const ContainerGeral = styled.div`
 
   span {
     color: var(--gray-2);
+    margin-bottom: 20px;
   }
-  p{
+  p {
     color: #000000;
   }
   hr {
-    width: 90%;
-    border: 0;
+    margin: 5px 0 5px 0;
+    width: 80%;
+    border: 2px;
     height: 2px;
-    background-image: linear-gradient(
-      to right,
-      transparent,
-      #434334,
-      transparent
-    );
+    background-color: var(--gray-4);
   }
-  div{
-    width: 50%;
-    text-align: center;
-    margin-top: 10px;
+  div {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    button {
+      width: 50px;
+      margin: 5px;
+    }
   }
 `;

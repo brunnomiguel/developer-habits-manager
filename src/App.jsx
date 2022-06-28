@@ -21,7 +21,6 @@ const App = () => {
         draggable
         pauseOnHover
       />
-
       <Routes />
     </>
   );

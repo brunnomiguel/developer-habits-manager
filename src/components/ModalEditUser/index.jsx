@@ -1,18 +1,16 @@
 import { useContext } from "react";
+import { UserContext } from "../../providers/User";
 import { ModalContext } from "../../providers/Modal";
 
 import { Container, Header, Content, Modal } from "./style";
+import { FiX } from "react-icons/fi";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-import { UserContext } from "../../providers/User";
-
 import Input from "../Input";
 import Button from "../Button";
-
-import { FiX } from "react-icons/fi";
 
 const ModalEditUser = ({ id = "modalEditUser" }) => {
   const closeModalEvent = (event) => {
@@ -72,7 +70,7 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
               label={"Novo e-mail"}
               error={errors.email?.message}
             />
-            <Button loginDesk white onSubmit={() => handleUpdateUser()}>
+            <Button loginDesk white type="submit">
               Editar suas informações
             </Button>
           </form>

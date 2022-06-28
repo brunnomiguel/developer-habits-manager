@@ -18,7 +18,7 @@ export const Container = styled.header`
   h2 {
     cursor: pointer;
   }
-  
+
   h2,
   svg,
   a {

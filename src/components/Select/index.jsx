@@ -8,7 +8,7 @@ const SelectComponent = ({ name, register, errors, ...rest }) => {
       <LabelContainer>
         <label>Dificuldade</label>
       </LabelContainer>
-      <Select {...register(name)}>
+      <Select {...register(name)} {...rest}>
         <option value={"Fácil"}>Fácil</option>
         <option value={"Médio"}>Médio</option>
         <option value={"Difícil"}>Difícil</option>

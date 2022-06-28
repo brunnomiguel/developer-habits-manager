@@ -1,15 +1,17 @@
-import Input from "../Input";
-import Button from "../Button";
-import Select from "../Select";
-import { useForm } from "react-hook-form";
+import { Container, AddHabitModalHeader, AddHabitModalEdit } from "./style";
+import { FiX } from "react-icons/fi";
+
 import * as yup from "yup";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+
 import { useContext } from "react";
 import { ModalContext } from "../../providers/Modal";
 import { HabitsContext } from "../../providers/Habits";
 
-import { Container, AddHabitModalHeader, AddHabitModalEdit } from "./style";
-import { FiX } from "react-icons/fi";
+import Input from "../Input";
+import Button from "../Button";
+import Select from "../Select";
 
 const AddNewHabit = ({ id = "addNewHabit" }) => {
   const { setAddNewHabit } = useContext(ModalContext);
@@ -20,6 +22,7 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
       setAddNewHabit(false);
     }
   };
+
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
     category: yup.string().required("Campo obrigatório"),
@@ -31,24 +34,27 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
+
   const onSubmitFunction = (data) => {
     addNewHabit(data);
+    reset();
   };
+
   return (
     <Container id={id} onClick={handleOutsideClick}>
       <AddHabitModalHeader>
         <p>Novo hábito</p>
-
         <button onClick={() => setAddNewHabit(false)}>
           <FiX />
         </button>
       </AddHabitModalHeader>
 
       <AddHabitModalEdit>
-        <div className="adjustment">
+        <div>
           <form onSubmit={handleSubmit(onSubmitFunction)}>
             <Input
               modal

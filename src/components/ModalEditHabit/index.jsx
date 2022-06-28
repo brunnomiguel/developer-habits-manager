@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import Button from "../Button";
 
 const ModalEditHabit = ({ id = "modalEditHabit", capturedHabit }) => {
-  const { setEditHabit } = useContext(ModalContext);
+  const { setOpenEditHabit } = useContext(ModalContext);
   const { updateHabit } = useContext(HabitsContext);
   const [value, setValue] = useState(0);
 
@@ -27,13 +27,13 @@ const ModalEditHabit = ({ id = "modalEditHabit", capturedHabit }) => {
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
-      setEditHabit(false);
+      setOpenEditHabit(false);
     }
   };
 
   const update = (data) => {
     updateHabit(data, capturedHabit.id);
-    setEditHabit(false);
+    setOpenEditHabit(false);
   };
 
   return (
@@ -42,7 +42,7 @@ const ModalEditHabit = ({ id = "modalEditHabit", capturedHabit }) => {
         <div className="container">
           <div className="header">
             <span>Atualize sua evolução</span>
-            <FiX className="close" onClick={() => setEditHabit(false)} />
+            <FiX className="close" onClick={() => setOpenEditHabit(false)} />
           </div>
           <p>Progresso</p>
           <div className="signals">

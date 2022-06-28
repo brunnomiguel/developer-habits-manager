@@ -15,13 +15,13 @@ import Button from "../Button";
 const ModalEditUser = ({ id = "modalEditUser" }) => {
   const closeModalEvent = (event) => {
     if (event.target.id === id) {
-      setEditUser(false);
+      setOpenEditUser(false);
     }
   };
 
   const { updateUser } = useContext(UserContext);
 
-  const { setEditUser } = useContext(ModalContext);
+  const { setOpenEditUser } = useContext(ModalContext);
 
   const editSchema = yup.object().shape({
     username: yup.string().required("Informe novo nome"),
@@ -38,7 +38,7 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
   const closeEdit = (erro) => {
     if (erro === true) {
       reset();
-      setEditUser(false);
+      setOpenEditUser(false);
     }
   };
 
@@ -51,7 +51,7 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
       <Container>
         <Header>
           <h3>Editar suas informções</h3>
-          <button onClick={() => setEditUser(false)}>
+          <button onClick={() => setOpenEditUser(false)}>
             <FiX />
           </button>
         </Header>

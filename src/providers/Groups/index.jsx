@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { UserProvider } from "../User";
+import { UserContext } from "../User";
 
 import api from "../../services/api";
 import { toast } from "react-toastify";
@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
-  const { token, decodeJwt } = useContext(UserProvider);
+  const { token, decodeJwt } = useContext(UserContext);
 
   const [allGroups, setAllGroups] = useState([]);
   const [groupsSubscribed, setGroupsSubscribed] = useState([]);
@@ -36,6 +36,7 @@ export const GroupsProvider = ({ children }) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     const groupsData = responseGroups.data;
+    // Filtrar grupos separando criador ou não.
 
     setGroupsSubscribed(groupsData);
   }
@@ -95,7 +96,7 @@ export const GroupsProvider = ({ children }) => {
   };
 
   return (
-    <GroupsContext
+    <GroupsContext.Provider
       value={{
         allGroups,
         userCreatedGroups,
@@ -107,6 +108,6 @@ export const GroupsProvider = ({ children }) => {
       }}
     >
       {children}
-    </GroupsContext>
+    </GroupsContext.Provider>
   );
 };

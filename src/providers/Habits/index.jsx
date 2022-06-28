@@ -10,6 +10,7 @@ export const HabitsContext = createContext();
 export const HabitsProvider = ({ children }) => {
   const { token, decodeJwt } = useContext(UserContext);
   const [habits, setHabits] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   async function loadHabits() {
     const responseHabits = await api.get("/habits/personal/", {
@@ -19,7 +20,7 @@ export const HabitsProvider = ({ children }) => {
     const dataHabits = responseHabits.data.filter(
       (habit) => habit.achieved === false
     );
-
+    setLoading(false);
     setHabits(dataHabits);
   }
 
@@ -69,7 +70,14 @@ export const HabitsProvider = ({ children }) => {
 
   return (
     <HabitsContext.Provider
-      value={{ habits, setHabits, addNewHabit, deleteHabit, updateHabit }}
+      value={{
+        habits,
+        setHabits,
+        loading,
+        addNewHabit,
+        deleteHabit,
+        updateHabit,
+      }}
     >
       {children}
     </HabitsContext.Provider>

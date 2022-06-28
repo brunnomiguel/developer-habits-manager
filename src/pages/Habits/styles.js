@@ -40,6 +40,8 @@ export const AddBttn = styled.div`
 `;
 
 export const CardsContainer = styled.div`
+  overflow-y: scroll;
+  height: 440px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,9 +49,14 @@ export const CardsContainer = styled.div`
   margin-top: 35px;
 
   @media screen and (min-width: 600px) {
+    height: 420px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+  }
+
+  @media screen and (min-width: 1146px) {
+    height: 67vh;
   }
 `;
 
@@ -79,7 +86,6 @@ export const PageButtons = styled.div`
   display: flex;
   gap: 2px;
   justify-content: center;
-  padding-bottom: 20px;
   align-self: flex-end;
 
   button {

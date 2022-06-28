@@ -32,6 +32,26 @@ const Habits = () => {
 
   const [inputHabits, setInputHabits] = useState("");
 
+  const [previuPage, setPreviuPage] = useState(0);
+  const [nextPage, setNextPage] = useState(6);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const upPages = () => {
+    if (nextPage < habits.length) {
+      setNextPage(nextPage + 6);
+      setPreviuPage(previuPage + 6);
+      setCurrentPage(currentPage + 1);
+    }
+  }
+
+  const downPages = () => {
+    if (previuPage > 0) {
+      setPreviuPage(previuPage - 6);
+      setNextPage(nextPage - 6);
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   const searchHabit = (inputHabits) => {
     inputHabits = inputHabits.toLocaleLowerCase();
     const filteredHabit = habits.filter((habit) => {
@@ -63,8 +83,8 @@ const Habits = () => {
           type="text"
           value={inputHabits}
           onChange={(ev) => {
-            setInputHabits(ev.target.value)
-            searchHabit(ev.target.value)
+            setInputHabits(ev.target.value);
+            searchHabit(ev.target.value);
           }}
           searchHabit={searchHabit}
           inputHabits={inputHabits}
@@ -81,7 +101,7 @@ const Habits = () => {
       </InputBttnContainer>
       <CardsContainer>
         {inputHabits === ""
-          ? habits.map((habit) => {
+          ? habits.slice(previuPage, nextPage).map((habit) => {
               return <CardHabit key={habit.id} habit={habit} />;
             })
           : displayHabits.map((habit) => {
@@ -89,11 +109,11 @@ const Habits = () => {
             })}
       </CardsContainer>
       <PageButtons>
-        <Button white>
+        <Button white onClick={() => downPages()}>
           <FiChevronLeft size={20} />
         </Button>
-        <span>2</span>
-        <Button white>
+        <span>{currentPage + 1}</span>
+        <Button white onClick={() => upPages()}>
           <FiChevronRight size={20} />
         </Button>
       </PageButtons>
@@ -101,5 +121,6 @@ const Habits = () => {
     </Container>
   );
 };
+
 
 export default Habits;

@@ -14,6 +14,8 @@ import {
   FiSearch,
 } from "react-icons/fi";
 
+import { LinearProgress, Box } from "@mui/material";
+
 import Input from "../../components/Input";
 import Navbar from "../../components/Navbar";
 import Button from "../../components/Button";
@@ -26,7 +28,7 @@ import { ModalContext } from "../../providers/Modal";
 import ModalEditHabit from "../../components/ModalEditHabit";
 
 const Habits = () => {
-  const { habits } = useContext(HabitsContext);
+  const { habits, loading } = useContext(HabitsContext);
   const { addNewHabit, setAddNewHabit } = useContext(ModalContext);
   const { editHabit } = useContext(ModalContext);
 
@@ -107,25 +109,31 @@ const Habits = () => {
         </AddBttn>
       </InputBttnContainer>
       <CardsContainer>
-        {inputHabits === ""
-          ? habits.slice(previuPage, nextPage).map((habit) => {
-              return (
-                <CardHabit
-                  key={habit.id}
-                  captureHabit={captureHabit}
-                  habit={habit}
-                />
-              );
-            })
-          : displayHabits.map((habit) => {
-              return (
-                <CardHabit
-                  key={habit.id}
-                  captureHabit={captureHabit}
-                  habit={habit}
-                />
-              );
-            })}
+        {loading ? (
+          <Box sx={{ width: "100%", alignSelf: "flex-start" }}>
+            <LinearProgress color="success" />
+          </Box>
+        ) : inputHabits === "" ? (
+          habits.slice(previuPage, nextPage).map((habit) => {
+            return (
+              <CardHabit
+                key={habit.id}
+                captureHabit={captureHabit}
+                habit={habit}
+              />
+            );
+          })
+        ) : (
+          displayHabits.map((habit) => {
+            return (
+              <CardHabit
+                key={habit.id}
+                captureHabit={captureHabit}
+                habit={habit}
+              />
+            );
+          })
+        )}
       </CardsContainer>
       <PageButtons>
         <Button white onClick={() => downPages()}>

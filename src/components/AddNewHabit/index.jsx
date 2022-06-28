@@ -14,12 +14,12 @@ import Button from "../Button";
 import Select from "../Select";
 
 const AddNewHabit = ({ id = "addNewHabit" }) => {
-  const { setAddNewHabit } = useContext(ModalContext);
+  const { setOpenAddNewHabit } = useContext(ModalContext);
   const { addNewHabit } = useContext(HabitsContext);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
-      setAddNewHabit(false);
+      setOpenAddNewHabit(false);
     }
   };
 
@@ -48,7 +48,7 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
     <Container id={id} onClick={handleOutsideClick}>
       <AddHabitModalHeader>
         <p>Novo hábito</p>
-        <button onClick={() => setAddNewHabit(false)}>
+        <button onClick={() => setOpenAddNewHabit(false)}>
           <FiX />
         </button>
       </AddHabitModalHeader>

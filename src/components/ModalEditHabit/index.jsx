@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 
 import Button from "../Button";
 
-const ModalEditHabit = ({ id = "modalEditHabit", habitId }) => {
+const ModalEditHabit = ({ id = "modalEditHabit", capturedHabit }) => {
   const { setEditHabit } = useContext(ModalContext);
   const { updateHabit } = useContext(HabitsContext);
   const [value, setValue] = useState(0);
@@ -32,7 +32,7 @@ const ModalEditHabit = ({ id = "modalEditHabit", habitId }) => {
   };
 
   const update = (data) => {
-    updateHabit(data, habitId);
+    updateHabit(data, capturedHabit.id);
     setEditHabit(false);
   };
 

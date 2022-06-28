@@ -23,12 +23,15 @@ import AddNewHabit from "../../components/AddNewHabit";
 import { useState, useContext } from "react";
 import { HabitsContext } from "../../providers/Habits";
 import { ModalContext } from "../../providers/Modal";
+import ModalEditHabit from "../../components/ModalEditHabit";
 
 const Habits = () => {
   const { habits } = useContext(HabitsContext);
   const { addNewHabit, setAddNewHabit } = useContext(ModalContext);
+  const { editHabit } = useContext(ModalContext);
 
   const [displayHabits, setDisplayHabits] = useState([]);
+  const [capturedHabit, setCapturedHabit] = useState({});
   const [inputHabits, setInputHabits] = useState("");
 
   const [previuPage, setPreviuPage] = useState(0);
@@ -41,7 +44,7 @@ const Habits = () => {
       setPreviuPage(previuPage + 6);
       setCurrentPage(currentPage + 1);
     }
-  }
+  };
 
   const downPages = () => {
     if (previuPage > 0) {
@@ -62,6 +65,11 @@ const Habits = () => {
       }
     });
     setDisplayHabits(filteredHabit);
+  };
+
+  const captureHabit = (habitId) => {
+    const verifyHabit = habits.filter((habit) => habit.id === habitId);
+    setCapturedHabit(...verifyHabit);
   };
 
   return (
@@ -101,10 +109,22 @@ const Habits = () => {
       <CardsContainer>
         {inputHabits === ""
           ? habits.slice(previuPage, nextPage).map((habit) => {
-              return <CardHabit key={habit.id} habit={habit} />;
+              return (
+                <CardHabit
+                  key={habit.id}
+                  captureHabit={captureHabit}
+                  habit={habit}
+                />
+              );
             })
           : displayHabits.map((habit) => {
-              return <CardHabit key={habit.id} habit={habit} />;
+              return (
+                <CardHabit
+                  key={habit.id}
+                  captureHabit={captureHabit}
+                  habit={habit}
+                />
+              );
             })}
       </CardsContainer>
       <PageButtons>
@@ -117,9 +137,9 @@ const Habits = () => {
         </Button>
       </PageButtons>
       {addNewHabit && <AddNewHabit />}
+      {editHabit && <ModalEditHabit capturedHabit={capturedHabit} />}
     </Container>
   );
 };
-
 
 export default Habits;

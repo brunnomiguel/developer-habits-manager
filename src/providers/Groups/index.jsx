@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
+  const [loading, setLoading] = useState(true);
   const { token, decodeJwt } = useContext(UserContext);
 
   const [allGroups, setAllGroups] = useState([]);
@@ -19,6 +20,7 @@ export const GroupsProvider = ({ children }) => {
     });
     const groupsData = responseGroups.data;
     setAllGroups(groupsData);
+    setLoading(false);
   }
 
   async function loadUserCreatedGroups() {
@@ -105,6 +107,7 @@ export const GroupsProvider = ({ children }) => {
         editGroup,
         subscribeToTheGroup,
         unSubscribeGroup,
+        loading
       }}
     >
       {children}

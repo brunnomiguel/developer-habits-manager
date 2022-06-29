@@ -56,7 +56,7 @@ const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
           <form onSubmit={handleSubmit(onSubmitFunction)}>
             <Input
               modal
-              placeholder="Digite o título"
+              placeholder="Digite o Nome do grupo"
               register={register}
               name="name"
               label="Nome do grupo: "
@@ -66,7 +66,7 @@ const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
 
             <Input
               modal
-              placeholder="Digite a categoria"
+              placeholder="Digite uma descrição"
               register={register}
               name="description"
               label="Descrição: "
@@ -76,7 +76,7 @@ const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
 
             <Input
               modal
-              placeholder="Digite a frequência"
+              placeholder="Digite uma categoria"
               register={register}
               name="category"
               label="Categoria: "

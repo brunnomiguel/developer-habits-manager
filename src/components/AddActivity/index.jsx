@@ -4,9 +4,16 @@ import Input from "../Input";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import { useContext } from "react";
+import { ActivitiesContext } from "../../providers/Activities";
+import { ModalContext } from "../../providers/Modal";
 import { Container, AddHabitModalHeader, AddHabitModalEdit } from "./styles";
 
-const AddActivitie = () => {
+const AddActivity = ({ id = "addActivity" }) => {
+  const { setOpenAddNewActivity } = useContext(ModalContext);
+  const { addNewActivity } = useContext(ActivitiesContext);
+
   const formSchema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
     dateTime: yup.string().required("Campo obrigatório"),
@@ -16,24 +23,32 @@ const AddActivitie = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(formSchema),
   });
 
-  // const handleActivitie = (data) => {
+  // const handleActivity = (data) => {
+  //  addNewActivity(data, groupId);
+  //  reset();
+  // };
 
-  // }
+  const handleOutsideClick = (event) => {
+    if (event.target.id === id) {
+      setOpenAddNewActivity(false);
+    }
+  };
 
   return (
-    <Container>
+    <Container id={id} onClick={handleOutsideClick}>
       <AddHabitModalHeader>
         <p>Nova Atividade</p>
-        <button>X</button>
+        <button onClick={setOpenAddNewActivity(false)}>X</button>
       </AddHabitModalHeader>
 
       <AddHabitModalEdit>
         <div className="adjustment">
-          <form>
+          <form onSubmit={handleSubmit(handleActivity)}>
             <Input
               modal
               placeholder="Digite o título"
@@ -61,4 +76,4 @@ const AddActivitie = () => {
   );
 };
 
-export default AddActivitie;
+export default AddActivity;

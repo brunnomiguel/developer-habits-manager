@@ -2,20 +2,33 @@ import { Container, ModalHeader, AddBttn, CardsContainer } from "./styles";
 
 import Button from "../Button";
 import CardActivitie from "../CardActivitie";
+import AddActivity from "../AddActivity";
 
 import { FiPlus } from "react-icons/fi";
 
-const Activities = ({ handleActivities }) => {
+import { useContext } from "react";
+import { ModalContext } from "../../providers/Modal";
+
+const Activities = ({ id = "modalActivities" }) => {
+  const { setOpenAllActivities, openAddNewActivity, setOpenAddNewActivity } =
+    useContext(ModalContext);
+
+  const handleOutsideClick = (event) => {
+    if (event.target.id === id) {
+      setOpenAllActivities(false);
+    }
+  };
+
   return (
-    <Container>
+    <Container id={id} onClick={handleOutsideClick}>
       <ModalHeader>
         <p>Atividades</p>
-        <button onClick={handleActivities}>X</button>
+        <button onClick={() => setOpenAllActivities(false)}>X</button>
       </ModalHeader>
 
       <AddBttn>
         <span>Crie uma atividade</span>
-        <Button white>
+        <Button white onClick={() => setOpenAddNewActivity(true)}>
           <FiPlus size={20} />
         </Button>
       </AddBttn>
@@ -25,6 +38,7 @@ const Activities = ({ handleActivities }) => {
         <CardActivitie />
         <CardActivitie />
       </CardsContainer>
+      {openAddNewActivity && <AddActivity />}
     </Container>
   );
 };

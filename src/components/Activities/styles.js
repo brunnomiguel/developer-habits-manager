@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 280px;
   height: 100%;
-  margin: auto;
+  position: absolute;
   background-color: var(--white-1);
   box-shadow: 1px 1px 3px var(--gray-2);
   transition: ease all 0.5s;
@@ -35,7 +35,7 @@ export const ModalHeader = styled.div`
 `;
 
 export const AddBttn = styled.div`
-  margin: 15px 44px 11px 44px;
+  margin: 15px 44px 15px 44px;
   display: flex;
   justify-content: center;
   align-items: center;

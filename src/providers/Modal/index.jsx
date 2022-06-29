@@ -7,6 +7,11 @@ export const ModalProvider = ({ children }) => {
   const [editHabit, setEditHabit] = useState(false);
   const [editUser, setEditUser] = useState(false);
 
+  //modifiquei
+  const [addNewMeta, setAddNewMeta] = useState(false);
+  const [showAllGoals, setShowAllGoals] = useState(false);
+
+
   return (
     <ModalContext.Provider
       value={{
@@ -16,6 +21,12 @@ export const ModalProvider = ({ children }) => {
         setEditHabit,
         editUser,
         setEditUser,
+         
+        //modifiquei
+        addNewMeta,
+        setAddNewMeta,
+        showAllGoals,
+        setShowAllGoals,
       }}
     >
       {children}

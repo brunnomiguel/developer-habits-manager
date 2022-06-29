@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { ModalContext } from "../../providers/Modal";
+
 import { Container } from "./styles";
-import Button from "../Button";
 import { FiX } from "react-icons/fi";
+
+import Button from "../Button";
 import ModalAddNewMeta from "../../components/ModalAddNewMeta";
 
 const ModaShowAllGoals = ({ id = "modalShowAllGoals" }) => {

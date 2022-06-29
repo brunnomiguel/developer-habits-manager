@@ -72,9 +72,9 @@ export const GroupsProvider = ({ children }) => {
       );
   };
 
-  const subscribeToTheGroup = (groupID) => {
+  const subscribeToTheGroup = (groupId) => {
     api
-      .post(`/groups/${groupID}/subscribe/`)
+      .post(`/groups/${groupId}/subscribe/`)
       .then((_) => {
         toast.success("Inscrição realizada com sucesso!");
         loadAllGroups();

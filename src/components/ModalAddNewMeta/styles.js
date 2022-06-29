@@ -74,7 +74,7 @@ export const Container = styled.div`
 
         h6 {
             display: flex;
-            justify-content: center
+            justify-content: center;
             justify-content: space-between;
             width: 15px;
         }

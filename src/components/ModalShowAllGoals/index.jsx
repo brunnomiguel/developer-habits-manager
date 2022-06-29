@@ -3,11 +3,11 @@ import { ModalContext} from "../../providers/Modal";
 import { Container } from "./styles";
 import Button from '../Button';
 import { FiX } from "react-icons/fi";
-//import ModalAddNewMeta from "../../components/ModalAddNewMeta";
+import ModalAddNewMeta from "../../components/ModalAddNewMeta";
 
 const ModaShowAllGoals = ({id = "modalShowAllGoals"}) => {
   const {  setShowAllGoals } = useContext(ModalContext);
-  //const { addNewMeta, setAddNewMeta } = useContext(ModalContext);
+  const { addNewMeta, setAddNewMeta } = useContext(ModalContext);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
@@ -25,8 +25,8 @@ const ModaShowAllGoals = ({id = "modalShowAllGoals"}) => {
                 </div>  
                 <div className="content">
                     <p>Crie uma nova meta para este grupo</p>
-                    <Button small white /*onClick={() => setAddNewMeta(true)}*/>+</Button>
-                    {/*addNewMeta && <ModalAddNewMeta />*/}
+                    <Button small white onClick={() => setAddNewMeta(true)}>+</Button>
+                    {addNewMeta && <ModalAddNewMeta />}
                 </div> 
                 <div className="subtext">
                     <p>Nome da meta</p>

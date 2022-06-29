@@ -10,7 +10,7 @@ import { ActivitiesContext } from "../../providers/Activities";
 import { ModalContext } from "../../providers/Modal";
 import { Container, AddHabitModalHeader, AddHabitModalEdit } from "./styles";
 
-const AddActivity = ({ id = "addActivity", groupId }) => {
+const AddActivity = ({ id = "addActivity" }) => {
   const { setOpenAddNewActivity } = useContext(ModalContext);
   const { addNewActivity } = useContext(ActivitiesContext);
 
@@ -28,10 +28,10 @@ const AddActivity = ({ id = "addActivity", groupId }) => {
     resolver: yupResolver(formSchema),
   });
 
-  const handleActivity = (data) => {
-    addNewActivity(data, groupId);
-    reset();
-  };
+  // const handleActivity = (data) => {
+  //  addNewActivity(data, groupId);
+  //  reset();
+  // };
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {

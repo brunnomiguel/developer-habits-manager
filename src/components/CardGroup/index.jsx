@@ -2,23 +2,23 @@ import { Container, ContainerHeader, ContainerMain } from "./style";
 import { FiEdit, FiUserX } from "react-icons/fi";
 
 import { useContext } from "react";
-import { GroupsContext } from "../../providers/Groups";
+// import { GroupsContext } from "../../providers/Groups";
 
 import Button from "../Button";
 import { ModalContext } from "../../providers/Modal";
 
-const CardGroup = ({ habit, captureHabit }) => {
-  const { id, title, category } = habit;
+const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
+  const { id, name, category, description } = group;
 
-  const { editGroup } = useContext(GroupsContext);
-  const { openEditGroup } = useContext(ModalContext);
-  const { openAllGoals } = useContext(ModalContext);
-  const { openAllActivities } = useContext(ModalContext);
+  // const { editGroup } = useContext(GroupsContext);
+  const { setOpenEditGroup } = useContext(ModalContext);
+  const { setOpenAllGoals } = useContext(ModalContext);
+  const { setOpenAllActivities } = useContext(ModalContext);
 
   return (
     <Container>
       <ContainerHeader>
-        <p>{title}</p>
+        <p>{name}</p>
         <div>
           <span>{category}</span>
           {/* precisa criar uma prop pro botao para exibir o botao de editar */}
@@ -27,8 +27,8 @@ const CardGroup = ({ habit, captureHabit }) => {
             white
             ativMetaDesk
             onClick={() => {
-              openEditGroup(true);
-              captureHabit(id);
+              setOpenEditGroup(true);
+              captureGroup(id);
             }}
           >
             <FiEdit size={20} />
@@ -38,15 +38,15 @@ const CardGroup = ({ habit, captureHabit }) => {
       <hr></hr>
 
       <ContainerMain>
-        <p>Descrição do grupo</p>
+        <p>{description}</p>
         <div className="conjunto-de-botoes">
           <div className="dupla-de-botoes">
             <Button
               white
               ativMetaDesk
               onClick={() => {
-                openAllActivities(true);
-                captureHabit(id);
+                setOpenAllActivities(true);
+                captureGroup(id);
               }}
             >
               Atividades
@@ -55,8 +55,8 @@ const CardGroup = ({ habit, captureHabit }) => {
               white
               ativMetaDesk
               onClick={() => {
-                openAllGoals(true);
-                captureHabit(id);
+                setOpenAllGoals(true);
+                captureGroup(id);
               }}
             >
               Metas
@@ -66,8 +66,8 @@ const CardGroup = ({ habit, captureHabit }) => {
             white
             ativMetaDesk
             onClick={() => {
-              openEditGroup(true);
-              captureHabit(id);
+              setOpenEditGroup(true);
+              captureGroup(id);
             }}
           >
             <FiUserX size={20} />
@@ -79,24 +79,3 @@ const CardGroup = ({ habit, captureHabit }) => {
 };
 
 export default CardGroup;
-
-// Montagem básica
-// Container geral{
-//   container header{
-//     texto
-//       div
-//         texto
-//         botao
-//       div
-//   }
-//   container main{
-//     texto
-//       div
-//           div
-//             texto
-//             botao
-//           div
-//         botao
-//       div
-//   }
-// }/  

@@ -6,10 +6,15 @@ import {
   Tittle,
   PageButtons,
   InputBttnContainer,
-  AddBttn
+  AddBttn,
 } from "./styled";
 
-import { FiSearch, FiChevronLeft, FiChevronRight,FiPlus } from "react-icons/fi";
+import {
+  FiSearch,
+  FiChevronLeft,
+  FiChevronRight,
+  FiPlus,
+} from "react-icons/fi";
 
 import Navbar from "../../components/Navbar";
 import Input from "../../components/Input";
@@ -18,11 +23,17 @@ import { LinearProgress, Box } from "@mui/material";
 
 import { GroupsContext } from "../../providers/Groups";
 import Button from "../../components/Button";
+import CardGroup from "../../components/CardGroup";
+import Activities from "../../components/Activities";
+import ModalShowAllGoals from "../../components/ModalShowAllGoals";
+import { ModalContext } from "../../providers/Modal";
 
-const UserGroupIsSubscribed = () => {
+const YourGroups = () => {
   const { groupsSubscribed, loading } = useContext(GroupsContext);
+  const { openAllActivities, openAllGoals } = useContext(ModalContext);
+
   const [displayGroup, setDisplayGroup] = useState([]);
-  const [captureGroup, setCaptureGroup] = useState({});
+  const [capturedGroup, setCapturedGroup] = useState({});
   const [inputGroup, setInputGroup] = useState("");
 
   const searchGroup = (inputGroup) => {
@@ -38,11 +49,11 @@ const UserGroupIsSubscribed = () => {
     setDisplayGroup(filteredGroup);
   };
 
-  const captureGroups = (groupId) => {
+  const captureGroup = (groupId) => {
     const verifyGroup = groupsSubscribed.filter(
-      (group) => group.results.id === groupId
+      (group) => group.id === groupId
     );
-    setCaptureGroup(...verifyGroup);
+    setCapturedGroup(...verifyGroup);
   };
 
   return (
@@ -67,7 +78,7 @@ const UserGroupIsSubscribed = () => {
         </Input>
         <AddBttn>
           <span>Adicione um novo Gupo</span>
-          <Button white >
+          <Button white>
             <FiPlus size={20} />
           </Button>
         </AddBttn>
@@ -78,18 +89,23 @@ const UserGroupIsSubscribed = () => {
             <LinearProgress color="success" />
           </Box>
         ) : inputGroup === "" ? (
-            groupsSubscribed?.map((item) => {
-            return <p key={item.id}>{item.name}</p>;
+          groupsSubscribed?.map((group) => {
+            return (
+              <CardGroup
+                key={group.id}
+                group={group}
+                captureGroup={captureGroup}
+              />
+            );
           })
         ) : (
           displayGroup.map((group) => {
             return (
-              <p key={group.id}>{group.name}</p>
-              // <CardHabit
-              //   key={habit.id}
-              //   captureHabit={captureHabit}
-              //   habit={habit}
-              // />
+              <CardGroup
+                key={group.id}
+                group={group}
+                captureGroup={captureGroup}
+              />
             );
           })
         )}
@@ -103,10 +119,10 @@ const UserGroupIsSubscribed = () => {
           <FiChevronRight size={20} />
         </Button>
       </PageButtons>
-      {/* {addNewHabit && <AddNewHabit />}
-      {editHabit && <ModalEditHabit capturedHabit={capturedHabit} />} */}
+      {openAllActivities && <Activities capturedGroup={capturedGroup} />}
+      {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
     </Container>
   );
 };
 
-export default UserGroupIsSubscribed;
+export default YourGroups;

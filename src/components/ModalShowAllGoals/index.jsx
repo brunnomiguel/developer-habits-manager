@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ModalContext } from "../../providers/Modal";
 
 import { Container } from "./styles";
@@ -6,10 +6,16 @@ import { FiX } from "react-icons/fi";
 
 import Button from "../Button";
 import ModalAddNewMeta from "../../components/ModalAddNewMeta";
+import { GoalsContext } from "../../providers/Goals";
 
-const ModaShowAllGoals = ({ id = "modalShowAllGoals" }) => {
+const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   const { openAddNewGoal, setOpenAddNewGoal, setOpenAllGoals } =
     useContext(ModalContext);
+  const { goals, loadGoals } = useContext(GoalsContext);
+
+  useEffect(() => {
+    loadGoals(capturedGroup.id);
+  }, []);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
@@ -30,10 +36,19 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals" }) => {
             <Button small white onClick={() => setOpenAddNewGoal(true)}>
               +
             </Button>
-            {openAddNewGoal && <ModalAddNewMeta />}
+            {openAddNewGoal && (
+              <ModalAddNewMeta capturedGroupId={capturedGroup.id} />
+            )}
           </div>
           <div className="subtext">
-            <p>Nome da meta</p>
+            {goals.map((goal) => {
+              return (
+                <li key={goal.id}>
+                  <p>{goal.title}</p>
+                  <p>{goal.difficulty}</p>
+                </li>
+              );
+            })}
           </div>
         </div>
       </div>

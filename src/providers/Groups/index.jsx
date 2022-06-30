@@ -8,11 +8,11 @@ export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
-  const { token, decodeJwt } = useContext(UserContext);
+  const { token } = useContext(UserContext);
 
   const [allGroups, setAllGroups] = useState([]);
   const [groupsSubscribed, setGroupsSubscribed] = useState([]);
-  const [userCreatedGroups, setUserCreatedGroups] = useState([]);
+  // const [userCreatedGroups, setUserCreatedGroups] = useState([]);
 
   async function loadAllGroups() {
     const responseGroups = await api.get("/groups/", {
@@ -23,22 +23,21 @@ export const GroupsProvider = ({ children }) => {
     setLoading(false);
   }
 
-  async function loadUserCreatedGroups() {
-    const responseGroups = await api.get("/groups/", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const groupsData = responseGroups.data.filter(
-      (group) => group.creator.id === decodeJwt.user_id
-    );
-    setUserCreatedGroups(groupsData);
-  }
+  // async function loadUserCreatedGroups() {
+  //   const responseGroups = await api.get("/groups/", {
+  //     headers: { Authorization: `Bearer ${token}` },
+  //   });
+  //   const groupsData = responseGroups.data.filter(
+  //     (group) => group.creator.id === decodeJwt.user_id
+  //   );
+  //   setUserCreatedGroups(groupsData);
+  // }
 
   async function loadSubscribedUserGroups() {
     const responseGroups = await api.get("/groups/subscriptions/", {
       headers: { Authorization: `Bearer ${token}` },
     });
     const groupsData = responseGroups.data;
-    // Filtrar grupos separando criador ou não.
 
     setGroupsSubscribed(groupsData);
   }
@@ -47,7 +46,7 @@ export const GroupsProvider = ({ children }) => {
     if (token) {
       loadAllGroups();
       loadSubscribedUserGroups();
-      loadUserCreatedGroups();
+      // loadUserCreatedGroups();
     }
   }, [token]);
 
@@ -101,7 +100,6 @@ export const GroupsProvider = ({ children }) => {
     <GroupsContext.Provider
       value={{
         allGroups,
-        userCreatedGroups,
         groupsSubscribed,
         createNewGroup,
         editGroup,

@@ -14,7 +14,7 @@ import Button from "../Button";
 import Input from "../Input";
 import Select from "../Select";
 
-const ModalAddNewMeta = ({ id = "modalAddNewMeta", groupId }) => {
+const ModalAddNewMeta = ({ id = "modalAddNewMeta", capturedGroupId }) => {
   const { setOpenAddNewGoal } = useContext(ModalContext);
   const { addNewGoal } = useContext(GoalsContext);
 
@@ -27,10 +27,12 @@ const ModalAddNewMeta = ({ id = "modalAddNewMeta", groupId }) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({ resolver: yupResolver(editSchema) });
 
   const onSubmitFunction = (data) => {
-    addNewGoal(data, groupId)
+    addNewGoal(data, capturedGroupId);
+    reset();
   };
 
   const handleOutsideClick = (event) => {

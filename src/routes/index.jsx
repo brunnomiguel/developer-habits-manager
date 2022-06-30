@@ -11,6 +11,7 @@ import Habits from "../pages/Habits";
 import NotFound from "../pages/NotFound";
 import InitialGroupsPage from "../pages/InitialGroupsPage";
 import AllGroups from "../pages/AllGroups";
+import UserGroupIsSubscribed from "../pages/UserGroupIsSubscribed";
 
 const Routes = () => {
   const { token } = useContext(UserContext);
@@ -23,6 +24,7 @@ const Routes = () => {
       <Route isPrivate path="/Habits" component={Habits} />
       <Route isPrivate path="/groups" component={InitialGroupsPage} />
       <Route isPrivate path="/AllGroups" component={AllGroups} />
+      <Route isPrivate path="/UserGroupIsSubscribed" component={UserGroupIsSubscribed} />
       <Route isPrivate={!!token} component={NotFound} />
     </Switch>
   );

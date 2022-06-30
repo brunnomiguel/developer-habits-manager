@@ -15,7 +15,7 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
 
   useEffect(() => {
     loadGoals(capturedGroup.id);
-  }, []);
+  }, [capturedGroup.id]);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {

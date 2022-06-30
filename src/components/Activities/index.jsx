@@ -17,7 +17,7 @@ const Activities = ({ id = "modalActivities", capturedGroup }) => {
 
   useEffect(() => {
     loadActivities(capturedGroup.id);
-  }, []);
+  }, [capturedGroup.id]);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {

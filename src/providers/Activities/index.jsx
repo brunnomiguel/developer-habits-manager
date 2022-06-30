@@ -11,11 +11,13 @@ export const ActivitiesProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
 
   async function loadActivities(groupId) {
-    const responseActivities = await api.get(`/activities/${groupId}/`, {
+    const responseActivities = await api.get(`/activities/?group=${groupId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    const dataActivities = responseActivities.data.map((activity) => ({
+    console.log(responseActivities.data);
+
+    const dataActivities = responseActivities.data.results.map((activity) => ({
       ...activity,
       realization_time: new Date(activity.realization_time).toLocaleDateString(
         "pt-BR",
@@ -38,6 +40,8 @@ export const ActivitiesProvider = ({ children }) => {
     data.realization_time = isoFormat;
     data.group = groupId;
 
+    console.log(data);
+
     api
       .post(`/activities/`, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -45,7 +49,8 @@ export const ActivitiesProvider = ({ children }) => {
       .then((_) => {
         toast.success("Atividade adicionada com sucesso!");
         loadActivities(groupId);
-      });
+      })
+      .catch((_) => toast.error("Ops... algo deu errado."));
   };
 
   const updateActivity = (data, activityId, groupId) => {

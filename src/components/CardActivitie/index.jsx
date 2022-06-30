@@ -2,23 +2,23 @@ import { Container, CardHeader, DateTime, Buttons } from "./styles";
 import { FiEdit, FiDelete } from "react-icons/fi";
 import Button from "../Button";
 
-const CardActivitie = () => {
+const CardActivitie = ({ activity }) => {
+  const { title, realization_time } = activity;
+
   return (
     <Container>
       <CardHeader>
-        <p>Nome da atividade</p>
+        <p>{title}</p>
         <hr />
       </CardHeader>
       <DateTime>
-        <p>17/06/2022 às 20:00</p>
+        <p>{realization_time}</p>
       </DateTime>
       <Buttons>
         <Button white>
-          {" "}
           <FiEdit size={20} />
         </Button>
         <Button white>
-          {" "}
           <FiDelete size={20} />
         </Button>
       </Buttons>

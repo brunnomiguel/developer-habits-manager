@@ -6,12 +6,18 @@ import AddActivity from "../AddActivity";
 
 import { FiPlus } from "react-icons/fi";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ModalContext } from "../../providers/Modal";
+import { ActivitiesContext } from "../../providers/Activities";
 
-const Activities = ({ id = "modalActivities" }) => {
+const Activities = ({ id = "modalActivities", capturedGroup }) => {
   const { setOpenAllActivities, openAddNewActivity, setOpenAddNewActivity } =
     useContext(ModalContext);
+  const { loadActivities, activities } = useContext(ActivitiesContext);
+
+  useEffect(() => {
+    loadActivities(capturedGroup.id);
+  }, []);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
@@ -33,12 +39,11 @@ const Activities = ({ id = "modalActivities" }) => {
         </Button>
       </AddBttn>
       <CardsContainer>
-        <CardActivitie />
-        <CardActivitie />
-        <CardActivitie />
-        <CardActivitie />
+        {activities.map((activity) => {
+          return <CardActivitie key={activity.id} activity={activity} />;
+        })}
       </CardsContainer>
-      {openAddNewActivity && <AddActivity />}
+      {openAddNewActivity && <AddActivity capturedGroupId={capturedGroup.id} />}
     </Container>
   );
 };

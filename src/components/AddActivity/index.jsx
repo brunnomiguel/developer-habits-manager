@@ -10,13 +10,13 @@ import { ActivitiesContext } from "../../providers/Activities";
 import { ModalContext } from "../../providers/Modal";
 import { Container, AddHabitModalHeader, AddHabitModalEdit } from "./styles";
 
-const AddActivity = ({ id = "addActivity" }) => {
+const AddActivity = ({ id = "addActivity", capturedGroupId }) => {
   const { setOpenAddNewActivity } = useContext(ModalContext);
   const { addNewActivity } = useContext(ActivitiesContext);
 
   const formSchema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
-    dateTime: yup.string().required("Campo obrigatório"),
+    realization_time: yup.string().required("Campo obrigatório"),
   });
 
   const {
@@ -28,10 +28,10 @@ const AddActivity = ({ id = "addActivity" }) => {
     resolver: yupResolver(formSchema),
   });
 
-  // const handleActivity = (data) => {
-  //  addNewActivity(data, groupId);
-  //  reset();
-  // };
+  const handleActivity = (data) => {
+    addNewActivity(data, capturedGroupId);
+    reset();
+  };
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
@@ -43,13 +43,14 @@ const AddActivity = ({ id = "addActivity" }) => {
     <Container id={id} onClick={handleOutsideClick}>
       <AddHabitModalHeader>
         <p>Nova Atividade</p>
-        <button onClick={setOpenAddNewActivity(false)}>X</button>
+        <button onClick={() => setOpenAddNewActivity(false)}>X</button>
       </AddHabitModalHeader>
 
       <AddHabitModalEdit>
         <div className="adjustment">
           <form onSubmit={handleSubmit(handleActivity)}>
             <Input
+              type="text"
               modal
               placeholder="Digite o título"
               register={register}
@@ -58,12 +59,13 @@ const AddActivity = ({ id = "addActivity" }) => {
               error={errors.title?.message}
             />
             <Input
+              type="date"
               modal
-              placeholder="Digite data e horário"
+              placeholder="Digite a data"
               register={register}
-              name="dateTime"
+              name="realization_time"
               label="Título:"
-              error={errors.dateTime?.message}
+              error={errors.realization_time?.message}
             />
 
             <Button white share loginDesk>

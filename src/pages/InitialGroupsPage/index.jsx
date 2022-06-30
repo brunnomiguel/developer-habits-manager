@@ -20,7 +20,7 @@ const InitialGroupsPage = () => {
           loginDesk
           white
           share
-          onClick={() => handleClick("/seusgrupos")}
+          onClick={() => handleClick("/YourGroups")}
         >
           Seus grupos
         </Button>
@@ -28,18 +28,18 @@ const InitialGroupsPage = () => {
           loginDesk
           white
           share
-          onClick={() => handleClick("/todosgrupos")}
+          onClick={() => handleClick("/AllGroups")}
         >
           Todos os grupos
         </Button>
-        <Button
+        {/* <Button
           loginDesk
           white
           share
           onClick={() => handleClick("/gruposfazparte")}
         >
           Grupos que você faz parte
-        </Button>
+        </Button> */}
       </Container>
     </>
   );

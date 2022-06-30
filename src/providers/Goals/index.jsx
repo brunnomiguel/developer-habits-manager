@@ -11,10 +11,10 @@ export const GoalsProvider = ({ children }) => {
   const [goals, setGoals] = useState([]);
 
   async function loadGoals(groupId) {
-    const responseGoals = await api.get(`/goals/${groupId}/`, {
+    const responseGoals = await api.get(`/goals/?group=${groupId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const dataGoals = responseGoals.data.filter(
+    const dataGoals = responseGoals.data.results.filter(
       (goal) => goal.achieved === false
     );
     setGoals(dataGoals);

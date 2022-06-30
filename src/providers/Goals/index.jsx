@@ -14,7 +14,9 @@ export const GoalsProvider = ({ children }) => {
     const responseGoals = await api.get(`/goals/${groupId}/`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    const dataGoals = responseGoals.data;
+    const dataGoals = responseGoals.data.filter(
+      (goal) => goal.achieved === false
+    );
     setGoals(dataGoals);
   }
 
@@ -48,7 +50,7 @@ export const GoalsProvider = ({ children }) => {
 
   const deleteGoal = (goalId, groupId) => {
     api
-      .delete(`/goals/${goalId}`, {
+      .delete(`/goals/${goalId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {

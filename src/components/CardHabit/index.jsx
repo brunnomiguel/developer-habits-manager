@@ -11,7 +11,7 @@ const CardHabit = ({ habit, captureHabit }) => {
   const { id, title, category, difficulty, how_much_achieved } = habit;
 
   const { deleteHabit } = useContext(HabitsContext);
-  const { setEditHabit } = useContext(ModalContext);
+  const { setOpenEditHabit } = useContext(ModalContext);
 
   return (
     <Container>
@@ -25,7 +25,7 @@ const CardHabit = ({ habit, captureHabit }) => {
           white
           ativMetaDesk
           onClick={() => {
-            setEditHabit(true);
+            setOpenEditHabit(true);
             captureHabit(id);
           }}
         >

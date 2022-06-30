@@ -9,6 +9,7 @@ import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
 import Habits from "../pages/Habits";
 import NotFound from "../pages/NotFound";
+import InitialGroupsPage from "../pages/InitialGroupsPage";
 import AllGroups from "../pages/AllGroups";
 
 const Routes = () => {
@@ -20,6 +21,7 @@ const Routes = () => {
       <Route path="/SignUp" component={SignUp} />
       <Route path="/SignIn" component={SignIn} />
       <Route isPrivate path="/Habits" component={Habits} />
+      <Route isPrivate path="/groups" component={InitialGroupsPage} />
       <Route isPrivate path="/AllGroups" component={AllGroups} />
       <Route isPrivate={!!token} component={NotFound} />
     </Switch>

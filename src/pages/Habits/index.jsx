@@ -29,8 +29,8 @@ import ModalEditHabit from "../../components/ModalEditHabit";
 
 const Habits = () => {
   const { habits, loading } = useContext(HabitsContext);
-  const { addNewHabit, setAddNewHabit } = useContext(ModalContext);
-  const { editHabit } = useContext(ModalContext);
+  const { openAddNewHabit, setOpenAddNewHabit } = useContext(ModalContext);
+  const { openEditHabit } = useContext(ModalContext);
 
   const [displayHabits, setDisplayHabits] = useState([]);
   const [capturedHabit, setCapturedHabit] = useState({});
@@ -81,7 +81,7 @@ const Habits = () => {
         <h2>Seus Hábitos</h2>
         <AddBttn>
           <span>Adicione um novo hábito</span>
-          <Button white onClick={() => setAddNewHabit(true)}>
+          <Button white onClick={() => setOpenAddNewHabit(true)}>
             <FiPlus size={20} />
           </Button>
         </AddBttn>
@@ -103,7 +103,7 @@ const Habits = () => {
         </Input>
         <AddBttn>
           <span>Adicione um novo hábito</span>
-          <Button white onClick={() => setAddNewHabit(true)}>
+          <Button white onClick={() => setOpenAddNewHabit(true)}>
             <FiPlus size={20} />
           </Button>
         </AddBttn>
@@ -144,8 +144,8 @@ const Habits = () => {
           <FiChevronRight size={20} />
         </Button>
       </PageButtons>
-      {addNewHabit && <AddNewHabit />}
-      {editHabit && <ModalEditHabit capturedHabit={capturedHabit} />}
+      {openAddNewHabit && <AddNewHabit />}
+      {openEditHabit && <ModalEditHabit capturedHabit={capturedHabit} />}
     </Container>
   );
 };

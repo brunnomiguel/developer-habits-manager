@@ -11,7 +11,7 @@ import ModalEditUser from "../ModalEditUser";
 
 const Navbar = () => {
   const { setToken, user } = useContext(UserContext);
-  const { setEditUser, editUser } = useContext(ModalContext);
+  const { openEditUser, setOpenEditUser } = useContext(ModalContext);
 
   const { pathname } = useLocation();
 
@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <Container>
       <Content>
-        <h2 onClick={() => setEditUser(true)}>
+        <h2 onClick={() => setOpenEditUser(true)}>
           <FiUser />
           Olá, {user}
         </h2>
@@ -39,7 +39,7 @@ const Navbar = () => {
         </nav>
         <FiLogIn onClick={logout} />
       </Content>
-      {editUser && <ModalEditUser />}
+      {openEditUser && <ModalEditUser />}
     </Container>
   );
 };

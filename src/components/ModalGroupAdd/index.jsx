@@ -1,4 +1,4 @@
-import { Container, AddHabitModalHeader, AddHabitModalEdit } from "./style";
+import { Container, AddGroupModalHeader, AddGroupModalEdit } from "./style";
 import { FiX } from "react-icons/fi";
 
 import * as yup from "yup";
@@ -11,23 +11,21 @@ import { HabitsContext } from "../../providers/Habits";
 
 import Input from "../Input";
 import Button from "../Button";
-import Select from "../Select";
 
-const AddNewHabit = ({ id = "addNewHabit" }) => {
-  const { setOpenAddNewHabit } = useContext(ModalContext);
-  const { addNewHabit } = useContext(HabitsContext);
+const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
+  const { setOpenAddNewGroup } = useContext(ModalContext);
+  const { createNewGroup } = useContext(HabitsContext);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
-      setOpenAddNewHabit(false);
+      setOpenAddNewGroup(false);
     }
   };
 
   const schema = yup.object().shape({
-    title: yup.string().required("Campo obrigatório"),
+    name: yup.string().required("Campo obrigatório"),
+    description: yup.string().required("Campo obrigatório"),
     category: yup.string().required("Campo obrigatório"),
-    difficulty: yup.string().required("Campo obrigatório"),
-    frequency: yup.string().required("Campo obrigatório"),
   });
 
   const {
@@ -40,35 +38,45 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
   });
 
   const onSubmitFunction = (data) => {
-    addNewHabit(data);
+    createNewGroup(data);
     reset();
   };
 
   return (
     <Container id={id} onClick={handleOutsideClick}>
-      <AddHabitModalHeader>
-        <p>Novo hábito</p>
-        <button onClick={() => setOpenAddNewHabit(false)}>
+      <AddGroupModalHeader>
+        <p>Novo Grupo</p>
+        <button onClick={() => setOpenAddNewGroup(false)}>
           <FiX />
         </button>
-      </AddHabitModalHeader>
+      </AddGroupModalHeader>
 
-      <AddHabitModalEdit>
+      <AddGroupModalEdit>
         <div>
           <form onSubmit={handleSubmit(onSubmitFunction)}>
             <Input
               modal
-              placeholder="Digite o título"
+              placeholder="Digite o Nome do grupo"
               register={register}
-              name="title"
-              label="Título: "
-              error={errors.title?.message}
+              name="name"
+              label="Nome do grupo: "
+              error={errors.name?.message}
               type="text"
             />
 
             <Input
               modal
-              placeholder="Digite a categoria"
+              placeholder="Digite uma descrição"
+              register={register}
+              name="description"
+              label="Descrição: "
+              error={errors.description?.message}
+              type="text"
+            />
+
+            <Input
+              modal
+              placeholder="Digite uma categoria"
               register={register}
               name="category"
               label="Categoria: "
@@ -76,26 +84,14 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
               type="text"
             />
 
-            <Input
-              modal
-              placeholder="Digite a frequência"
-              register={register}
-              name="frequency"
-              label="Frequência: "
-              error={errors.category?.message}
-              type="text"
-            />
-
-            <Select register={register} name="difficulty" />
-
             <Button white share loginDesk>
-              Novo hábito
+              Novo Grupo
             </Button>
           </form>
         </div>
-      </AddHabitModalEdit>
+      </AddGroupModalEdit>
     </Container>
   );
 };
 
-export default AddNewHabit;
+export default ModalGroupAddEdit;

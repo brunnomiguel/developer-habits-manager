@@ -6,7 +6,6 @@ import { ToastContainer } from "react-toastify";
 import Routes from "./routes";
 
 const App = () => {
-
   return (
     <>
       <GlobalStyle />

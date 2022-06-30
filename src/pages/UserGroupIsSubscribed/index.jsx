@@ -6,9 +6,10 @@ import {
   Tittle,
   PageButtons,
   InputBttnContainer,
+  AddBttn
 } from "./styled";
 
-import { FiSearch, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiSearch, FiChevronLeft, FiChevronRight,FiPlus } from "react-icons/fi";
 
 import Navbar from "../../components/Navbar";
 import Input from "../../components/Input";
@@ -23,7 +24,7 @@ const UserGroupIsSubscribed = () => {
   const [displayGroup, setDisplayGroup] = useState([]);
   const [captureGroup, setCaptureGroup] = useState({});
   const [inputGroup, setInputGroup] = useState("");
-console.log(groupsSubscribed)
+
   const searchGroup = (inputGroup) => {
     inputGroup = inputGroup.toLocaleLowerCase();
     const filteredGroup = groupsSubscribed.filter((group) => {
@@ -48,7 +49,7 @@ console.log(groupsSubscribed)
     <Container>
       <Navbar />
       <Tittle>
-        <h2>Grupos que você faz parte</h2>
+        <h2>seus grupos</h2>
       </Tittle>
       <InputBttnContainer>
         <Input
@@ -64,6 +65,12 @@ console.log(groupsSubscribed)
         >
           <FiSearch />
         </Input>
+        <AddBttn>
+          <span>Adicione um novo Gupo</span>
+          <Button white >
+            <FiPlus size={20} />
+          </Button>
+        </AddBttn>
       </InputBttnContainer>
       <CardsContainer>
         {loading ? (

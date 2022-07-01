@@ -2,11 +2,13 @@ import { useContext, useEffect } from "react";
 import { ModalContext } from "../../providers/Modal";
 
 import { Container } from "./styles";
-import { FiX, FiEdit, FiDelete } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 
 import Button from "../Button";
 import ModalAddNewMeta from "../../components/ModalAddNewMeta";
 import { GoalsContext } from "../../providers/Goals";
+import CardMeta from "../CardMeta";
+
 
 const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   const { openAddNewGoal, setOpenAddNewGoal, setOpenAllGoals } =
@@ -45,20 +47,9 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
           <div className="subtext">
             {goals.map((goal) => {
               return (
-                <div className="meta" key={goal.id}>
-                  <p>{goal.title}</p>
-                  <p>{goal.difficulty}</p>
-                  <div className="button">
-                    <Button white>
-                      {" "}
-                      <FiEdit size={20} />
-                    </Button>
-                    <Button white>
-                      {" "}
-                      <FiDelete size={20} />
-                    </Button>
-                  </div>
-                </div>
+                <div className="meta">
+                  <CardMeta goal={goal}/>
+                </div> 
               );
             })}
           </div>

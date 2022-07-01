@@ -27,10 +27,11 @@ import CardGroup from "../../components/CardGroup";
 import Activities from "../../components/Activities";
 import ModalShowAllGoals from "../../components/ModalShowAllGoals";
 import { ModalContext } from "../../providers/Modal";
+import ModalGroupAddEdit from "../../components/ModalGroupAdd";
 
 const AllGroups = () => {
   const { allGroups, loading } = useContext(GroupsContext);
-  const { openAllActivities, openAllGoals } = useContext(ModalContext);
+  const { openAllActivities, openAllGoals} = useContext(ModalContext);
 
   const [displayGroup, setDisplayGroup] = useState([]);
   const [capturedGroup, setCapturedGroup] = useState({});

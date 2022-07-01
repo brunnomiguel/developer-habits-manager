@@ -29,7 +29,7 @@ const Navbar = () => {
         </h2>
         <nav>
           <ul>
-            <NavLink selected={pathname === "/Groups"} to="/Groups">
+          <NavLink selected={pathname === "/Groups" || pathname ==="/YourGroups" || pathname === "/AllGroups"} to="/Groups">
               Grupos
             </NavLink>
             <NavLink selected={pathname === "/Habits"} to="/Habits">

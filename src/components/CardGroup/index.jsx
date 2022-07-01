@@ -36,13 +36,12 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
         </div>
       </ContainerHeader>
       <hr></hr>
-
       <ContainerMain>
         <p>{description}</p>
         <div className="conjunto-de-botoes">
           <div className="dupla-de-botoes">
             <Button
-              white
+              black
               ativMetaDesk
               onClick={() => {
                 setOpenAllActivities(true);
@@ -52,7 +51,7 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
               Atividades
             </Button>
             <Button
-              white
+              black
               ativMetaDesk
               onClick={() => {
                 setOpenAllGoals(true);

@@ -7,15 +7,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useContext } from "react";
 import { ModalContext } from "../../providers/Modal";
-import { HabitsContext } from "../../providers/Habits";
+import { GroupsContext } from "../../providers/Groups";
 
 import Input from "../Input";
 import Button from "../Button";
 
 const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
   const { setOpenAddNewGroup } = useContext(ModalContext);
-  const { createNewGroup } = useContext(HabitsContext);
-
+  const { createNewGroup } = useContext(GroupsContext);
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
       setOpenAddNewGroup(false);

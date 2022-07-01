@@ -1,4 +1,12 @@
-import { Container, ModalHeader, AddBttn, CardsContainer } from "./styles";
+import {
+  Container,
+  ModalHeader,
+  AddBttn,
+  CardsContainer,
+  Modal,
+  ModalContent,
+  Overlay,
+} from "./styles";
 
 import Button from "../Button";
 import CardActivitie from "../CardActivitie";
@@ -26,24 +34,29 @@ const Activities = ({ id = "modalActivities", capturedGroup }) => {
   };
 
   return (
-    <Container id={id} onClick={handleOutsideClick}>
-      <ModalHeader>
-        <p>Atividades</p>
-        <button onClick={() => setOpenAllActivities(false)}>X</button>
-      </ModalHeader>
+    <Container>
+      <Overlay id={id} onClick={handleOutsideClick} />
+      <ModalContent>
+        <ModalHeader>
+          <p>Atividades</p>
+          <button onClick={() => setOpenAllActivities(false)}>X</button>
+        </ModalHeader>
 
-      <AddBttn>
-        <span>Crie uma atividade</span>
-        <Button white onClick={() => setOpenAddNewActivity(true)}>
-          <FiPlus size={20} />
-        </Button>
-      </AddBttn>
-      <CardsContainer>
-        {activities.map((activity) => {
-          return <CardActivitie key={activity.id} activity={activity} />;
-        })}
-      </CardsContainer>
-      {openAddNewActivity && <AddActivity capturedGroupId={capturedGroup.id} />}
+        <AddBttn>
+          <span>Crie uma atividade</span>
+          <Button white onClick={() => setOpenAddNewActivity(true)}>
+            <FiPlus size={20} />
+          </Button>
+        </AddBttn>
+        <CardsContainer>
+          {activities.map((activity) => {
+            return <CardActivitie key={activity.id} activity={activity} />;
+          })}
+        </CardsContainer>
+        {openAddNewActivity && (
+          <AddActivity capturedGroupId={capturedGroup.id} />
+        )}
+      </ModalContent>
     </Container>
   );
 };

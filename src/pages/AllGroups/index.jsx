@@ -60,6 +60,7 @@ const AllGroups = () => {
       <Tittle>
         <h2>Todos os grupos</h2>
       </Tittle>
+
       <InputBttnContainer>
         <Input
           search

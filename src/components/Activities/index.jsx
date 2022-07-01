@@ -6,14 +6,28 @@ import AddActivity from "../AddActivity";
 
 import { FiPlus } from "react-icons/fi";
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ModalContext } from "../../providers/Modal";
 import { ActivitiesContext } from "../../providers/Activities";
+import ModalEditActivity from "../ModalEditActivity";
 
 const Activities = ({ id = "modalActivities", capturedGroup }) => {
-  const { setOpenAllActivities, openAddNewActivity, setOpenAddNewActivity } =
-    useContext(ModalContext);
+  const {
+    setOpenAllActivities,
+    openAddNewActivity,
+    setOpenAddNewActivity,
+    openEditActivity,
+  } = useContext(ModalContext);
   const { loadActivities, activities } = useContext(ActivitiesContext);
+
+  const [capturedActivity, setCapturedActivity] = useState({});
+
+  const captureActivity = (activityId) => {
+    const verifyActivity = activities.filter(
+      (activity) => activity.id === activityId
+    );
+    setCapturedActivity(...verifyActivity);
+  };
 
   useEffect(() => {
     loadActivities(capturedGroup.id);
@@ -40,10 +54,23 @@ const Activities = ({ id = "modalActivities", capturedGroup }) => {
       </AddBttn>
       <CardsContainer>
         {activities.map((activity) => {
-          return <CardActivitie key={activity.id} activity={activity} />;
+          return (
+            <CardActivitie
+              key={activity.id}
+              activity={activity}
+              captureActivity={captureActivity}
+              capturedGroupId={capturedGroup.id}
+            />
+          );
         })}
       </CardsContainer>
       {openAddNewActivity && <AddActivity capturedGroupId={capturedGroup.id} />}
+      {openEditActivity && (
+        <ModalEditActivity
+          activityId={capturedActivity.id}
+          capturedGroupId={capturedGroup.id}
+        />
+      )}
     </Container>
   );
 };

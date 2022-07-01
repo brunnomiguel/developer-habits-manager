@@ -4,7 +4,6 @@ import {
   Container,
   CardsContainer,
   Tittle,
-  AddBttn,
   PageButtons,
   InputBttnContainer,
 } from "./styled";
@@ -13,7 +12,6 @@ import {
   FiSearch,
   FiChevronLeft,
   FiChevronRight,
-  FiPlus,
 } from "react-icons/fi";
 
 import Navbar from "../../components/Navbar";
@@ -27,7 +25,6 @@ import CardGroup from "../../components/CardGroup";
 import Activities from "../../components/Activities";
 import ModalShowAllGoals from "../../components/ModalShowAllGoals";
 import { ModalContext } from "../../providers/Modal";
-
 
 const AllGroups = () => {
   const { allGroups, loading } = useContext(GroupsContext);

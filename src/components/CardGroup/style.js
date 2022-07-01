@@ -1,18 +1,24 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  font-family: var(--font-share-tech);
+  font-family: var(--font-share-mono);
+  font-size: 1.5rem;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: left;
-  width: 250px;
-  height: 250px;
-  margin-bottom: 38px;
+  
+  height: 200px;
+  width: 100%;
+  margin: 10px 0;
   border-radius: 5px none;
+  padding: 10px 50px 10px 50px;
   box-shadow: 1px 1px 3px var(--gray-2);
 
+  @media screen and (max-width: 400px) {
+    padding: 10px;
+  }
   @media screen and (min-width: 600px) {
     margin-left: 20px;
     margin-right: 20px;
@@ -27,8 +33,8 @@ export const Container = styled.div`
   }
 
   hr {
-    margin: 5px 0 5px 0;
-    width: 80%;
+    margin: 10px 0 10px 0;
+    width: 100%;
     border: 2px;
     height: 2px;
     background-color: var(--gray-4);
@@ -40,47 +46,87 @@ export const ContainerHeader = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  text-align: left;
+  font-weight: 700;
   width: 100%;
   height: 50px;
-  margin-bottom: 10px;
+  @media screen and (max-width: 600px) {
+    p {
+      font-size: 1.5rem;
+    }
+    span {
+      font-size: 1.2rem;
+    }
+    button {
+      width: 40px;
+    }
+  }
 
   span,
   p {
+    margin-left: 10px;
     color: var(--black-2);
-    margin-bottom: 10px;
+  }
+  button{
+    width: 80px;
   }
   div {
+    margin-left: 10px;
+    margin-right: 10px;
+    align-items: center;
     display: flex;
-    flex-direction: row;
+    span {
+      margin-right: 10px;
+    }
   }
 `;
 
 export const ContainerMain = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: left;
   width: 100%;
   height: 70px;
-  margin-bottom: 10px;
+  
+  @media screen and (max-width: 600px) {
+    p,
+    span {
+      font-size: 1.2rem;
+    }
+    div {
+      /* justify-content: center; */
+      div {
+        button {
+          font-size: 0.9rem;
+          width: 85px;
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+      }
+      button{
+        width: 50px;
+        margin-left: 1px;
+      }
+    }
+  }
+
   span,
   p {
+    font-size: 1.3rem;
+
     color: var(--black-2);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-left: 10px;
   }
   div {
-    /* esta div tem o conjunto de botoes, e outro separado que fica a direita */
     display: flex;
-    flex-direction: row;
     width: 100%;
-    /* o justify, agrupa o conjunto de dois a esqueda, e o botao sozinho no canto da direita */
-    justify-content: space-between;
+    button {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0 10px 0 10px;
+    }
     div {
-      /* esta div contém dois botoões que ficam juntos a esquerda */
       display: flex;
-      flex-direction: row;
     }
   }
 `;

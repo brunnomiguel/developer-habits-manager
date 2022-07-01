@@ -27,10 +27,11 @@ import CardGroup from "../../components/CardGroup";
 import Activities from "../../components/Activities";
 import ModalShowAllGoals from "../../components/ModalShowAllGoals";
 import { ModalContext } from "../../providers/Modal";
+import ModalGroupAddEdit from "../../components/ModalGroupAdd";
 
 const YourGroups = () => {
   const { groupsSubscribed, loading } = useContext(GroupsContext);
-  const { openAllActivities, openAllGoals } = useContext(ModalContext);
+  const { openAllActivities, openAllGoals, openAddNewGroup, setOpenAddNewGroup } = useContext(ModalContext);
 
   const [displayGroup, setDisplayGroup] = useState([]);
   const [capturedGroup, setCapturedGroup] = useState({});
@@ -79,7 +80,7 @@ const YourGroups = () => {
         <AddBttn>
           <span>Adicione um novo Gupo</span>
           <Button white>
-            <FiPlus size={20} />
+            <FiPlus size={20} onClick={() => setOpenAddNewGroup(true)} />
           </Button>
         </AddBttn>
       </InputBttnContainer>
@@ -121,6 +122,7 @@ const YourGroups = () => {
       </PageButtons>
       {openAllActivities && <Activities capturedGroup={capturedGroup} />}
       {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
+      {openAddNewGroup && <ModalGroupAddEdit/>}
     </Container>
   );
 };

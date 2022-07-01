@@ -25,7 +25,7 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
           {/* ... somente se eu for o dono do grupo */}
           <Button
             white
-            ativMetaDesk
+            ativMetaMobile
             onClick={() => {
               setOpenEditGroup(true);
               captureGroup(id);
@@ -42,7 +42,7 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
         <div className="conjunto-de-botoes">
           <div className="dupla-de-botoes">
             <Button
-              white
+              
               ativMetaDesk
               onClick={() => {
                 setOpenAllActivities(true);
@@ -52,7 +52,7 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
               Atividades
             </Button>
             <Button
-              white
+              
               ativMetaDesk
               onClick={() => {
                 setOpenAllGoals(true);
@@ -64,7 +64,7 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
           </div>
           <Button
             white
-            ativMetaDesk
+            ativMetaMobile
             onClick={() => {
               setOpenEditGroup(true);
               captureGroup(id);

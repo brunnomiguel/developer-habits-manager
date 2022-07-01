@@ -44,8 +44,8 @@ const ModalAddNewMeta = ({ id = "modalAddNewMeta", capturedGroupId }) => {
   return (
     <Container>
       <div className="modal" id={id} onClick={handleOutsideClick}>
-        <div className="container">
-          <div className="header">
+        <div className="container-modal">
+          <div className="header-modal">
             <span>Nova meta</span>
             <FiX className="close" onClick={() => setOpenAddNewGoal(false)} />
           </div>

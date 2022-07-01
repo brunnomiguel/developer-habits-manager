@@ -34,18 +34,22 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
             <FiX className="close" onClick={() => setOpenAllGoals(false)} />
           </div>
           <div className="content">
-            <p>Crie uma nova meta para este grupo</p>
-            <Button small white onClick={() => setOpenAddNewGoal(true)}>
-              +
-            </Button>
-            {openAddNewGoal && (
-              <ModalAddNewMeta capturedGroupId={capturedGroup.id} />
-            )}
+            <div className="content-subtext">
+              <p>Crie uma nova meta para este grupo</p>
+              <Button small white onClick={() => setOpenAddNewGoal(true)}>
+                +
+              </Button>
+              {openAddNewGoal && (
+                <ModalAddNewMeta capturedGroupId={capturedGroup.id} />
+              )}
+            </div>
           </div>
           <div className="subtext">
             {goals.map((goal) => {
               return (
-                <CardMeta goal={goal}/>
+                <div className="meta">
+                  <CardMeta goal={goal}/>
+                </div> 
               );
             })}
           </div>

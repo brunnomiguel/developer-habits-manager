@@ -27,7 +27,7 @@ import CardGroup from "../../components/CardGroup";
 import Activities from "../../components/Activities";
 import ModalShowAllGoals from "../../components/ModalShowAllGoals";
 import { ModalContext } from "../../providers/Modal";
-import ModalGroupAddEdit from "../../components/ModalGroupAdd";
+
 
 const AllGroups = () => {
   const { allGroups, loading } = useContext(GroupsContext);
@@ -63,6 +63,7 @@ const AllGroups = () => {
       <Tittle>
         <h2>Todos os grupos</h2>
       </Tittle>
+
       <InputBttnContainer>
         <Input
           search

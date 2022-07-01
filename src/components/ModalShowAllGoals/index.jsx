@@ -9,7 +9,6 @@ import ModalAddNewMeta from "../../components/ModalAddNewMeta";
 import { GoalsContext } from "../../providers/Goals";
 import CardMeta from "../CardMeta";
 
-
 const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   const { openAddNewGoal, setOpenAddNewGoal, setOpenAllGoals } =
     useContext(ModalContext);
@@ -48,8 +47,12 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
             {goals.map((goal) => {
               return (
                 <div className="meta">
-                  <CardMeta goal={goal}/>
-                </div> 
+                  <CardMeta
+                    key={goal.id}
+                    goal={goal}
+                    capturedGroupId={capturedGroup.id}
+                  />
+                </div>
               );
             })}
           </div>

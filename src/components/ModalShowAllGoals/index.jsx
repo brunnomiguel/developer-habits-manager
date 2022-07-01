@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { ModalContext } from "../../providers/Modal";
 
 import { Container } from "./styles";
-import { FiX } from "react-icons/fi";
+import { FiX, FiEdit, FiDelete } from "react-icons/fi";
 
 import Button from "../Button";
 import ModalAddNewMeta from "../../components/ModalAddNewMeta";
@@ -32,21 +32,33 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
             <FiX className="close" onClick={() => setOpenAllGoals(false)} />
           </div>
           <div className="content">
-            <p>Crie uma nova meta para este grupo</p>
-            <Button small white onClick={() => setOpenAddNewGoal(true)}>
-              +
-            </Button>
-            {openAddNewGoal && (
-              <ModalAddNewMeta capturedGroupId={capturedGroup.id} />
-            )}
+            <div className="content-subtext">
+              <p>Crie uma nova meta para este grupo</p>
+              <Button small white onClick={() => setOpenAddNewGoal(true)}>
+                +
+              </Button>
+              {openAddNewGoal && (
+                <ModalAddNewMeta capturedGroupId={capturedGroup.id} />
+              )}
+            </div>
           </div>
           <div className="subtext">
             {goals.map((goal) => {
               return (
-                <li key={goal.id}>
+                <div className="meta" key={goal.id}>
                   <p>{goal.title}</p>
                   <p>{goal.difficulty}</p>
-                </li>
+                  <div className="button">
+                    <Button white>
+                      {" "}
+                      <FiEdit size={20} />
+                    </Button>
+                    <Button white>
+                      {" "}
+                      <FiDelete size={20} />
+                    </Button>
+                  </div>
+                </div>
               );
             })}
           </div>

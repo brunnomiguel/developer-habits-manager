@@ -13,7 +13,7 @@ export const Container = styled.div`
         justify-content: center;
         align-items: center;
 
-        .container {
+        .container-modal {
             background-color: var(--gray-4);
             width: 280px;
             height: fit-content;
@@ -23,7 +23,7 @@ export const Container = styled.div`
             align-items: center;
         }
 
-        .header {
+        .header-modal {
             background-color: var(--green-2);
             height: 46px;
             width: 280px;

@@ -1,11 +1,52 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  /*width: 280px;
+  min-height: 100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
   width: 280px;
-  height: 100%;
-  position: absolute;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  transform: translate(-50%, -50%);
   background-color: var(--white-1);
   box-shadow: 1px 1px 3px var(--gray-2);
+  transition: ease all 0.5s;*/
+  /* width: 280px; */
+  /* width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed; */
+`;
+
+export const Overlay = styled.div`
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  /* background: rgba(49, 49, 49, 0.8); */
+  background-color: rgba(0, 0, 0, 0.8);
+`;
+
+export const ModalContent = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white-1);
+  width: 280px;
+  height: 513px;
+  overflow: auto;
   transition: ease all 0.5s;
 
   @media screen and (min-width: 769px) {

@@ -44,7 +44,7 @@ export const AddBttn = styled.div`
 `;
 
 export const CardsContainer = styled.div`
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   height: 440px;
   display: flex;
   flex-direction: column;

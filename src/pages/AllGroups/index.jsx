@@ -31,7 +31,7 @@ import ModalGroupAddEdit from "../../components/ModalGroupAdd";
 
 const AllGroups = () => {
   const { allGroups, loading } = useContext(GroupsContext);
-  const { openAllActivities, openAllGoals, openAddNewGroup, setOpenAddNewGroup } = useContext(ModalContext);
+  const { openAllActivities, openAllGoals} = useContext(ModalContext);
 
   const [displayGroup, setDisplayGroup] = useState([]);
   const [capturedGroup, setCapturedGroup] = useState({});
@@ -75,7 +75,7 @@ const AllGroups = () => {
             searchGroup(ev.target.value);
           }}
         >
-          <FiSearch onClick={() => setOpenAddNewGroup(true)} />
+          <FiSearch />
         </Input>
       </InputBttnContainer>
       <CardsContainer>
@@ -116,7 +116,6 @@ const AllGroups = () => {
       </PageButtons>
       {openAllActivities && <Activities capturedGroup={capturedGroup} />}
       {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
-      {openAddNewGroup && <ModalGroupAddEdit/>}
     </Container>
   );
 };

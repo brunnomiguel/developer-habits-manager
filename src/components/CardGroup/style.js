@@ -20,20 +20,10 @@ export const Container = styled.div`
     padding: 10px;
   }
   @media screen and (min-width: 600px) {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-  @media screen and (min-width: 769px) {
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-  @media screen and (min-width: 900px) {
-    margin-left: 97px;
-    margin-right: 97px;
   }
 
   hr {
-    margin: 10px 0 10px 0;
+    margin: 20px 0 10px 0;
     width: 100%;
     border: 2px;
     height: 2px;
@@ -49,6 +39,21 @@ export const ContainerHeader = styled.div`
   font-weight: 700;
   width: 100%;
   height: 50px;
+  @media screen and (max-width: 300px) {
+    display: flex;
+    flex-direction: column;
+    p {
+      font-size: 1.2rem;
+    }
+    span {
+      font-size: 1rem;
+    }
+    div {
+      button {
+        width: 40px;
+      }
+    }
+  }
   @media screen and (max-width: 600px) {
     p {
       font-size: 1.5rem;
@@ -66,7 +71,7 @@ export const ContainerHeader = styled.div`
     margin-left: 10px;
     color: var(--black-2);
   }
-  button{
+  button {
     width: 80px;
   }
   div {
@@ -102,7 +107,7 @@ export const ContainerMain = styled.div`
           margin-right: 5px;
         }
       }
-      button{
+      button {
         width: 50px;
         margin-left: 1px;
       }
@@ -111,8 +116,12 @@ export const ContainerMain = styled.div`
 
   span,
   p {
-    font-size: 1.3rem;
-
+    max-width: 90%; /* Limite maximo do texto*/
+    white-space: nowrap; /* Removendo quebra de linha */
+    overflow: hidden; /* Removendo a barra de rolagem */
+    text-overflow: ellipsis; /* Adicionando "..." ao final do texto */
+    padding: 5px;
+    font-size: 1rem;
     color: var(--black-2);
     margin-bottom: 15px;
     margin-left: 10px;

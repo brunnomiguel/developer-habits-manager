@@ -22,7 +22,7 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
   const { setOpenAllGoals } = useContext(ModalContext);
   const { setOpenAllActivities } = useContext(ModalContext);
 
-  const verifiSubscribed = users_on_group.find(
+  const verifySubscribed = users_on_group.find(
     (group) => group.id === decodeJwt.user_id
   );
 
@@ -78,7 +78,7 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
             </Button>
           </div>
           {/* Aqui vai um ternário para renderizar um buton com função diferente caso ele esteja inscrito ou não */}
-          {verifiSubscribed !== undefined ? (
+          {verifySubscribed !== undefined ? (
             <Button
               white
               ativMetaMobile

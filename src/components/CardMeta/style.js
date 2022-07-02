@@ -8,6 +8,7 @@ export const Container = styled.div`
   margin: 0 auto;
   margin-bottom: 10px;
   box-shadow: 2px 2px 4px var(--gray-3);
+  border: 1px solid var(--gray-3);
   @media (min-width: 720px){
     width: 300px;
     height: 155px;
@@ -47,10 +48,6 @@ export const ContainerBtn = styled.div`
   justify-content: space-around;
   width: 100%;
   align-items: center;
-
-  @media (min-width: 720px){
-    margin-top: 40px;
-}
 
   button {
     width: 50px;

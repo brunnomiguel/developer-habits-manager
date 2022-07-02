@@ -75,9 +75,12 @@ export const GroupsProvider = ({ children }) => {
 
   const subscribeToTheGroup = (groupId) => {
     api
-      .post(`/groups/${groupId}/subscribe/`)
+      .post(`/groups/${groupId}/subscribe/`, null, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((_) => {
         toast.success("Inscrição realizada com sucesso!");
+        loadSubscribedUserGroups();
         loadAllGroups();
       })
       .catch((_) => toast.error("Você já está inscrito nesse grupo!"));

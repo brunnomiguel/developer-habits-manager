@@ -4,7 +4,6 @@ import {
   Container,
   CardsContainer,
   Tittle,
-  AddBttn,
   PageButtons,
   InputBttnContainer,
 } from "./styled";
@@ -13,7 +12,6 @@ import {
   FiSearch,
   FiChevronLeft,
   FiChevronRight,
-  FiPlus,
 } from "react-icons/fi";
 
 import Navbar from "../../components/Navbar";
@@ -30,7 +28,7 @@ import { ModalContext } from "../../providers/Modal";
 
 const AllGroups = () => {
   const { allGroups, loading } = useContext(GroupsContext);
-  const { openAllActivities, openAllGoals } = useContext(ModalContext);
+  const { openAllActivities, openAllGoals} = useContext(ModalContext);
 
   const [displayGroup, setDisplayGroup] = useState([]);
   const [capturedGroup, setCapturedGroup] = useState({});
@@ -62,6 +60,7 @@ const AllGroups = () => {
       <Tittle>
         <h2>Todos os grupos</h2>
       </Tittle>
+
       <InputBttnContainer>
         <Input
           search

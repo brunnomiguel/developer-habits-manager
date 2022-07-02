@@ -3,13 +3,15 @@ import styled from "styled-components";
 export const Container = styled.div`
   font-family: var(--font-share-mono);
   font-size: 1.5rem;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90%;
+  
   height: 200px;
-  margin-bottom: 10px;
+  width: 100%;
+  margin: 10px 0;
   border-radius: 5px none;
   padding: 10px 50px 10px 50px;
   box-shadow: 1px 1px 3px var(--gray-2);
@@ -77,7 +79,6 @@ export const ContainerHeader = styled.div`
     margin-right: 10px;
     align-items: center;
     display: flex;
-    flex-direction: row;
     span {
       margin-right: 10px;
     }
@@ -90,6 +91,7 @@ export const ContainerMain = styled.div`
   justify-content: center;
   width: 100%;
   height: 70px;
+  
   @media screen and (max-width: 600px) {
     p,
     span {
@@ -111,6 +113,7 @@ export const ContainerMain = styled.div`
       }
     }
   }
+
   span,
   p {
     max-width: 90%; /* Limite maximo do texto*/
@@ -125,7 +128,6 @@ export const ContainerMain = styled.div`
   }
   div {
     display: flex;
-    flex-direction: row;
     width: 100%;
     button {
       font-size: 1.2rem;
@@ -134,7 +136,6 @@ export const ContainerMain = styled.div`
     }
     div {
       display: flex;
-      flex-direction: row;
     }
   }
 `;

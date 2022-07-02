@@ -37,7 +37,7 @@ export const Container = styled.div`
       background-color: var(--green-2);
       width: 280px;
       height: 46px;
-      color: var(--black-1: #000000);
+      color: var(--black-1);
       margin-top: 0px;
       display: flex;
       justify-content: space-between;
@@ -60,7 +60,7 @@ export const Container = styled.div`
         font-size: 13px;
         cursor: pointer;
       }
-  
+
       @media screen and (min-width: 769px) {
         font-size: 30px;
         width: 700px;
@@ -69,8 +69,7 @@ export const Container = styled.div`
           width: 22px;
           height: 23px;
         }
-      }  
-  
+      }
     }
 
     .content {
@@ -93,8 +92,6 @@ export const Container = styled.div`
         }
 
         button {
-          width: 40px;
-          height: 30px;
         }
 
         @media screen and (min-width: 769px) {
@@ -104,14 +101,12 @@ export const Container = styled.div`
             width: 300px;
           }
         }
-  
       }
-
     }
 
     .subtext {
-      width: 280px;
-      height: 300px;
+      width: 290px;
+      height: 350px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -121,7 +116,7 @@ export const Container = styled.div`
 
       .meta {
         width: 250px;
-        height:230px;
+        height: 250px;
         font-family: var(--font-lexend);
         display: flex;
         flex-direction: column;
@@ -148,39 +143,38 @@ export const Container = styled.div`
           margin-top: 15px;
         }
 
-            .button {
-            display: flex;
-            justify-content: space-around;
-            width: 100px;
-            }
-                button {
-                    width: 36px;
-                    height: 26px;
-                    border-radius: 5px;
-                    margin-top: 20px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-            }
+        .button {
+          display: flex;
+          justify-content: space-around;
+          width: 100px;
         }
-        @media screen and (min-width: 769px) {
-            .subtext {
-              flex-direction: row;
-              width: 700px;
-
-              p {
-                whidth: 200px;
-              }
-
-              .meta {
-                margin: 0px;
-              }
-
-            }
+        button {
+          width: 36px;
+          height: 26px;
+          border-radius: 5px;
+          margin-top: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
-    
+      }
     }
-}
+    @media screen and (min-width: 769px) {
+      .subtext {
+        flex-direction: row;
+        width: 700px;
+
+        p {
+          width: 200px;
+        }
+
+        .meta {
+          margin: 0px;
+          :nth-child(1) {
+            margin-top: 0px;
+          }
+        }
+      }
+    }
   }
 `;

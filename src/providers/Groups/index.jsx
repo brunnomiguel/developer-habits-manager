@@ -46,7 +46,6 @@ export const GroupsProvider = ({ children }) => {
     if (token) {
       loadAllGroups();
       loadSubscribedUserGroups();
-      // loadUserCreatedGroups();
     }
   }, [token]);
 
@@ -55,7 +54,7 @@ export const GroupsProvider = ({ children }) => {
       .post("/groups/", data, { headers: { Authorization: `Bearer ${token}` } })
       .then((_) => {
         toast.success("Grupo criado com sucesso.");
-        loadAllGroups();
+        loadSubscribedUserGroups();
       });
   };
 

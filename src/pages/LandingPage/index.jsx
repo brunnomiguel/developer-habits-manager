@@ -1,9 +1,9 @@
 import { Container, ImgContainer, Content } from "./styles";
 
+import { useHistory } from "react-router-dom";
+
 import Dev from "../../assets/img/dev.png";
 import Button from "../../components/Button";
-
-import { useHistory } from "react-router-dom";
 
 const LandingPage = () => {
   const history = useHistory();
@@ -28,6 +28,7 @@ const LandingPage = () => {
         </p>
         <Button
           loginMobile
+          darkSchema
           share
           white
           onClick={() => handleNavigate("/SignIn")}
@@ -36,6 +37,7 @@ const LandingPage = () => {
         </Button>
         <Button
           loginMobile
+          darkSchema
           share
           white
           onClick={() => handleNavigate("/SignUp")}

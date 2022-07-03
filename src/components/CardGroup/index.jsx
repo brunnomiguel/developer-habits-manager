@@ -49,13 +49,7 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
       <hr></hr>
 
       <ContainerMain>
-        {/* lembrar de ativar o description depois do teste com lorem */}
-        {/* <p>{description}</p> */}
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s
-        </p>
+        <p>{description}</p>
         <div className="conjunto-de-botoes">
           <div className="dupla-de-botoes">
             <Button

@@ -68,7 +68,7 @@ const AddActivity = ({ id = "addActivity", capturedGroupId }) => {
               error={errors.realization_time?.message}
             />
 
-            <Button white share loginDesk>
+            <Button white share darkSchema loginDesk>
               Nova Atividade
             </Button>
           </form>

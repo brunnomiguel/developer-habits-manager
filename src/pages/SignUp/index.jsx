@@ -1,13 +1,13 @@
 import { Container, SignupData, ImageContent } from "./style";
 
-import * as yup from "yup";
+import { useHistory, Link } from "react-router-dom";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { formSchema } from "./formYup";
 
 import { toast } from "react-toastify";
 import api from "../../services/api";
-
-import { useHistory, Link } from "react-router-dom";
 
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -15,46 +15,24 @@ import Button from "../../components/Button";
 const SignUp = () => {
   const history = useHistory();
 
-  const schema = yup.object().shape({
-    username: yup.string().required("Campo obrigatório"),
-    email: yup
-      .string()
-      .email("Necessário estar no formato de email @")
-      .required("Campo obrigatório"),
-    password: yup
-      .string()
-      .min(8, "Senha com menos de 8 caracteres")
-      .matches(
-        "^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[$*&%@#])",
-        "Senha preicsa ser forte: 1 letra maiscúla/minúscula, 1 número e 1 símbolo: $*&%@#"
-      ),
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref("password")], "Senhas diferentes")
-      .required("Campo obrigatório"),
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(formSchema),
   });
 
   const onSubmitFunction = ({ username, email, password }) => {
-    console.log("dados ok");
-
     const user = { username, email, password };
 
     api
       .post("/users/", user)
       .then((_) => {
-        toast.success("Sucesso ao criar conta");
+        toast.success("Conta criada com sucesso!");
         history.push("/SignIn");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Já existe um usuário com este nome");
       });
   };
@@ -104,7 +82,7 @@ const SignUp = () => {
             type="password"
           />
 
-          <Button loginDesk white share type="submit">
+          <Button loginDesk darkSchema white share type="submit">
             Cadastrar
           </Button>
         </form>

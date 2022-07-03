@@ -5,9 +5,11 @@ export const Container = styled.header`
   width: 100%;
   height: auto;
   padding-bottom: 40px;
+
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
   background: rgb(42, 152, 152);
   background: linear-gradient(
     100deg,
@@ -16,12 +18,6 @@ export const Container = styled.header`
   );
 
   h2 {
-    cursor: pointer;
-  }
-
-  h2,
-  svg,
-  a {
     color: var(--white-1);
     cursor: pointer;
   }
@@ -34,10 +30,12 @@ export const Container = styled.header`
 export const Content = styled.div`
   width: 90%;
   padding: 15px;
+
   display: flex;
-  position: relative;
   align-items: center;
   justify-content: space-between;
+
+  position: relative;
 
   @media (min-width: 720px) {
     position: static;
@@ -45,6 +43,8 @@ export const Content = styled.div`
 
   svg {
     font-size: 20px;
+    color: var(--white-1);
+    cursor: pointer;
   }
 
   h2 svg {
@@ -63,13 +63,11 @@ export const Content = styled.div`
     }
 
     ul {
+      width: 100%;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 100%;
-
-      @media (min-width: 720px) {
-      }
 
       a {
         color: var(--white-1);

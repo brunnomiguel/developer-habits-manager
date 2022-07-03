@@ -3,6 +3,7 @@ import devImage from "../../assets/img/dev.png";
 
 export const Container = styled.div`
   min-height: 100vh;
+
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -22,10 +23,11 @@ const appearFromRight = keyframes`
 export const SignupData = styled.div`
   width: 300px;
   margin: auto;
+
   animation: ${appearFromRight} 1.2s;
+
   h1 {
     font-family: var(--font-share-tech);
-    font-style: normal;
     font-weight: 400;
     font-size: 24px;
     text-align: center;
@@ -33,10 +35,10 @@ export const SignupData = styled.div`
 
   h3 {
     font-family: var(--font-lexend);
-    font-style: normal;
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
+
     margin-top: 11px;
     margin-bottom: 11px;
   }
@@ -55,9 +57,10 @@ export const SignupData = styled.div`
   }
   .signIn {
     width: 200px;
-    margin: auto;
+    margin: 30px auto 0 auto;
+
     text-align: center;
-    margin-top: 30px;
+
     font-family: var(--font-lexend);
     font-style: normal;
     font-weight: 400;
@@ -91,10 +94,9 @@ export const SignupData = styled.div`
 
 export const ImageContent = styled.div`
   @media (min-width: 1100px) {
-      margin: auto;
-      background: url(${devImage}) no-repeat center;
-      width:700px;
-      height: 505px;
+    margin: auto;
+    background: url(${devImage}) no-repeat center;
+    width: 700px;
+    height: 505px;
   }
-
 `;

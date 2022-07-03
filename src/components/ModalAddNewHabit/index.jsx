@@ -13,7 +13,7 @@ import Input from "../Input";
 import Button from "../Button";
 import Select from "../Select";
 
-const AddNewHabit = ({ id = "addNewHabit" }) => {
+const ModalAddNewHabit = ({ id = "addNewHabit" }) => {
   const { setOpenAddNewHabit } = useContext(ModalContext);
   const { addNewHabit } = useContext(HabitsContext);
 
@@ -23,7 +23,7 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
     }
   };
 
-  const schema = yup.object().shape({
+  const formSchema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
     category: yup.string().required("Campo obrigatório"),
     difficulty: yup.string().required("Campo obrigatório"),
@@ -36,7 +36,7 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
     formState: { errors },
     reset,
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(formSchema),
   });
 
   const onSubmitFunction = (data) => {
@@ -48,9 +48,9 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
     <Container id={id} onClick={handleOutsideClick}>
       <AddHabitModalHeader>
         <p>Novo hábito</p>
-        <button onClick={() => setOpenAddNewHabit(false)}>
+        <Button onClick={() => setOpenAddNewHabit(false)}>
           <FiX />
-        </button>
+        </Button>
       </AddHabitModalHeader>
 
       <AddHabitModalEdit>
@@ -88,7 +88,7 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
 
             <Select register={register} name="difficulty" />
 
-            <Button white share loginDesk>
+            <Button white share loginDesk darkSchema>
               Novo hábito
             </Button>
           </form>
@@ -98,4 +98,4 @@ const AddNewHabit = ({ id = "addNewHabit" }) => {
   );
 };
 
-export default AddNewHabit;
+export default ModalAddNewHabit;

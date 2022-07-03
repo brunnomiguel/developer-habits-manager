@@ -1,11 +1,11 @@
-import { FiUser, FiLogIn } from "react-icons/fi";
-import { Container, Content, NavLink } from "./style";
-
+import { useContext } from "react";
 import { useLocation } from "react-router-dom";
 
-import { useContext } from "react";
 import { UserContext } from "../../providers/User";
 import { ModalContext } from "../../providers/Modal";
+
+import { Container, Content, NavLink } from "./style";
+import { FiUser, FiLogOut } from "react-icons/fi";
 
 import ModalEditUser from "../ModalEditUser";
 
@@ -29,7 +29,14 @@ const Navbar = () => {
         </h2>
         <nav>
           <ul>
-          <NavLink selected={pathname === "/Groups" || pathname ==="/YourGroups" || pathname === "/AllGroups"} to="/Groups">
+            <NavLink
+              selected={
+                pathname === "/Groups" ||
+                pathname === "/YourGroups" ||
+                pathname === "/AllGroups"
+              }
+              to="/Groups"
+            >
               Grupos
             </NavLink>
             <NavLink selected={pathname === "/Habits"} to="/Habits">
@@ -37,7 +44,7 @@ const Navbar = () => {
             </NavLink>
           </ul>
         </nav>
-        <FiLogIn onClick={logout} />
+        <FiLogOut onClick={logout} />
       </Content>
       {openEditUser && <ModalEditUser />}
     </Container>

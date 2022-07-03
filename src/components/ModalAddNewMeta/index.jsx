@@ -19,7 +19,7 @@ const ModalAddNewMeta = ({ id = "modalAddNewMeta", capturedGroupId }) => {
   const { addNewGoal } = useContext(GoalsContext);
 
   const editSchema = yup.object().shape({
-    title: yup.string().required("Campo o brigatório"),
+    title: yup.string().required("Campo obrigatório"),
     difficulty: yup.string().required("Campo obrigatório"),
   });
 
@@ -62,7 +62,7 @@ const ModalAddNewMeta = ({ id = "modalAddNewMeta", capturedGroupId }) => {
               />
             </div>
             <Select className="select" register={register} name="difficulty" />
-            <Button type="submit" modal white share className="new">
+            <Button type="submit" modal white share darkSchema className="new">
               Nova meta
             </Button>
           </form>

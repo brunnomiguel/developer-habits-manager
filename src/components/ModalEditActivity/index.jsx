@@ -61,7 +61,7 @@ const ModalEditActivity = ({
               error={errors.title?.message}
             />
 
-            <Button white share loginDesk>
+            <Button white share loginDesk darkSchema>
               Editar atividade
             </Button>
           </form>

@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar";
 import { Container } from "./style";
 
 import { useHistory } from "react-router-dom";
-const InitialGroupsPage = () => {
+const InitialGroups = () => {
   const history = useHistory();
 
   const handleClick = (path) => {
@@ -18,6 +18,7 @@ const InitialGroupsPage = () => {
         <Button
           Button
           loginDesk
+          darkSchema
           white
           share
           onClick={() => handleClick("/YourGroups")}
@@ -26,6 +27,7 @@ const InitialGroupsPage = () => {
         </Button>
         <Button
           loginDesk
+          darkSchema
           white
           share
           onClick={() => handleClick("/AllGroups")}
@@ -45,4 +47,4 @@ const InitialGroupsPage = () => {
   );
 };
 
-export default InitialGroupsPage;
+export default InitialGroups;

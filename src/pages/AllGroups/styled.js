@@ -11,10 +11,7 @@ export const Container = styled.main`
 `;
 
 export const Tittle = styled.div`
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
 

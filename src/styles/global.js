@@ -51,6 +51,17 @@ export default createGlobalStyle`
 
   body {
     background-color: var(--gray-6);
+
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+    &::-webkit-scrollbar-track {
+      background: var(--gray-6);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--gray-2);
+      border-radius: 20px;
+    }
   }
 
   button {

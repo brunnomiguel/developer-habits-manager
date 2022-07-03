@@ -82,7 +82,7 @@ const ModalEditHabit = ({ id = "modalEditHabit", capturedHabit }) => {
               <option value="90"></option>
               <option value="100"></option>
             </datalist>
-            <Button type="submit" modal white className="update">
+            <Button type="submit" modal white darkSchema className="update">
               Atualize sua evolução
             </Button>
           </form>

@@ -14,11 +14,9 @@ function Input({
 }) {
   return (
     <Container isErrored={!!error} search={search}>
-      <div>
-        <label htmlFor={name}>
-          {label} {!!error && <span> {error} </span>}
-        </label>
-      </div>
+      <label htmlFor={name}>
+        {label} {!!error && <span> {error} </span>}
+      </label>
 
       <InputContainer modal={modal} isErrored={!!error} search={search}>
         <input

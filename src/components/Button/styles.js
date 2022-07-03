@@ -1,22 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.button`
+export const StyledButton = styled.button`
   background-color: ${(props) =>
-    props.loginDesk
-      ? "var(--green-1)"
-      : props.loginMobile
-      ? "var(--green-1)"
-      : props.ativMetaDesk
-      ? "var(--green-2)"
-      : props.ativMetaMobile
-      ? "var(--green-2)"
-      : props.addDesk
-      ? "var(--green-2)"
-      : props.editDesk
-      ? "var(--green-2)"
-      : props.modal
-      ? "var(--green-1)"
-      : "var(--green-2)"};
+    props.darkSchema ? "var(--green-1)" : "var(--green-2)"};
 
   width: ${(props) =>
     props.ativMetaDesk

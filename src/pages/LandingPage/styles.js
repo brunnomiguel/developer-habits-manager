@@ -4,10 +4,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   margin-top: 80px;
 
   @media screen and (min-width: 769px) {
     flex-direction: row-reverse;
+
     margin-left: 107px;
     margin-right: 107px;
     margin-top: 100px;
@@ -54,6 +56,7 @@ export const Content = styled.div`
 
   @media screen and (min-width: 769px) {
     width: 50%;
+
     p {
       display: block;
       font-family: var(--font-share-tech);

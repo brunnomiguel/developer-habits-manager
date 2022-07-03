@@ -13,15 +13,14 @@ import Input from "../Input";
 import Button from "../Button";
 
 const ModalEditUser = ({ id = "modalEditUser" }) => {
+  const { updateUser } = useContext(UserContext);
+  const { setOpenEditUser } = useContext(ModalContext);
+
   const closeModalEvent = (event) => {
     if (event.target.id === id) {
       setOpenEditUser(false);
     }
   };
-
-  const { updateUser } = useContext(UserContext);
-
-  const { setOpenEditUser } = useContext(ModalContext);
 
   const editSchema = yup.object().shape({
     username: yup.string().required("Informe novo nome"),
@@ -35,8 +34,8 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
     reset,
   } = useForm({ resolver: yupResolver(editSchema) });
 
-  const closeEdit = (erro) => {
-    if (erro === true) {
+  const closeEdit = (value) => {
+    if (value) {
       reset();
       setOpenEditUser(false);
     }
@@ -60,17 +59,16 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
             <Input
               register={register}
               name={"username"}
-              label={"Novo nome de Usuário"}
+              label={"Novo usuário:"}
               error={errors.username?.message}
             />
-
             <Input
               register={register}
               name={"email"}
-              label={"Novo e-mail"}
+              label={"Novo e-mail:"}
               error={errors.email?.message}
             />
-            <Button loginDesk white type="submit">
+            <Button loginDesk darkSchema white type="submit">
               Editar suas informações
             </Button>
           </form>

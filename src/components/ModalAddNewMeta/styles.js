@@ -45,7 +45,7 @@ export const Container = styled.div`
         }
 
         input {
-            width: 222px;
+            width: 230px;
         }
 
         .kVWMBm {

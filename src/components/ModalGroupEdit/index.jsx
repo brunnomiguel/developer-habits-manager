@@ -84,7 +84,7 @@ const ModalGroupEdit = ({ id = "editNewGroup" }) => {
               type="text"
             />
 
-            <Button white share loginDesk>
+            <Button white share loginDesk darkSchema>
               Editar Grupo
             </Button>
           </form>

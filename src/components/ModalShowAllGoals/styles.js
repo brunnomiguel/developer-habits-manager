@@ -3,23 +3,27 @@ import styled from "styled-components";
 export const Overlay = styled.div`
   width: 100vw;
   height: 100vh;
+
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   position: fixed;
+
   background-color: rgba(0, 0, 0, 0.8);
 `;
 
 export const ModalHeader = styled.div`
   height: 46px;
+  padding: 0 10px;
+
   background-color: var(--green-2);
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   font-family: var(--font-share-tech);
-  padding-left: 10px;
-  padding-right: 10px;
   font-size: 20px;
 
   svg {
@@ -39,11 +43,12 @@ export const ModalContent = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: ease all 0.5s;
+
   background-color: var(--white-1);
+
   width: 280px;
   height: 513px;
-  overflow: auto;
-  transition: ease all 0.5s;
 
   @media screen and (min-width: 769px) {
     width: 700px;
@@ -52,6 +57,7 @@ export const ModalContent = styled.div`
 
 export const AddBttn = styled.div`
   margin: 15px 44px 15px 44px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,6 +77,20 @@ export const AddBttn = styled.div`
 `;
 
 export const CardsContainer = styled.div`
+  height: 380px;
+
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--gray-6);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--gray-2);
+    border-radius: 20px;
+  }
+
   @media screen and (min-width: 769px) {
     display: flex;
     flex-direction: row;

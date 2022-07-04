@@ -57,7 +57,7 @@ const ModalEditActivity = ({
             <Input
               type="text"
               modal
-              placeholder="Digite o novo título da atividade"
+              placeholder="Insira aqui o novo título"
               register={register}
               name="title"
               label="Título:"

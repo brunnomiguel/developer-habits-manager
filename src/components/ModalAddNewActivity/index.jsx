@@ -12,7 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "../Button";
 import Input from "../Input";
 
-const ModalAddActivity = ({ id = "addActivity", capturedGroupId }) => {
+const ModalAddNewActivity = ({ id = "addActivity", capturedGroupId }) => {
   const { setOpenAddNewActivity } = useContext(ModalContext);
   const { addNewActivity } = useContext(ActivitiesContext);
 
@@ -82,4 +82,4 @@ const ModalAddActivity = ({ id = "addActivity", capturedGroupId }) => {
   );
 };
 
-export default ModalAddActivity;
+export default ModalAddNewActivity;

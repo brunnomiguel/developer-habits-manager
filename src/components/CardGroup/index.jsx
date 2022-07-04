@@ -1,5 +1,5 @@
 import { Container, ContainerHeader, ContainerMain } from "./style";
-import { FiEdit, FiUserX } from "react-icons/fi";
+import { FiEdit, FiUserPlus, FiUserX } from "react-icons/fi";
 
 import { useContext } from "react";
 
@@ -84,7 +84,7 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
                   subscribeToTheGroup(id);
                 }}
               >
-                <FiEdit size={20} />
+                <FiUserPlus size={20} />
               </Button>
             )}
           </div>

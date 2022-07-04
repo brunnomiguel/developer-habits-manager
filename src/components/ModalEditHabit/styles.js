@@ -1,110 +1,109 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  .modal {
+  width: 100%;
+  height: 100%;
+
+  position: fixed;
+  z-index: 10;
+  top: -0px;
+  left: 0px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(18, 18, 20, 0.5);
+`;
+
+export const EditHabitModalHeader = styled.div`
+  width: 280px;
+  height: 46px;
+
+  border-radius: 5px 5px 0 0;
+
+  background-color: var(--green-2);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    margin-left: 10px;
+    font-family: var(--font-share-tech);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  button {
+    margin-right: 10px;
+    width: 22px;
+    height: 22px;
+    background: transparent;
+  }
+`;
+
+export const Content = styled.div`
+  width: 280px;
+  height: 200px;
+
+  background-color: var(--gray-4);
+  border-radius: 0 0 5px 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
     width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    background-color: rgba(18, 18, 20, 0.5);
+    padding: 20px 0px 10px 30px;
+    font-family: var(--font-share-mono);
+    font-size: 16px;
+  }
+
+  div {
+    width: 222px;
+    height: 15px;
+
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
-    .container {
-      background-color: var(--gray-4);
-      width: 280px;
-      height: 200px;
-      border-radius: 5px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .header {
-      background-color: var(--green-2);
-      height: 46px;
-      width: 280px;
-      margin-top: 0px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: var(--font-share-mono);
-      font-size: 20px;
-      border-radius: 5px;
-    }
-
-    span {
-      width: 250px;
-      height: 46px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .close {
-      background: none;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-    p {
-      display: flex;
-      width: 280px;
-      margin-left: 53px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      font-family: var(--font-share-mono);
-      font-size: 15px;
-    }
+    font-family: var(--font-share-tech);
+    font-size: 16px;
 
     h6 {
       display: flex;
       justify-content: space-between;
       width: 10px;
+      margin-top: 20px;
     }
+  }
 
-    input {
-      width: 230px;
-    }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    div {
+      background-color: transparent;
+      width: 100%;
 
-      .kJFvbR {
-        height: 30px;
-        margin-top: 5px;
-
-        div {
-          width: 0px;
-        }
+      &:hover {
+        border: none;
       }
-
-      .kVWMBm {
-        height: 30px;
-        margin-top: 0px;
+      
+      input {
+        width: 230px;
+        margin: 10px 0;
+        cursor: pointer;
       }
     }
 
-    .signals {
-      display: flex;
-      width: 222px;
-      justify-content: space-between;
-      align-items: center;
-      height: 15px;
-      font-family: var(--font-share-tech);
-      font-size: 15px;
-    }
-
-    .update {
-      width: 240px;
-      height: 40px;
-      margin-top: 15px;
-      font-size: 15px;
+    button {
+      margin-top: 20px;
     }
   }
 `;

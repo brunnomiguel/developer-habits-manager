@@ -1,142 +1,79 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  width: 100%;
+export const Overlay = styled.div`
+  width: 100vw;
   height: 100vh;
-  position: absolute;
   top: 0;
   left: 0;
-  z-index: 10;
+  right: 0;
+  bottom: 0;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.8);
+`;
+
+export const ModalHeader = styled.div`
+  height: 46px;
+  background-color: var(--green-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-share-tech);
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 20px;
+
+  svg {
+    background: transparent;
+    color: var(--green-1);
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 769px) {
+    height: 60px;
+  }
+`;
+
+export const ModalContent = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white-1);
+  width: 280px;
+  height: 513px;
+  overflow: auto;
+  transition: ease all 0.5s;
+
+  @media screen and (min-width: 769px) {
+    width: 700px;
+  }
+`;
+
+export const AddBttn = styled.div`
+  margin: 15px 44px 15px 44px;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 11px;
 
-  .container {
-    background-color: var(--white-1);
-    width: 280px;
-    height: 513px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
-
-    @media screen and (min-width: 769px) {
-      width: 700px;
-
-      .subtext {
-        flex-wrap: wrap;
-        justify-content: space-around;
-      }
-    }
+  span {
+    font-family: var(--font-lexend);
+    color: var(--gray-1);
+    text-align: center;
+    font-size: 16px;
   }
 
-  .header {
-    background-color: var(--green-2);
-    width: 100%;
-    height: 46px;
-    color: var(--black-1);
-    margin-top: 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--font-share-mono);
-    font-size: 20px;
-    border-radius: 5px;
-    padding: 20px;
-
-    /* span {
-      width: 240px;
-      height: 46px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    } */
-
-    .close {
-      background: none;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    /* @media screen and (min-width: 769px) {
-      font-size: 30px;
-      width: 700px;
-
-      .close {
-        width: 22px;
-        height: 23px;
-      }
-    } */
+  button {
+    width: 30px;
+    height: 30px;
   }
+`;
 
-  
-
-    .content-subtext {
-      width: 280px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-
-      p {
-        text-align: center;
-        font-size: 16px;
-        font-family: var(--font-lexend);
-      }
-
-      button {
-      }
-
-      @media screen and (min-width: 769px) {
-        width: 700px;
-
-        p {
-          width: 300px;
-        }
-      }
-    }
-  
-
-  .subtext {
-    width: 100%;
-    /* height: 350px; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-      p {
-        text-align: center;
-        font-size: 16px;
-        margin-top: 15px;
-      }
-
-      .button {
-        display: flex;
-        justify-content: space-around;
-        width: 100px;
-      }
-      button {
-        width: 36px;
-        height: 26px;
-        border-radius: 5px;
-        margin-top: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-    }
+export const CardsContainer = styled.div`
   @media screen and (min-width: 769px) {
-    .subtext {
-      flex-direction: row;
-      width: 700px;
-
-      p {
-        width: 200px;
-      }
-    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `;

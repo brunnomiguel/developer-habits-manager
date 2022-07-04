@@ -15,8 +15,6 @@ export const ActivitiesProvider = ({ children }) => {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    console.log(responseActivities.data);
-
     const dataActivities = responseActivities.data.results.map((activity) => ({
       ...activity,
       realization_time: new Date(activity.realization_time).toLocaleDateString(
@@ -39,8 +37,6 @@ export const ActivitiesProvider = ({ children }) => {
 
     data.realization_time = isoFormat;
     data.group = groupId;
-
-    console.log(data);
 
     api
       .post(`/activities/`, data, {

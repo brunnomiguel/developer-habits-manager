@@ -12,7 +12,7 @@ import { HabitsContext } from "../../providers/Habits";
 import Input from "../Input";
 import Button from "../Button";
 
-const ModalGroupEdit = ({ id = "editNewGroup" }) => {
+const ModalEditGroup = ({ id = "editNewGroup" }) => {
   const { setOpenEditGroup } = useContext(ModalContext);
   const { editGroup } = useContext(HabitsContext);
 
@@ -46,9 +46,9 @@ const ModalGroupEdit = ({ id = "editNewGroup" }) => {
     <Container id={id} onClick={handleOutsideClick}>
       <EditGroupModalHeader>
         <p>Editar Grupo</p>
-        <button onClick={() => setOpenEditGroup(false)}>
-          <FiX />
-        </button>
+        <Button onClick={() => setOpenEditGroup(false)}>
+          <FiX size={20} />
+        </Button>
       </EditGroupModalHeader>
 
       <EditGroupModalEdit>
@@ -94,4 +94,4 @@ const ModalGroupEdit = ({ id = "editNewGroup" }) => {
   );
 };
 
-export default ModalGroupEdit;
+export default ModalEditGroup;

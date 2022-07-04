@@ -1,4 +1,7 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { GroupsContext } from "../../providers/Groups";
+import { ModalContext } from "../../providers/Modal";
 
 import {
   Container,
@@ -16,18 +19,15 @@ import {
   FiPlus,
 } from "react-icons/fi";
 
-import Navbar from "../../components/Navbar";
-import Input from "../../components/Input";
-
 import { LinearProgress, Box } from "@mui/material";
 
-import { GroupsContext } from "../../providers/Groups";
+import Navbar from "../../components/Navbar";
+import Input from "../../components/Input";
 import Button from "../../components/Button";
 import CardGroup from "../../components/CardGroup";
-import Activities from "../../components/Activities";
+import ModalShowActivities from "../../components/ModalShowActivities";
 import ModalShowAllGoals from "../../components/ModalShowAllGoals";
-import { ModalContext } from "../../providers/Modal";
-import ModalGroupAddEdit from "../../components/ModalGroupAdd";
+import ModalAddNewGroup from "../../components/ModalAddNewGroup";
 
 const YourGroups = () => {
   const { groupsSubscribed, loading } = useContext(GroupsContext);
@@ -44,14 +44,12 @@ const YourGroups = () => {
 
   const searchGroup = (inputGroup) => {
     inputGroup = inputGroup.toLocaleLowerCase();
-    const filteredGroup = groupsSubscribed.filter((group) => {
-      if (
-        group.name.toLocaleLowerCase().includes(inputGroup) ||
-        group.category.toLocaleLowerCase().includes(inputGroup)
-      ) {
-        return group;
-      }
-    });
+    const filteredGroup = groupsSubscribed.filter((group) =>
+      group.name.toLocaleLowerCase().includes(inputGroup) ||
+      group.category.toLocaleLowerCase().includes(inputGroup)
+        ? group
+        : null
+    );
     setDisplayGroup(filteredGroup);
   };
 
@@ -103,6 +101,11 @@ const YourGroups = () => {
             <Box sx={{ width: "100%", alignSelf: "flex-start" }}>
               <LinearProgress color="success" />
             </Box>
+          ) : groupsSubscribed.length < 1 ? (
+            <h2>
+              Você não possui nenhum grupo cadastrado,
+              <Link to="/AllGroups"> entre em um grupo!</Link>
+            </h2>
           ) : inputGroup === "" ? (
             groupsSubscribed?.map((group) => {
               return (
@@ -134,9 +137,11 @@ const YourGroups = () => {
             <FiChevronRight size={20} />
           </Button>
         </PageButtons>
-        {openAllActivities && <Activities capturedGroup={capturedGroup} />}
+        {openAllActivities && (
+          <ModalShowActivities capturedGroup={capturedGroup} />
+        )}
         {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
-        {openAddNewGroup && <ModalGroupAddEdit />}
+        {openAddNewGroup && <ModalAddNewGroup />}
       </Container>
     </>
   );

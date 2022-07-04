@@ -1,9 +1,10 @@
-import Button from "../../components/Button";
-
-import Navbar from "../../components/Navbar";
 import { Container } from "./style";
 
 import { useHistory } from "react-router-dom";
+
+import Button from "../../components/Button";
+import Navbar from "../../components/Navbar";
+
 const InitialGroups = () => {
   const history = useHistory();
 
@@ -34,14 +35,6 @@ const InitialGroups = () => {
         >
           Todos os grupos
         </Button>
-        {/* <Button
-          loginDesk
-          white
-          share
-          onClick={() => handleClick("/gruposfazparte")}
-        >
-          Grupos que você faz parte
-        </Button> */}
       </Container>
     </>
   );

@@ -7,31 +7,20 @@ import { toast } from "react-toastify";
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
-  const [loading, setLoading] = useState(true);
   const { token } = useContext(UserContext);
 
   const [allGroups, setAllGroups] = useState([]);
   const [groupsSubscribed, setGroupsSubscribed] = useState([]);
-  // const [userCreatedGroups, setUserCreatedGroups] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   async function loadAllGroups() {
     const responseGroups = await api.get("/groups/", {
       headers: { Authorization: `Bearer ${token}` },
     });
     const groupsData = responseGroups.data;
-    setAllGroups(groupsData);
     setLoading(false);
+    setAllGroups(groupsData);
   }
-
-  // async function loadUserCreatedGroups() {
-  //   const responseGroups = await api.get("/groups/", {
-  //     headers: { Authorization: `Bearer ${token}` },
-  //   });
-  //   const groupsData = responseGroups.data.filter(
-  //     (group) => group.creator.id === decodeJwt.user_id
-  //   );
-  //   setUserCreatedGroups(groupsData);
-  // }
 
   async function loadSubscribedUserGroups() {
     const responseGroups = await api.get("/groups/subscriptions/", {
@@ -107,7 +96,7 @@ export const GroupsProvider = ({ children }) => {
         editGroup,
         subscribeToTheGroup,
         unSubscribeGroup,
-        loading
+        loading,
       }}
     >
       {children}

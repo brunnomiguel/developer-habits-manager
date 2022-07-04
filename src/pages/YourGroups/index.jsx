@@ -71,7 +71,7 @@ const YourGroups = () => {
             <h2>Seus Grupos</h2>
             <AddBttn>
               <span>Adicione um novo grupo</span>
-              <Button white onClick={() => {}}>
+              <Button white onClick={() => setOpenAddNewGroup(true)}>
                 <FiPlus size={20} />
               </Button>
             </AddBttn>

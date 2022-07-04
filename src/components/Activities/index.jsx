@@ -3,16 +3,16 @@ import {
   ModalHeader,
   AddBttn,
   CardsContainer,
-  Modal,
   ModalContent,
   Overlay,
 } from "./styles";
 
 import Button from "../Button";
-import CardActivitie from "../CardActivitie";
+import CardActivity from "../CardActivity";
 import AddActivity from "../AddActivity";
 
 import { FiPlus } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 
 import { useContext, useEffect, useState } from "react";
 import { ModalContext } from "../../providers/Modal";
@@ -53,7 +53,9 @@ const Activities = ({ id = "modalActivities", capturedGroup }) => {
       <ModalContent>
         <ModalHeader>
           <p>Atividades</p>
-          <button onClick={() => setOpenAllActivities(false)}>X</button>
+          <button onClick={() => setOpenAllActivities(false)}>
+            <FiX size={20} />
+          </button>
         </ModalHeader>
 
         <AddBttn>
@@ -65,7 +67,7 @@ const Activities = ({ id = "modalActivities", capturedGroup }) => {
         <CardsContainer>
           {activities.map((activity) => {
             return (
-              <CardActivitie
+              <CardActivity
                 key={activity.id}
                 activity={activity}
                 captureActivity={captureActivity}

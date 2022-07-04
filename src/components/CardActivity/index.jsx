@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { ActivitiesContext } from "../../providers/Activities";
 import { ModalContext } from "../../providers/Modal";
 
-const CardActivitie = ({ activity, capturedGroupId, captureActivity }) => {
+const CardActivity = ({ activity, capturedGroupId, captureActivity }) => {
   const { id, title, realization_time } = activity;
   const { deleteActivity } = useContext(ActivitiesContext);
   const { setOpenEditActivity } = useContext(ModalContext);
@@ -41,4 +41,4 @@ const CardActivitie = ({ activity, capturedGroupId, captureActivity }) => {
   );
 };
 
-export default CardActivitie;
+export default CardActivity;

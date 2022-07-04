@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 50%;
+  width: 100%;
   height: 100%;
 
   position: fixed;
@@ -17,7 +17,7 @@ export const Container = styled.div`
   background-color: rgba(18, 18, 20, 0.5);
 `;
 
-export const AddGroupModalHeader = styled.div`
+export const ModalHeader = styled.div`
   width: 280px;
   height: 46px;
 
@@ -27,9 +27,10 @@ export const AddGroupModalHeader = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  padding: 10px;
+
   p {
     margin-left: 10px;
-
     font-family: var(--font-share-tech);
     font-weight: 400;
     font-size: 20px;
@@ -38,22 +39,20 @@ export const AddGroupModalHeader = styled.div`
 
   button {
     margin-right: 10px;
-
     width: 22px;
     height: 22px;
-
     background: transparent;
   }
 `;
 
-export const AddGroupModalEdit = styled.div`
+export const ModalEdit = styled.div`
   width: 280px;
-
+  padding: 10px;
   background-color: var(--gray-4);
 
-  div {
+  .adjustment {
     width: 222px;
-    margin: 10px auto;
+    margin: auto;
 
     label {
       font-size: 15px;

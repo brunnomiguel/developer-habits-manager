@@ -1,4 +1,4 @@
-import { Container, AddGroupModalHeader, AddGroupModalEdit } from "./style";
+import { Container, EditGroupModalHeader, EditGroupModalEdit } from "./style";
 import { FiX } from "react-icons/fi";
 
 import * as yup from "yup";
@@ -12,13 +12,13 @@ import { HabitsContext } from "../../providers/Habits";
 import Input from "../Input";
 import Button from "../Button";
 
-const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
-  const { setOpenAddNewGroup } = useContext(ModalContext);
-  const { createNewGroup } = useContext(HabitsContext);
+const ModalEditGroup = ({ id = "editNewGroup" }) => {
+  const { setOpenEditGroup } = useContext(ModalContext);
+  const { editGroup } = useContext(HabitsContext);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
-      setOpenAddNewGroup(false);
+      setOpenEditGroup(false);
     }
   };
 
@@ -38,25 +38,25 @@ const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
   });
 
   const onSubmitFunction = (data) => {
-    createNewGroup(data);
+    editGroup(data);
     reset();
   };
 
   return (
     <Container id={id} onClick={handleOutsideClick}>
-      <AddGroupModalHeader>
-        <p>Novo Grupo</p>
-        <button onClick={() => setOpenAddNewGroup(false)}>
-          <FiX />
-        </button>
-      </AddGroupModalHeader>
+      <EditGroupModalHeader>
+        <p>Editar Grupo</p>
+        <Button onClick={() => setOpenEditGroup(false)}>
+          <FiX size={20} />
+        </Button>
+      </EditGroupModalHeader>
 
-      <AddGroupModalEdit>
+      <EditGroupModalEdit>
         <div>
           <form onSubmit={handleSubmit(onSubmitFunction)}>
             <Input
               modal
-              placeholder="Digite o Nome do grupo"
+              placeholder="Digite o nome do grupo"
               register={register}
               name="name"
               label="Nome do grupo: "
@@ -66,7 +66,7 @@ const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
 
             <Input
               modal
-              placeholder="Digite uma descrição"
+              placeholder="Digite a descrição"
               register={register}
               name="description"
               label="Descrição: "
@@ -76,7 +76,7 @@ const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
 
             <Input
               modal
-              placeholder="Digite uma categoria"
+              placeholder="Digite a categoria"
               register={register}
               name="category"
               label="Categoria: "
@@ -84,14 +84,14 @@ const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
               type="text"
             />
 
-            <Button white share loginDesk>
-              Novo Grupo
+            <Button white share loginDesk darkSchema>
+              Editar Grupo
             </Button>
           </form>
         </div>
-      </AddGroupModalEdit>
+      </EditGroupModalEdit>
     </Container>
   );
 };
 
-export default ModalGroupAddEdit;
+export default ModalEditGroup;

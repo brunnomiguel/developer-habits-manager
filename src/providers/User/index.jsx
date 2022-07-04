@@ -47,7 +47,7 @@ export const UserProvider = ({ children }) => {
         closeEdit(true);
       })
       .catch((_) => {
-        toast.error(`Ops, Algo deu errado 😔`);
+        toast.error(`Ops, digite nome de usuário / email diferente`);
       });
   };
 

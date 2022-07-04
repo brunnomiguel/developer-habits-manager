@@ -1,10 +1,10 @@
 import { Container, Content, BackgroundImage, ContentAnimation } from "./style";
 
+import { Link } from "react-router-dom";
+
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-
-import { Link } from "react-router-dom";
 
 import { useContext } from "react";
 import { UserContext } from "../../providers/User";
@@ -56,7 +56,7 @@ const SignIn = () => {
               name="password"
               error={errors.password?.message}
             />
-            <Button loginMobile type="submit">
+            <Button loginDesk darkSchema type="submit">
               Login
             </Button>
           </form>
@@ -65,7 +65,7 @@ const SignIn = () => {
           </p>
         </ContentAnimation>
       </Content>
-      <BackgroundImage></BackgroundImage>
+      <BackgroundImage />
     </Container>
   );
 };

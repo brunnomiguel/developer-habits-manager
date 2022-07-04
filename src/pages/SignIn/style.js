@@ -28,7 +28,8 @@ export const Content = styled.div`
   justify-content: center;
 
   width: 100%;
-  max-width: 550px;
+  max-width: 500px;
+  margin: auto;
 `;
 export const ContentAnimation = styled.div`
   display: flex;
@@ -100,8 +101,10 @@ export const ContentAnimation = styled.div`
 `;
 export const BackgroundImage = styled.div`
   @media (min-width: 1100px) {
-    margin: 0;
     background: url(${LoginImage}) no-repeat center;
-    width:700px;
+    
+    width: 700px;
+    height: 505px;
+    margin: auto;
   }
 `;

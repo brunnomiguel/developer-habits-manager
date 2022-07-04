@@ -1,14 +1,20 @@
 import { useContext, useEffect } from "react";
 import { ModalContext } from "../../providers/Modal";
 
-import { Container } from "./styles";
-import { FiX } from "react-icons/fi";
+import {
+  Overlay,
+  ModalHeader,
+  ModalContent,
+  AddBttn,
+  CardsContainer,
+} from "./styles";
+
+import { FiX, FiPlus } from "react-icons/fi";
 
 import Button from "../Button";
-import ModalAddNewMeta from "../../components/ModalAddNewMeta";
+import ModalAddNewGoal from "../../components/ModalAddNewGoal";
 import { GoalsContext } from "../../providers/Goals";
-import CardMeta from "../CardMeta";
-
+import CardGoal from "../CardGoal";
 
 const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   const { openAddNewGoal, setOpenAddNewGoal, setOpenAllGoals } =
@@ -26,36 +32,36 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   };
 
   return (
-    <Container>
-      <div className="modal" id={id} onClick={handleOutsideClick}>
-        <div className="container">
-          <div className="header">
-            <span>Metas</span>
-            <FiX className="close" onClick={() => setOpenAllGoals(false)} />
-          </div>
-          <div className="content">
-            <div className="content-subtext">
-              <p>Crie uma nova meta para este grupo</p>
-              <Button small white onClick={() => setOpenAddNewGoal(true)}>
-                +
-              </Button>
-              {openAddNewGoal && (
-                <ModalAddNewMeta capturedGroupId={capturedGroup.id} />
-              )}
-            </div>
-          </div>
-          <div className="subtext">
-            {goals.map((goal) => {
-              return (
-                <div className="meta">
-                  <CardMeta goal={goal}/>
-                </div> 
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </Container>
+    <>
+      <Overlay id={id} onClick={handleOutsideClick} />
+      <ModalContent>
+        <ModalHeader>
+          <p>Metas</p>
+          <FiX onClick={() => setOpenAllGoals(false)} />
+        </ModalHeader>
+        <AddBttn>
+          <span>Crie uma nova meta para este grupo</span>
+          <Button small white onClick={() => setOpenAddNewGoal(true)}>
+            <FiPlus size={20} />
+          </Button>
+          {openAddNewGoal && (
+            <ModalAddNewGoal capturedGroupId={capturedGroup.id} />
+          )}
+        </AddBttn>
+
+        <CardsContainer>
+          {goals.map((goal) => {
+            return (
+              <CardGoal
+                key={goal.id}
+                goal={goal}
+                capturedGroupId={capturedGroup.id}
+              />
+            );
+          })}
+        </CardsContainer>
+      </ModalContent>
+    </>
   );
 };
 

@@ -9,6 +9,7 @@ export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
   const { token, decodeJwt } = useContext(UserContext);
+
   const [habits, setHabits] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -20,6 +21,7 @@ export const HabitsProvider = ({ children }) => {
     const dataHabits = responseHabits.data.filter(
       (habit) => habit.achieved === false
     );
+
     setLoading(false);
     setHabits(dataHabits);
   }
@@ -35,8 +37,11 @@ export const HabitsProvider = ({ children }) => {
 
     api
       .post("/habits/", data, { headers: { Authorization: `Bearer ${token}` } })
-      .then((_) => loadHabits());
-    toast.success("Hábito criado com sucesso");
+      .then((_) => {
+        toast.success("Hábito criado com sucesso");
+        loadHabits();
+      })
+      .catch((_) => toast.error("Ops... algo deu errado."));
   };
 
   const updateHabit = (data, habitId) => {

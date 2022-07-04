@@ -1,16 +1,18 @@
-import Button from "../Button";
-import Input from "../Input";
+import { Container, ModalHeader, ModalEdit } from "./styles";
+import { FiX } from "react-icons/fi";
+
+import { useContext } from "react";
+import { ActivitiesContext } from "../../providers/Activities";
+import { ModalContext } from "../../providers/Modal";
 
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { useContext } from "react";
-import { ActivitiesContext } from "../../providers/Activities";
-import { ModalContext } from "../../providers/Modal";
-import { Container, AddHabitModalHeader, AddHabitModalEdit } from "./styles";
+import Button from "../Button";
+import Input from "../Input";
 
-const AddActivity = ({ id = "addActivity", capturedGroupId }) => {
+const ModalAddNewActivity = ({ id = "addActivity", capturedGroupId }) => {
   const { setOpenAddNewActivity } = useContext(ModalContext);
   const { addNewActivity } = useContext(ActivitiesContext);
 
@@ -41,12 +43,14 @@ const AddActivity = ({ id = "addActivity", capturedGroupId }) => {
 
   return (
     <Container id={id} onClick={handleOutsideClick}>
-      <AddHabitModalHeader>
+      <ModalHeader>
         <p>Nova Atividade</p>
-        <button onClick={() => setOpenAddNewActivity(false)}>X</button>
-      </AddHabitModalHeader>
+        <Button onClick={() => setOpenAddNewActivity(false)}>
+          <FiX size={20} />
+        </Button>
+      </ModalHeader>
 
-      <AddHabitModalEdit>
+      <ModalEdit>
         <div className="adjustment">
           <form onSubmit={handleSubmit(handleActivity)}>
             <Input
@@ -68,14 +72,14 @@ const AddActivity = ({ id = "addActivity", capturedGroupId }) => {
               error={errors.realization_time?.message}
             />
 
-            <Button white share loginDesk>
+            <Button white share darkSchema loginDesk>
               Nova Atividade
             </Button>
           </form>
         </div>
-      </AddHabitModalEdit>
+      </ModalEdit>
     </Container>
   );
 };
 
-export default AddActivity;
+export default ModalAddNewActivity;

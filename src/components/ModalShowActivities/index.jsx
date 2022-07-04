@@ -1,5 +1,4 @@
 import {
-  Container,
   ModalHeader,
   AddBttn,
   CardsContainer,
@@ -7,19 +6,27 @@ import {
   Overlay,
 } from "./styles";
 
+<<<<<<< HEAD:src/components/Activities/index.jsx
 import Button from "../Button";
 import CardActivity from "../CardActivity";
 import AddActivity from "../AddActivity";
 
 import { FiPlus } from "react-icons/fi";
 import { FiX } from "react-icons/fi";
+=======
+import { FiPlus, FiX } from "react-icons/fi";
+
+import Button from "../Button";
+import CardActivity from "../CardActivity";
+import ModalAddNewActivity from "../ModalAddNewActivity";
+import ModalEditActivity from "../ModalEditActivity";
+>>>>>>> 7b85e2064b40eb6996081a0eefe78debd07db6cf:src/components/ModalShowActivities/index.jsx
 
 import { useContext, useEffect, useState } from "react";
 import { ModalContext } from "../../providers/Modal";
 import { ActivitiesContext } from "../../providers/Activities";
-import ModalEditActivity from "../ModalEditActivity";
 
-const Activities = ({ id = "modalActivities", capturedGroup }) => {
+const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
   const {
     setOpenAllActivities,
     openAddNewActivity,
@@ -48,14 +55,18 @@ const Activities = ({ id = "modalActivities", capturedGroup }) => {
   };
 
   return (
-    <Container>
+    <>
       <Overlay id={id} onClick={handleOutsideClick} />
       <ModalContent>
         <ModalHeader>
           <p>Atividades</p>
+<<<<<<< HEAD:src/components/Activities/index.jsx
           <button onClick={() => setOpenAllActivities(false)}>
             <FiX size={20} />
           </button>
+=======
+          <FiX onClick={() => setOpenAllActivities(false)} />
+>>>>>>> 7b85e2064b40eb6996081a0eefe78debd07db6cf:src/components/ModalShowActivities/index.jsx
         </ModalHeader>
 
         <AddBttn>
@@ -77,15 +88,17 @@ const Activities = ({ id = "modalActivities", capturedGroup }) => {
           })}
         </CardsContainer>
       </ModalContent>
-      {openAddNewActivity && <AddActivity capturedGroupId={capturedGroup.id} />}
+      {openAddNewActivity && (
+        <ModalAddNewActivity capturedGroupId={capturedGroup.id} />
+      )}
       {openEditActivity && (
         <ModalEditActivity
           activityId={capturedActivity.id}
           capturedGroupId={capturedGroup.id}
         />
       )}
-    </Container>
+    </>
   );
 };
 
-export default Activities;
+export default ModalShowActivities;

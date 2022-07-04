@@ -17,7 +17,7 @@ export const Container = styled.div`
   background-color: rgba(18, 18, 20, 0.5);
 `;
 
-export const EditActivityModalHeader = styled.div`
+export const AddGroupModalHeader = styled.div`
   width: 280px;
   height: 46px;
 
@@ -29,6 +29,7 @@ export const EditActivityModalHeader = styled.div`
 
   p {
     margin-left: 10px;
+
     font-family: var(--font-share-tech);
     font-weight: 400;
     font-size: 20px;
@@ -37,20 +38,22 @@ export const EditActivityModalHeader = styled.div`
 
   button {
     margin-right: 10px;
+
     width: 22px;
     height: 22px;
+
     background: transparent;
   }
 `;
 
-export const Content = styled.div`
+export const AddGroupModalEdit = styled.div`
   width: 280px;
 
   background-color: var(--gray-4);
 
-  .adjustment {
+  div {
     width: 222px;
-    margin: auto;
+    margin: 10px auto;
 
     label {
       font-size: 15px;

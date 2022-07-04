@@ -1,186 +1,99 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  .modal {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.8);
+export const Overlay = styled.div`
+  width: 100vw;
+  height: 100vh;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+
+  background-color: rgba(0, 0, 0, 0.8);
+`;
+
+export const ModalHeader = styled.div`
+  height: 46px;
+  padding: 0 10px;
+
+  background-color: var(--green-2);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: var(--font-share-tech);
+  font-size: 20px;
+
+  svg {
+    background: transparent;
+    color: var(--green-1);
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 769px) {
+    height: 60px;
+  }
+`;
+
+export const ModalContent = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: ease all 0.5s;
+
+  background-color: var(--white-1);
+
+  width: 280px;
+  height: 513px;
+
+  @media screen and (min-width: 769px) {
+    width: 700px;
+  }
+`;
+
+export const AddBttn = styled.div`
+  margin: 15px 44px 15px 44px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+
+  span {
+    font-family: var(--font-lexend);
+    color: var(--gray-1);
+    text-align: center;
+    font-size: 16px;
+  }
+
+  button {
+    width: 30px;
+    height: 30px;
+  }
+`;
+
+export const CardsContainer = styled.div`
+  height: 380px;
+
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--gray-6);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--gray-2);
+    border-radius: 20px;
+  }
+
+  @media screen and (min-width: 769px) {
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .container {
-      background-color: var(--white-1);
-      width: 280px;
-      height: 260px;
-      border-radius: 5px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      @media screen and (min-width: 769px) {
-        width: 700px;
-        height: 500px;
-
-        .subtext {
-          flex-wrap: wrap;
-          justify-content: space-around;
-        }
-      }
-    }
-
-    .header {
-      background-color: var(--green-2);
-      width: 280px;
-      height: 46px;
-      color: var(--black-1: #000000);
-      margin-top: 0px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--font-share-mono);
-      font-size: 20px;
-      border-radius: 5px;
-      padding: 20px;
-
-      span {
-        width: 240px;
-        height: 46px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-      }
-
-      .close {
-        background: none;
-        font-size: 13px;
-        cursor: pointer;
-      }
-  
-      @media screen and (min-width: 769px) {
-        font-size: 30px;
-        width: 700px;
-
-        .close {
-          width: 22px;
-          height: 23px;
-        }
-      }  
-  
-    }
-
-    .content {
-      width: 280px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      display: flex;
-      justify-content: center;
-      align-content: center;
-
-      .content-subtext {
-        width: 200px;
-        height: 35px;
-        display: flex;
-
-        p {
-          text-align: center;
-          font-size: 16px;
-          font-family: var(--font-lexend);
-        }
-
-        button {
-          width: 40px;
-          height: 30px;
-        }
-
-        @media screen and (min-width: 769px) {
-          width: 700px;
-
-          p {
-            width: 300px;
-          }
-        }
-  
-      }
-
-    }
-
-    .subtext {
-      width: 280px;
-      height: 300px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow-y: scroll;
-      overflow-x: hidden;
-
-      .meta {
-        width: 250px;
-        height:230px;
-        font-family: var(--font-lexend);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 10px;
-
-        .bpsTbR {
-          width: 300px;
-          height: 220px;
-          margin: 10px 25px;
-          margin-top: 20px;
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-        }
-
-        .iDQewz {
-          margin-top: 20px;
-        }
-
-        p {
-          text-align: center;
-          font-size: 16px;
-          margin-top: 15px;
-        }
-
-            .button {
-            display: flex;
-            justify-content: space-around;
-            width: 100px;
-            }
-                button {
-                    width: 36px;
-                    height: 26px;
-                    border-radius: 5px;
-                    margin-top: 20px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-            }
-        }
-        @media screen and (min-width: 769px) {
-            .subtext {
-              flex-direction: row;
-              width: 700px;
-
-              p {
-                whidth: 200px;
-              }
-
-              .meta {
-                margin: 0px;
-              }
-
-            }
-        }
-    
-    }
-}
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `;

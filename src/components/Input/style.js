@@ -3,8 +3,10 @@ import styled, { css } from "styled-components";
 export const Container = styled.div`
   width: ${(props) => (props.search ? "70%" : "100%")};
   height: ${(props) => (props.search ? "0px" : "80px")};
+
   margin: ${(props) => (props.search ? "none" : "10px 0")};
   text-align: left;
+
   label {
     font-family: var(--font-share-mono);
     span {
@@ -21,17 +23,19 @@ export const Container = styled.div`
 `;
 
 export const InputContainer = styled.div`
-  background: ${(props) =>
-    props.search ? "var(--green-2)" : "var(--white-1)"};
+  width: 100%;
   height: ${(props) => (props.search ? "37px" : props.modal ? "36px" : "50px")};
+
   margin-top: ${(props) => (props.search ? "0" : "5px")};
   padding: ${(props) => (props.search ? "0 0 0 10px" : "5px")};
 
-  border-radius: 5px;
-  border: none;
+  background-color: ${(props) =>
+    props.search ? "var(--green-2)" : "var(--white-1)"};
   color: var(--black-1);
+  border-radius: 5px;
+
   display: flex;
-  width: 100%;
+
   &:hover {
     border: ${(props) => (props.search ? "none" : "2px solid var(--green-1)")};
   }
@@ -42,10 +46,11 @@ export const InputContainer = styled.div`
     `}
 
   input {
-    background: transparent;
-    flex: 1;
-    border: none;
+    background-color: transparent;
     color: var(--black-1);
+
+    flex: 1;
+
     font-family: ${(props) =>
       props.search ? "var(--font-lexend)" : "var(--font-share-mono)"};
     &::placeholder {
@@ -55,12 +60,15 @@ export const InputContainer = styled.div`
 
   div {
     display: ${(props) => (props.search ? "block" : "none")};
-    width: 35px;
+
+    width: 40px;
+
     background: var(--green-1);
-    display: flex;
-    justify-content: center;
+
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+
+    position: relative;
 
     &:hover {
       opacity: 0.7;
@@ -68,10 +76,14 @@ export const InputContainer = styled.div`
     }
 
     svg {
-      display: ${(props) => (props.search ? "block" : "none")};
       color: var(--white-1);
-      height: 37px;
-      width: 20px;
+      font-size: 25px;
+
+      position: absolute;
+      top: 4px;
+      left: 0;
+      right: 0;
+      margin: auto;
     }
   }
 `;

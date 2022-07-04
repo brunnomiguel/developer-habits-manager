@@ -1,10 +1,11 @@
-import Button from "../../components/Button";
-
-import Navbar from "../../components/Navbar";
 import { Container } from "./style";
 
 import { useHistory } from "react-router-dom";
-const InitialGroupsPage = () => {
+
+import Button from "../../components/Button";
+import Navbar from "../../components/Navbar";
+
+const InitialGroups = () => {
   const history = useHistory();
 
   const handleClick = (path) => {
@@ -18,6 +19,7 @@ const InitialGroupsPage = () => {
         <Button
           Button
           loginDesk
+          darkSchema
           white
           share
           onClick={() => handleClick("/YourGroups")}
@@ -26,23 +28,16 @@ const InitialGroupsPage = () => {
         </Button>
         <Button
           loginDesk
+          darkSchema
           white
           share
           onClick={() => handleClick("/AllGroups")}
         >
           Todos os grupos
         </Button>
-        {/* <Button
-          loginDesk
-          white
-          share
-          onClick={() => handleClick("/gruposfazparte")}
-        >
-          Grupos que você faz parte
-        </Button> */}
       </Container>
     </>
   );
 };
 
-export default InitialGroupsPage;
+export default InitialGroups;

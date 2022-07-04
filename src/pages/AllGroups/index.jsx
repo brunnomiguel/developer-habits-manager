@@ -21,7 +21,7 @@ import ModalShowActivities from "../../components/ModalShowActivities";
 import ModalShowAllGoals from "../../components/ModalShowAllGoals";
 
 const AllGroups = () => {
-  const { allGroups, loading } = useContext(GroupsContext);
+  const { allGroups, loading, page, setPage } = useContext(GroupsContext);
   const { openAllActivities, openAllGoals } = useContext(ModalContext);
 
   const [displayGroup, setDisplayGroup] = useState([]);
@@ -44,6 +44,15 @@ const AllGroups = () => {
       (group) => group.id === groupId
     );
     setCapturedGroup(...verifyGroup);
+  };
+
+  const nextPage = () => {
+    const totalPage = Math.ceil(allGroups.count / 15);
+    if (page < totalPage) return setPage(page + 1);
+  };
+
+  const previusPage = () => {
+    if (page > 1) return setPage(page - 1);
   };
 
   return (
@@ -98,15 +107,17 @@ const AllGroups = () => {
           )}
         </CardsContainer>
         <PageButtons>
-          <Button white>
+          <Button white onClick={() => previusPage()}>
             <FiChevronLeft size={20} />
           </Button>
-          <span>1</span>
-          <Button white>
+          <span>{page}</span>
+          <Button white onClick={() => nextPage()}>
             <FiChevronRight size={20} />
           </Button>
         </PageButtons>
-        {openAllActivities && <ModalShowActivities capturedGroup={capturedGroup} />}
+        {openAllActivities && (
+          <ModalShowActivities capturedGroup={capturedGroup} />
+        )}
         {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
       </Container>
     </>

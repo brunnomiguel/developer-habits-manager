@@ -13,7 +13,6 @@ import CardActivity from "../CardActivity";
 import ModalAddActivity from "../ModalAddActivity";
 import ModalEditActivity from "../ModalEditActivity";
 
-
 import { useContext, useEffect, useState } from "react";
 import { ModalContext } from "../../providers/Modal";
 import { ActivitiesContext } from "../../providers/Activities";

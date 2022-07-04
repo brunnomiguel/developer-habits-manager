@@ -44,6 +44,30 @@ const YourGroups = () => {
   const [capturedGroup, setCapturedGroup] = useState({});
   const [inputGroup, setInputGroup] = useState("");
 
+  const [previuPage, setPreviuPage] = useState(0);
+  const [nextPage, setNextPage] = useState(15);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  console.log(groupsSubscribed);
+
+  const upPages = () => {
+    const totalPage = Math.ceil(groupsSubscribed.length / 15);
+    console.log(totalPage);
+    if (currentPage < totalPage) {
+      setNextPage(nextPage + 15);
+      setPreviuPage(previuPage + 15);
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const downPages = () => {
+    if (previuPage > 0) {
+      setPreviuPage(previuPage - 15);
+      setNextPage(nextPage - 15);
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   const searchGroup = (inputGroup) => {
     inputGroup = inputGroup.toLocaleLowerCase();
     const filteredGroup = groupsSubscribed.filter((group) =>
@@ -54,6 +78,8 @@ const YourGroups = () => {
     );
     setDisplayGroup(filteredGroup);
   };
+
+  console.log(groupsSubscribed);
 
   const captureGroup = (groupId) => {
     const verifyGroup = groupsSubscribed.filter(
@@ -109,7 +135,7 @@ const YourGroups = () => {
               <Link to="/AllGroups"> entre em um grupo!</Link>
             </h2>
           ) : inputGroup === "" ? (
-            groupsSubscribed?.map((group) => {
+            groupsSubscribed?.slice(previuPage, nextPage).map((group) => {
               return (
                 <CardGroup
                   key={group.id}
@@ -131,11 +157,11 @@ const YourGroups = () => {
           )}
         </CardsContainer>
         <PageButtons>
-          <Button white>
+          <Button white onClick={() => downPages()}>
             <FiChevronLeft size={20} />
           </Button>
-          <span>1</span>
-          <Button white>
+          <span>{currentPage}</span>
+          <Button white onClick={() => upPages()}>
             <FiChevronRight size={20} />
           </Button>
         </PageButtons>

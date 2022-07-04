@@ -12,9 +12,10 @@ export const GroupsProvider = ({ children }) => {
   const [allGroups, setAllGroups] = useState([]);
   const [groupsSubscribed, setGroupsSubscribed] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
   async function loadAllGroups() {
-    const responseGroups = await api.get("/groups/", {
+    const responseGroups = await api.get(`/groups/?page=${page}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const groupsData = responseGroups.data;
@@ -36,7 +37,7 @@ export const GroupsProvider = ({ children }) => {
       loadAllGroups();
       loadSubscribedUserGroups();
     }
-  }, [token]);
+  }, [token, page]);
 
   const createNewGroup = (data) => {
     api
@@ -98,6 +99,8 @@ export const GroupsProvider = ({ children }) => {
         subscribeToTheGroup,
         unSubscribeGroup,
         loading,
+        page,
+        setPage,
       }}
     >
       {children}

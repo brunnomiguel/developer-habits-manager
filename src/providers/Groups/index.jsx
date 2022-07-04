@@ -56,6 +56,7 @@ export const GroupsProvider = ({ children }) => {
       .then((_) => {
         toast.success("Edição realizada com sucesso");
         loadSubscribedUserGroups();
+        loadAllGroups();
       })
       .catch((_) =>
         toast.error("Não é possível editar, você não é o criador desse grupo.")

@@ -17,7 +17,7 @@ export const Container = styled.div`
   background-color: rgba(18, 18, 20, 0.5);
 `;
 
-export const EditActivityModalHeader = styled.div`
+export const ModalHeader = styled.div`
   width: 280px;
   height: 46px;
 
@@ -26,6 +26,8 @@ export const EditActivityModalHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  padding: 10px;
 
   p {
     margin-left: 10px;
@@ -43,9 +45,9 @@ export const EditActivityModalHeader = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const ModalEdit = styled.div`
   width: 280px;
-
+  padding: 10px;
   background-color: var(--gray-4);
 
   .adjustment {

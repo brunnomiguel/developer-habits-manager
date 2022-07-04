@@ -69,6 +69,12 @@ export const CardsContainer = styled.div`
   grid-template-columns: minmax(300px, 1fr);
   justify-items: center;
   gap: 20px;
+
+  h2 {
+    a {
+      color: var(--blue-link);
+    }
+  }
 `;
 
 export const PageButtons = styled.div`

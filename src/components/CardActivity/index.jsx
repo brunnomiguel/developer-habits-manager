@@ -1,11 +1,13 @@
 import { Container, CardHeader, DateTime, Buttons } from "./styles";
 import { FiEdit, FiDelete } from "react-icons/fi";
-import Button from "../Button";
+
 import { useContext } from "react";
 import { ActivitiesContext } from "../../providers/Activities";
 import { ModalContext } from "../../providers/Modal";
 
-const CardActivitie = ({ activity, capturedGroupId, captureActivity }) => {
+import Button from "../Button";
+
+const CardActivity = ({ activity, capturedGroupId, captureActivity }) => {
   const { id, title, realization_time } = activity;
   const { deleteActivity } = useContext(ActivitiesContext);
   const { setOpenEditActivity } = useContext(ModalContext);
@@ -41,4 +43,4 @@ const CardActivitie = ({ activity, capturedGroupId, captureActivity }) => {
   );
 };
 
-export default CardActivitie;
+export default CardActivity;

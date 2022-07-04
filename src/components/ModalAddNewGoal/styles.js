@@ -3,26 +3,32 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   height: 100%;
+
   position: fixed;
   z-index: 10;
   top: -0px;
   left: 0px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   background-color: rgba(18, 18, 20, 0.5);
 `;
 
-export const AddHabitModalHeader = styled.div`
+export const ModalHeader = styled.div`
   width: 280px;
   height: 46px;
+
   background-color: var(--green-2);
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   padding: 10px;
+
   p {
     margin-left: 10px;
     font-family: var(--font-share-tech);
@@ -39,7 +45,7 @@ export const AddHabitModalHeader = styled.div`
   }
 `;
 
-export const AddHabitModalEdit = styled.div`
+export const ModalEdit = styled.div`
   width: 280px;
   padding: 10px;
   background-color: var(--gray-4);
@@ -52,6 +58,7 @@ export const AddHabitModalEdit = styled.div`
       font-size: 15px;
     }
     button {
+      width: 100%;
       height: 39px;
       margin: 20px 0;
     }

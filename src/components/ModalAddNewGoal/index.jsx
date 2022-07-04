@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { Container } from "./styles";
+import { Container, ModalHeader, ModalEdit } from "./styles";
 import { FiX } from "react-icons/fi";
 
 import { GoalsContext } from "../../providers/Goals";
@@ -14,7 +14,7 @@ import Button from "../Button";
 import Input from "../Input";
 import Select from "../Select";
 
-const ModalAddNewMeta = ({ id = "modalAddNewMeta", capturedGroupId }) => {
+const ModalAddNewGoal = ({ id = "modalAddNewMeta", capturedGroupId }) => {
   const { setOpenAddNewGoal } = useContext(ModalContext);
   const { addNewGoal } = useContext(GoalsContext);
 
@@ -42,34 +42,35 @@ const ModalAddNewMeta = ({ id = "modalAddNewMeta", capturedGroupId }) => {
   };
 
   return (
-    <Container>
-      <div className="modal" id={id} onClick={handleOutsideClick}>
-        <div className="container-modal">
-          <div className="header-modal">
-            <span>Nova meta</span>
-            <FiX className="close" onClick={() => setOpenAddNewGoal(false)} />
-          </div>
+    <Container id={id} onClick={handleOutsideClick}>
+      <ModalHeader>
+        <p>Nova meta</p>
+        <Button onClick={() => setOpenAddNewGoal(false)}>
+          <FiX size={20} />
+        </Button>
+      </ModalHeader>
+      <ModalEdit>
+        <div className="adjustment">
           <form onSubmit={handleSubmit(onSubmitFunction)}>
-            <div className="input-white">
-              <Input
-                modal
-                placeholder="Digite o título"
-                register={register}
-                name="title"
-                label="Título: "
-                error={errors.title?.message}
-                type="text"
-              />
-            </div>
-            <Select className="select" register={register} name="difficulty" />
-            <Button type="submit" modal white share darkSchema className="new">
+            <Input
+              modal
+              placeholder="Digite o título"
+              register={register}
+              name="title"
+              label="Título: "
+              error={errors.title?.message}
+              type="text"
+            />
+
+            <Select register={register} name="difficulty" />
+            <Button white share darkSchema loginDesk type="submit">
               Nova meta
             </Button>
           </form>
         </div>
-      </div>
+      </ModalEdit>
     </Container>
   );
 };
 
-export default ModalAddNewMeta;
+export default ModalAddNewGoal;

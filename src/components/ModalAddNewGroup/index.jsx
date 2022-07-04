@@ -12,7 +12,7 @@ import { GroupsContext } from "../../providers/Groups";
 import Input from "../Input";
 import Button from "../Button";
 
-const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
+const ModalAddNewGroup = ({ id = "addNewGroup" }) => {
   const { setOpenAddNewGroup } = useContext(ModalContext);
   const { createNewGroup } = useContext(GroupsContext);
   const handleOutsideClick = (event) => {
@@ -45,9 +45,9 @@ const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
     <Container id={id} onClick={handleOutsideClick}>
       <AddGroupModalHeader>
         <p>Novo Grupo</p>
-        <button onClick={() => setOpenAddNewGroup(false)}>
-          <FiX />
-        </button>
+        <Button onClick={() => setOpenAddNewGroup(false)}>
+          <FiX size={20}/>
+        </Button>
       </AddGroupModalHeader>
 
       <AddGroupModalEdit>
@@ -93,4 +93,4 @@ const ModalGroupAddEdit = ({ id = "addNewGroup" }) => {
   );
 };
 
-export default ModalGroupAddEdit;
+export default ModalAddNewGroup;

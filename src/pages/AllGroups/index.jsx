@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import { ModalContext } from "../../providers/Modal";
+import { GroupsContext } from "../../providers/Groups";
 
 import {
   Container,
@@ -9,18 +11,14 @@ import {
 } from "./styled";
 
 import { FiSearch, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { LinearProgress, Box } from "@mui/material";
 
 import Navbar from "../../components/Navbar";
 import Input from "../../components/Input";
-
-import { LinearProgress, Box } from "@mui/material";
-
-import { GroupsContext } from "../../providers/Groups";
 import Button from "../../components/Button";
 import CardGroup from "../../components/CardGroup";
-import Activities from "../../components/Activities";
+import ModalShowActivities from "../../components/ModalShowActivities";
 import ModalShowAllGoals from "../../components/ModalShowAllGoals";
-import { ModalContext } from "../../providers/Modal";
 
 const AllGroups = () => {
   const { allGroups, loading } = useContext(GroupsContext);
@@ -32,14 +30,12 @@ const AllGroups = () => {
 
   const searchGroup = (inputGroup) => {
     inputGroup = inputGroup.toLocaleLowerCase();
-    const filteredGroup = allGroups.results.filter((group) => {
-      if (
-        group.name.toLocaleLowerCase().includes(inputGroup) ||
-        group.category.toLocaleLowerCase().includes(inputGroup)
-      ) {
-        return group;
-      }
-    });
+    const filteredGroup = allGroups.results.filter((group) =>
+      group.name.toLocaleLowerCase().includes(inputGroup) ||
+      group.category.toLocaleLowerCase().includes(inputGroup)
+        ? group
+        : null
+    );
     setDisplayGroup(filteredGroup);
   };
 
@@ -110,7 +106,7 @@ const AllGroups = () => {
             <FiChevronRight size={20} />
           </Button>
         </PageButtons>
-        {openAllActivities && <Activities capturedGroup={capturedGroup} />}
+        {openAllActivities && <ModalShowActivities capturedGroup={capturedGroup} />}
         {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
       </Container>
     </>

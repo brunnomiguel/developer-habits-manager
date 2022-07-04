@@ -1,12 +1,12 @@
 import { Container, Header, Content, ContainerBtn } from "./style";
-
 import { FiEdit, FiDelete } from "react-icons/fi";
 
-import { GoalsContext } from "../../providers/Goals";
 import { useContext } from "react";
+import { GoalsContext } from "../../providers/Goals";
+
 import Button from "../Button";
 
-const CardMeta = ({ goal, capturedGroupId }) => {
+const CardGoal = ({ goal, capturedGroupId }) => {
   const { id, title, difficulty } = goal;
   const { updateGoal, deleteGoal } = useContext(GoalsContext);
 
@@ -18,12 +18,11 @@ const CardMeta = ({ goal, capturedGroupId }) => {
     deleteGoal(id, capturedGroupId);
   };
 
-  const { goals } = useContext(GoalsContext);
-  console.log(goals);
   return (
     <Container>
       <Header>
         <h3>{title}</h3>
+        <hr />
       </Header>
       <Content>
         <p>{difficulty}</p>
@@ -40,4 +39,4 @@ const CardMeta = ({ goal, capturedGroupId }) => {
   );
 };
 
-export default CardMeta;
+export default CardGoal;

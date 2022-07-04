@@ -1,7 +1,8 @@
 import Button from "../Button";
 import Input from "../Input";
 
-import { Container, Content, EditActivitieModalHeader } from "./styles";
+import { Container, Content, EditActivityModalHeader } from "./styles";
+import { FiX } from "react-icons/fi";
 
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -43,10 +44,12 @@ const ModalEditActivity = ({
   };
   return (
     <Container id={id} onClick={handleOutsideClick}>
-      <EditActivitieModalHeader>
+      <EditActivityModalHeader>
         <p>Editar atividade</p>
-        <button onClick={() => setOpenEditActivity(false)}>X</button>
-      </EditActivitieModalHeader>
+        <Button onClick={() => setOpenEditActivity(false)}>
+          <FiX size={20} />
+        </Button>
+      </EditActivityModalHeader>
 
       <Content>
         <div className="adjustment">

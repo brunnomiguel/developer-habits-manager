@@ -68,6 +68,10 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
+  svg {
+    transform: translateY(2.5px);
+  }
+
   li {
     list-style: none;
   }

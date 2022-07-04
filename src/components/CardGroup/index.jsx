@@ -2,25 +2,20 @@ import { Container, ContainerHeader, ContainerMain } from "./style";
 import { FiEdit, FiUserX } from "react-icons/fi";
 
 import { useContext } from "react";
-import { useState } from "react";
-// import { GroupsContext } from "../../providers/Groups";
 
-import Button from "../Button";
 import { ModalContext } from "../../providers/Modal";
 import { GroupsContext } from "../../providers/Groups";
 import { UserContext } from "../../providers/User";
 
+import Button from "../Button";
+
 const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
   const { id, name, category, description, creator, users_on_group } = group;
-  const EditGroupOn = useState(false);
 
   const { decodeJwt } = useContext(UserContext);
-  const { editGroup } = useContext(GroupsContext);
-  const { subscribeToTheGroup } = useContext(GroupsContext);
-  const { unSubscribeGroup } = useContext(GroupsContext);
-  const { setOpenEditGroup } = useContext(ModalContext);
-  const { setOpenAllGoals } = useContext(ModalContext);
-  const { setOpenAllActivities } = useContext(ModalContext);
+  const { subscribeToTheGroup, unSubscribeGroup } = useContext(GroupsContext);
+  const { setOpenEditGroup, setOpenAllGoals, setOpenAllActivities } =
+    useContext(ModalContext);
 
   const verifySubscribed = users_on_group.find(
     (group) => group.id === decodeJwt.user_id
@@ -47,11 +42,10 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
         </div>
       </ContainerHeader>
       <hr></hr>
-
       <ContainerMain>
         <p>{description}</p>
-        <div className="conjunto-de-botoes">
-          <div className="dupla-de-botoes">
+        <div>
+          <div>
             <Button
               ativMetaDesk
               onClick={() => {
@@ -71,28 +65,29 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
               Metas
             </Button>
           </div>
-          {/* Aqui vai um ternário para renderizar um buton com função diferente caso ele esteja inscrito ou não */}
-          {verifySubscribed !== undefined ? (
-            <Button
-              white
-              ativMetaMobile
-              onClick={() => {
-                unSubscribeGroup(id);
-              }}
-            >
-              <FiUserX size={20} />
-            </Button>
-          ) : (
-            <Button
-              white
-              ativMetaMobile
-              onClick={() => {
-                subscribeToTheGroup(id);
-              }}
-            >
-              <FiEdit size={20} />
-            </Button>
-          )}
+          <div>
+            {verifySubscribed !== undefined ? (
+              <Button
+                white
+                ativMetaMobile
+                onClick={() => {
+                  unSubscribeGroup(id);
+                }}
+              >
+                <FiUserX size={20} />
+              </Button>
+            ) : (
+              <Button
+                white
+                ativMetaMobile
+                onClick={() => {
+                  subscribeToTheGroup(id);
+                }}
+              >
+                <FiEdit size={20} />
+              </Button>
+            )}
+          </div>
         </div>
       </ContainerMain>
     </Container>

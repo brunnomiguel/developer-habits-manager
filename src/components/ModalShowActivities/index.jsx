@@ -10,7 +10,7 @@ import { FiPlus, FiX } from "react-icons/fi";
 
 import Button from "../Button";
 import CardActivity from "../CardActivity";
-import ModalAddActivity from "../ModalAddActivity";
+import ModalAddNewActivity from "../ModalAddNewActivity";
 import ModalEditActivity from "../ModalEditActivity";
 
 import { useContext, useEffect, useState } from "react";
@@ -74,7 +74,7 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
         </CardsContainer>
       </ModalContent>
       {openAddNewActivity && (
-        <ModalAddActivity capturedGroupId={capturedGroup.id} />
+        <ModalAddNewActivity capturedGroupId={capturedGroup.id} />
       )}
       {openEditActivity && (
         <ModalEditActivity

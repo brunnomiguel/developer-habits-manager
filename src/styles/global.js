@@ -53,7 +53,7 @@ export default createGlobalStyle`
     background-color: var(--gray-6);
 
     &::-webkit-scrollbar {
-      width: 12px;
+      width: 8px;
     }
     &::-webkit-scrollbar-track {
       background: var(--gray-6);

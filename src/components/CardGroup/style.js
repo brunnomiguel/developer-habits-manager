@@ -33,12 +33,17 @@ export const Container = styled.div`
 
 export const ContainerHeader = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: space-between; */
   font-weight: 700;
   width: 100%;
-  height: 50px;
+  /* height: 50px; */
+
+  p {
+    width: 100%;
+    font-size: 16px;
+  }
   @media screen and (max-width: 300px) {
     display: flex;
     flex-direction: column;
@@ -49,6 +54,7 @@ export const ContainerHeader = styled.div`
       font-size: 1rem;
     }
     div {
+
       button {
         width: 40px;
       }
@@ -56,7 +62,7 @@ export const ContainerHeader = styled.div`
   }
   @media screen and (max-width: 600px) {
     p {
-      font-size: 1.5rem;
+      /* font-size: 1.5rem; */
     }
     span {
       font-size: 1.2rem;

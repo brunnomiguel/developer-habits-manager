@@ -21,6 +21,8 @@ export const AddHabitModalHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  padding: 10px;
   p {
     margin-left: 10px;
     font-family: var(--font-share-tech);
@@ -39,7 +41,7 @@ export const AddHabitModalHeader = styled.div`
 
 export const AddHabitModalEdit = styled.div`
   width: 280px;
-
+  padding: 10px;
   background-color: var(--gray-4);
 
   .adjustment {

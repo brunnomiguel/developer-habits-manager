@@ -2,22 +2,23 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   background-color: var(--white-1);
-  height: 100vh;
+  min-height: 90vh;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+
+  .adjustment {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+  }
 `;
 
 export const Tittle = styled.div`
-  padding: 20px;
+  padding: 20px 20px;
   display: flex;
   justify-content: space-between;
-
-  h2 {
-    text-align: center;
-  }
 
   @media screen and (min-width: 600px) {
     justify-content: center;
@@ -46,21 +47,28 @@ export const AddBttn = styled.div`
 `;
 
 export const CardsContainer = styled.div`
-  overflow-y: scroll;
-  height: 550px;
-  width: 300px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: initial;
-  align-items: center;
-
-  margin-top: 35px;
+  max-width: 810px;
+  width: 100%;
+  height: 500px;
+  margin: 0 auto;
   padding: 20px;
 
-  @media screen and (min-width: 769px) {
-    width: 750px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
   }
+  &::-webkit-scrollbar-track {
+    background: var(--gray-6);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--gray-2);
+    border-radius: 20px;
+  }
+
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr);
+  justify-items: center;
+  gap: 20px;  
 `;
 
 export const PageButtons = styled.div`
@@ -78,13 +86,16 @@ export const PageButtons = styled.div`
   span {
     width: 35px;
     height: 30px;
+    padding: 4px;
+
     border-radius: 5px;
+
     background-color: var(--gray-6);
     color: var(--black-1);
+
     font-family: var(--font-lexend);
     font-size: 16px;
     text-align: center;
-    padding: 4px;
   }
 `;
 
@@ -113,6 +124,7 @@ export const InputBttnContainer = styled.div`
       display: block;
       font-family: var(--font-lexend);
       font-size: 18px;
+      font-weight: 400;
     }
   }
 `;

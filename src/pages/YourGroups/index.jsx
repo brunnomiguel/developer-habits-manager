@@ -31,7 +31,12 @@ import ModalGroupAddEdit from "../../components/ModalGroupAdd";
 
 const YourGroups = () => {
   const { groupsSubscribed, loading } = useContext(GroupsContext);
-  const { openAllActivities, openAllGoals, openAddNewGroup, setOpenAddNewGroup } = useContext(ModalContext);
+  const {
+    openAllActivities,
+    openAllGoals,
+    openAddNewGroup,
+    setOpenAddNewGroup,
+  } = useContext(ModalContext);
 
   const [displayGroup, setDisplayGroup] = useState([]);
   const [capturedGroup, setCapturedGroup] = useState({});
@@ -58,72 +63,82 @@ const YourGroups = () => {
   };
 
   return (
-    <Container>
+    <>
       <Navbar />
-      <Tittle>
-        <h2>seus grupos</h2>
-      </Tittle>
-      <InputBttnContainer>
-        <Input
-          search
-          value={inputGroup}
-          inputHabits={inputGroup}
-          searchHabit={searchGroup}
-          placeholder={"Busque um grupo específico"}
-          onChange={(ev) => {
-            setInputGroup(ev.target.value);
-            searchGroup(ev.target.value);
-          }}
-        >
-          <FiSearch />
-        </Input>
-        <AddBttn>
-          <span>Adicione um novo Gupo</span>
+      <Container>
+        <div className="adjustment">
+          <Tittle>
+            <h2>Seus Grupos</h2>
+            <AddBttn>
+              <span>Adicione um novo grupo</span>
+              <Button white onClick={() => {}}>
+                <FiPlus size={20} />
+              </Button>
+            </AddBttn>
+          </Tittle>
+          <InputBttnContainer>
+            <Input
+              search
+              value={inputGroup}
+              inputHabits={inputGroup}
+              searchHabit={searchGroup}
+              placeholder={"Busque um grupo específico"}
+              onChange={(ev) => {
+                setInputGroup(ev.target.value);
+                searchGroup(ev.target.value);
+              }}
+            >
+              <FiSearch />
+            </Input>
+            <AddBttn>
+              <span>Adicione um novo grupo</span>
+              <Button white>
+                <FiPlus size={20} onClick={() => setOpenAddNewGroup(true)} />
+              </Button>
+            </AddBttn>
+          </InputBttnContainer>
+        </div>
+        <CardsContainer>
+          {loading ? (
+            <Box sx={{ width: "100%", alignSelf: "flex-start" }}>
+              <LinearProgress color="success" />
+            </Box>
+          ) : inputGroup === "" ? (
+            groupsSubscribed?.map((group) => {
+              return (
+                <CardGroup
+                  key={group.id}
+                  group={group}
+                  captureGroup={captureGroup}
+                />
+              );
+            })
+          ) : (
+            displayGroup.map((group) => {
+              return (
+                <CardGroup
+                  key={group.id}
+                  group={group}
+                  captureGroup={captureGroup}
+                />
+              );
+            })
+          )}
+        </CardsContainer>
+        <PageButtons>
           <Button white>
-            <FiPlus size={20} onClick={() => setOpenAddNewGroup(true)} />
+            <FiChevronLeft size={20} />
           </Button>
-        </AddBttn>
-      </InputBttnContainer>
-      <CardsContainer>
-        {loading ? (
-          <Box sx={{ width: "100%", alignSelf: "flex-start" }}>
-            <LinearProgress color="success" />
-          </Box>
-        ) : inputGroup === "" ? (
-          groupsSubscribed?.map((group) => {
-            return (
-              <CardGroup
-                key={group.id}
-                group={group}
-                captureGroup={captureGroup}
-              />
-            );
-          })
-        ) : (
-          displayGroup.map((group) => {
-            return (
-              <CardGroup
-                key={group.id}
-                group={group}
-                captureGroup={captureGroup}
-              />
-            );
-          })
-        )}
-      </CardsContainer>
-      <PageButtons>
-        <Button white>
-          <FiChevronLeft size={20} />
-        </Button>
-        <span>1</span>
-        <Button white>
-          <FiChevronRight size={20} />
-        </Button>
-      </PageButtons>
-      {openAllActivities && <Activities capturedGroup={capturedGroup} />}
-      {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
-      {openAddNewGroup && <ModalGroupAddEdit/>}
-    </Container>
+          <span>1</span>
+          <Button white>
+            <FiChevronRight size={20} />
+          </Button>
+        </PageButtons>
+        {openAllActivities && <Activities capturedGroup={capturedGroup} />}
+        {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
+        {openAddNewGroup && <ModalGroupAddEdit />}
+      </Container>
+    </>
   );
 };
 

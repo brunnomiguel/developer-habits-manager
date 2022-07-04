@@ -25,37 +25,36 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   };
 
   return (
-    <Container>
-      <div className="modal" id={id} onClick={handleOutsideClick}>
-        <div className="container">
-          <div className="header">
-            <span>Metas</span>
-            <FiX className="close" onClick={() => setOpenAllGoals(false)} />
+    <Container id={id} onClick={handleOutsideClick}>
+      <div className="container">
+        <div className="header">
+          <span>Metas</span>
+          <FiX className="close" onClick={() => setOpenAllGoals(false)} />
+        </div>
+        
+       
+          <div className="content-subtext">
+            <p>Crie uma nova meta para este grupo</p>
+            <Button small white onClick={() => setOpenAddNewGoal(true)}>
+              +
+            </Button>
+            {openAddNewGoal && (
+              <ModalAddNewMeta capturedGroupId={capturedGroup.id} />
+            )}
           </div>
-          <div className="content">
-            <div className="content-subtext">
-              <p>Crie uma nova meta para este grupo</p>
-              <Button small white onClick={() => setOpenAddNewGoal(true)}>
-                +
-              </Button>
-              {openAddNewGoal && (
-                <ModalAddNewMeta capturedGroupId={capturedGroup.id} />
-              )}
-            </div>
-          </div>
-          <div className="subtext">
-            {goals.map((goal) => {
-              return (
-                <div className="meta">
-                  <CardMeta
-                    key={goal.id}
-                    goal={goal}
-                    capturedGroupId={capturedGroup.id}
-                  />
-                </div>
-              );
-            })}
-          </div>
+        
+        <div className="subtext">
+          {goals.map((goal) => {
+            return (
+              
+                <CardMeta
+                  key={goal.id}
+                  goal={goal}
+                  capturedGroupId={capturedGroup.id}
+                />
+             
+            );
+          })}
         </div>
       </div>
     </Container>

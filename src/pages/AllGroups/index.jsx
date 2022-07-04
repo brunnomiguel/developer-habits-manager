@@ -8,11 +8,7 @@ import {
   InputBttnContainer,
 } from "./styled";
 
-import {
-  FiSearch,
-  FiChevronLeft,
-  FiChevronRight,
-} from "react-icons/fi";
+import { FiSearch, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 import Navbar from "../../components/Navbar";
 import Input from "../../components/Input";
@@ -28,7 +24,7 @@ import { ModalContext } from "../../providers/Modal";
 
 const AllGroups = () => {
   const { allGroups, loading } = useContext(GroupsContext);
-  const { openAllActivities, openAllGoals} = useContext(ModalContext);
+  const { openAllActivities, openAllGoals } = useContext(ModalContext);
 
   const [displayGroup, setDisplayGroup] = useState([]);
   const [capturedGroup, setCapturedGroup] = useState({});
@@ -55,66 +51,69 @@ const AllGroups = () => {
   };
 
   return (
-    <Container>
+    <>
       <Navbar />
-      <Tittle>
-        <h2>Todos os grupos</h2>
-      </Tittle>
-
-      <InputBttnContainer>
-        <Input
-          search
-          value={inputGroup}
-          inputHabits={inputGroup}
-          searchHabit={searchGroup}
-          placeholder={"Busque um grupo específico"}
-          onChange={(ev) => {
-            setInputGroup(ev.target.value);
-            searchGroup(ev.target.value);
-          }}
-        >
-          <FiSearch />
-        </Input>
-      </InputBttnContainer>
-      <CardsContainer>
-        {loading ? (
-          <Box sx={{ width: "100%", alignSelf: "flex-start" }}>
-            <LinearProgress color="success" />
-          </Box>
-        ) : inputGroup === "" ? (
-          allGroups.results?.map((group) => {
-            return (
-              <CardGroup
-                key={group.id}
-                group={group}
-                captureGroup={captureGroup}
-              />
-            );
-          })
-        ) : (
-          displayGroup.map((group) => {
-            return (
-              <CardGroup
-                key={group.id}
-                group={group}
-                captureGroup={captureGroup}
-              />
-            );
-          })
-        )}
-      </CardsContainer>
-      <PageButtons>
-        <Button white>
-          <FiChevronLeft size={20} />
-        </Button>
-        <span>1</span>
-        <Button white>
-          <FiChevronRight size={20} />
-        </Button>
-      </PageButtons>
-      {openAllActivities && <Activities capturedGroup={capturedGroup} />}
-      {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
-    </Container>
+      <Container>
+        <div className="adjustment">
+          <Tittle>
+            <h2>Todos os grupos</h2>
+          </Tittle>
+          <InputBttnContainer>
+            <Input
+              search
+              value={inputGroup}
+              inputHabits={inputGroup}
+              searchHabit={searchGroup}
+              placeholder={"Busque um grupo específico"}
+              onChange={(ev) => {
+                setInputGroup(ev.target.value);
+                searchGroup(ev.target.value);
+              }}
+            >
+              <FiSearch />
+            </Input>
+          </InputBttnContainer>
+        </div>
+        <CardsContainer>
+          {loading ? (
+            <Box sx={{ width: "100%", alignSelf: "flex-start" }}>
+              <LinearProgress color="success" />
+            </Box>
+          ) : inputGroup === "" ? (
+            allGroups.results?.map((group) => {
+              return (
+                <CardGroup
+                  key={group.id}
+                  group={group}
+                  captureGroup={captureGroup}
+                />
+              );
+            })
+          ) : (
+            displayGroup.map((group) => {
+              return (
+                <CardGroup
+                  key={group.id}
+                  group={group}
+                  captureGroup={captureGroup}
+                />
+              );
+            })
+          )}
+        </CardsContainer>
+        <PageButtons>
+          <Button white>
+            <FiChevronLeft size={20} />
+          </Button>
+          <span>1</span>
+          <Button white>
+            <FiChevronRight size={20} />
+          </Button>
+        </PageButtons>
+        {openAllActivities && <Activities capturedGroup={capturedGroup} />}
+        {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
+      </Container>
+    </>
   );
 };
 

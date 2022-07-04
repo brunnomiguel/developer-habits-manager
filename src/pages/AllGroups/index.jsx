@@ -19,10 +19,12 @@ import Button from "../../components/Button";
 import CardGroup from "../../components/CardGroup";
 import ModalShowActivities from "../../components/ModalShowActivities";
 import ModalShowAllGoals from "../../components/ModalShowAllGoals";
+import ModalEditGroup from "../../components/ModalEditGroup";
 
 const AllGroups = () => {
   const { allGroups, loading } = useContext(GroupsContext);
-  const { openAllActivities, openAllGoals } = useContext(ModalContext);
+  const { openAllActivities, openAllGoals, openEditGroup } =
+    useContext(ModalContext);
 
   const [displayGroup, setDisplayGroup] = useState([]);
   const [capturedGroup, setCapturedGroup] = useState({});
@@ -106,8 +108,11 @@ const AllGroups = () => {
             <FiChevronRight size={20} />
           </Button>
         </PageButtons>
-        {openAllActivities && <ModalShowActivities capturedGroup={capturedGroup} />}
+        {openAllActivities && (
+          <ModalShowActivities capturedGroup={capturedGroup} />
+        )}
         {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
+        {openEditGroup && <ModalEditGroup captureGroupId={capturedGroup.id} />}
       </Container>
     </>
   );

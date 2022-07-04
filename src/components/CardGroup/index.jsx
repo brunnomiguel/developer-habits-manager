@@ -9,7 +9,7 @@ import { UserContext } from "../../providers/User";
 
 import Button from "../Button";
 
-const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
+const CardGroup = ({ group, captureGroup }) => {
   const { id, name, category, description, creator, users_on_group } = group;
 
   const { decodeJwt } = useContext(UserContext);

@@ -48,10 +48,11 @@ export const ModalContent = styled.div`
   background-color: var(--white-1);
 
   width: 280px;
-  height: 513px;
+  height: 550px;
 
   @media screen and (min-width: 769px) {
     width: 700px;
+    height: 560px;
   }
 `;
 
@@ -97,3 +98,60 @@ export const CardsContainer = styled.div`
     flex-wrap: wrap;
   }
 `;
+export const PageButtons = styled.div`
+  display: flex;
+  justify-content: center;
+  align-self: center;
+
+  margin: 20px 0;
+
+  button {
+    width: 35px;
+    height: 30px;
+  }
+
+  span {
+    width: 35px;
+    height: 30px;
+    padding: 4px;
+
+    border-radius: 5px;
+
+    background-color: var(--gray-6);
+    color: var(--black-1);
+
+    font-family: var(--font-lexend);
+    font-size: 16px;
+    text-align: center;
+  }
+`;
+
+export const InputBttnContainer = styled.div`
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+
+  button {
+    display: none;
+  }
+
+  @media screen and (min-width: 600px) {
+    justify-content: space-around;
+    height: 37px;
+
+    button {
+      display: block;
+      height: 37px;
+      width: 37px;
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    span {
+      display: block;
+      font-family: var(--font-lexend);
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+  `

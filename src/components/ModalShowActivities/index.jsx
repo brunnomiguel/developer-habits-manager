@@ -4,9 +4,10 @@ import {
   CardsContainer,
   ModalContent,
   Overlay,
+  PageButtons
 } from "./styles";
 
-import { FiPlus, FiX } from "react-icons/fi";
+import { FiPlus, FiX, FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 import Button from "../Button";
 import CardActivity from "../CardActivity";
@@ -24,7 +25,7 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
     setOpenAddNewActivity,
     openEditActivity,
   } = useContext(ModalContext);
-  const { loadActivities, activities } = useContext(ActivitiesContext);
+  const { loadActivities, activities, pageActivities, setPageActivities, total } = useContext(ActivitiesContext);
 
   const [capturedActivity, setCapturedActivity] = useState({});
 
@@ -37,12 +38,21 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
 
   useEffect(() => {
     loadActivities(capturedGroup.id);
-  }, [capturedGroup.id]);
+  }, [capturedGroup.id, pageActivities]);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
       setOpenAllActivities(false);
     }
+  };
+
+  const nextPage = () => {
+    const totalPage = Math.ceil( total / 15);
+    if (pageActivities < totalPage) return setPageActivities(pageActivities + 1);
+  };
+
+  const previusPage = () => {
+    if (pageActivities > 1) return setPageActivities(pageActivities - 1);
   };
 
   return (
@@ -72,7 +82,17 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
             );
           })}
         </CardsContainer>
+        <PageButtons>
+          <Button white onClick={() => previusPage()}>
+            <FiChevronLeft size={20} />
+          </Button>
+          <span>{pageActivities}</span>
+          <Button white onClick={() => nextPage()}>
+            <FiChevronRight size={20} />
+          </Button>
+        </PageButtons>
       </ModalContent>
+
       {openAddNewActivity && (
         <ModalAddNewActivity capturedGroupId={capturedGroup.id} />
       )}

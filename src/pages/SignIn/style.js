@@ -4,7 +4,7 @@ import LoginImage from "../../assets/img/dev.png";
 export const Container = styled.div`
   min-height: 100vh;
   width: 100%;
-  
+
   display: flex;
   justify-content: space-around;
   align-items: stretch;
@@ -55,6 +55,12 @@ export const ContentAnimation = styled.div`
       font-weight: bold;
       text-align: left;
     }
+
+    @media (max-width: 769px) {
+      button {
+        height: 43px;
+      }
+    }
   }
 
   p {
@@ -102,7 +108,7 @@ export const ContentAnimation = styled.div`
 export const BackgroundImage = styled.div`
   @media (min-width: 1100px) {
     background: url(${LoginImage}) no-repeat center;
-    
+
     width: 700px;
     height: 505px;
     margin: auto;

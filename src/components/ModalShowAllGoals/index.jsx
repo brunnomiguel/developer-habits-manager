@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { ModalContext } from "../../providers/Modal";
+import { GoalsContext } from "../../providers/Goals";
 
 import {
   Overlay,
@@ -8,20 +9,19 @@ import {
   AddBttn,
   CardsContainer,
   PageButtons,
-
 } from "./styles";
 
-import { FiX, FiPlus, FiChevronLeft, FiChevronRight} from "react-icons/fi";
+import { FiX, FiPlus, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 import Button from "../Button";
 import ModalAddNewGoal from "../../components/ModalAddNewGoal";
-import { GoalsContext } from "../../providers/Goals";
 import CardGoal from "../CardGoal";
 
 const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   const { openAddNewGoal, setOpenAddNewGoal, setOpenAllGoals } =
     useContext(ModalContext);
-  const { goals, loadGoals, groupPage, setGroupPage, total } = useContext(GoalsContext);
+  const { goals, loadGoals, groupPage, setGroupPage, total } =
+    useContext(GoalsContext);
 
   useEffect(() => {
     loadGoals(capturedGroup.id);
@@ -29,8 +29,8 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
 
   const nextPage = () => {
     const totalPage = Math.ceil(total / 15);
-    console.log(goals, groupPage)
-    if (groupPage < totalPage ) return setGroupPage(groupPage + 1);
+    console.log(goals, groupPage);
+    if (groupPage < totalPage) return setGroupPage(groupPage + 1);
   };
 
   const previusPage = () => {
@@ -49,10 +49,10 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
       <ModalContent>
         <ModalHeader>
           <p>Metas</p>
-          <FiX onClick={() => setOpenAllGoals(false)} />
+          <FiX size={20} onClick={() => setOpenAllGoals(false)} />
         </ModalHeader>
         <AddBttn>
-          <span>Crie uma nova meta para este grupo</span>
+          <span>Crie uma nova meta</span>
           <Button small white onClick={() => setOpenAddNewGoal(true)}>
             <FiPlus size={20} />
           </Button>

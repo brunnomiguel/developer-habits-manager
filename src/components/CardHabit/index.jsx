@@ -24,7 +24,7 @@ const CardHabit = ({ habit, captureHabit }) => {
         Nível: <span>{difficulty}</span>
       </p>
       <p>
-        Alcançado: <span>{how_much_achieved}</span>
+        Alcançado: <span>{how_much_achieved}%</span>
       </p>
       <div>
         <Button

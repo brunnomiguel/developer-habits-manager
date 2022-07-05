@@ -49,7 +49,7 @@ const ModalAddNewHabit = ({ id = "addNewHabit" }) => {
       <AddHabitModalHeader>
         <p>Novo hábito</p>
         <Button onClick={() => setOpenAddNewHabit(false)}>
-          <FiX />
+          <FiX size={20}/>
         </Button>
       </AddHabitModalHeader>
 

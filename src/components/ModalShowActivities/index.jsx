@@ -25,7 +25,7 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
     setOpenAddNewActivity,
     openEditActivity,
   } = useContext(ModalContext);
-  
+
   const {
     loadActivities,
     activities,
@@ -69,7 +69,7 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
       <ModalContent>
         <ModalHeader>
           <p>Atividades</p>
-          <FiX onClick={() => setOpenAllActivities(false)} />
+          <FiX size={20} onClick={() => setOpenAllActivities(false)} />
         </ModalHeader>
 
         <AddBttn>

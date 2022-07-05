@@ -69,7 +69,7 @@ export default createGlobalStyle`
   }
 
   svg {
-    transform: translateY(2.5px);
+    transform: translateY(1px);
   }
 
   li {

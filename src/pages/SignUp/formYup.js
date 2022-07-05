@@ -3,7 +3,7 @@ import * as yup from "yup";
 const validateUpperCase = "^(?=.*[A-Z])";
 const validateLowerCase = "^(?=.*[a-z])";
 const validateNumbers = "(?=.*[0-9])";
-const validateSpecialCharacter = "^(?=.*[!#@$%&])";
+const validateSpecialCharacter = "^(?=.*[!#@$%&*.])";
 const validateCharacter = "^.{8,}$";
 
 export const formSchema = yup.object().shape({

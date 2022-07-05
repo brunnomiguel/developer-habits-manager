@@ -76,7 +76,7 @@ export default createGlobalStyle`
     list-style: none;
   }
 
-  a {
+  a, abbr {
     text-decoration: none;
   }
 

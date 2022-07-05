@@ -21,33 +21,35 @@ const Navbar = () => {
   };
 
   return (
-    <Container>
-      <Content>
-        <h2 onClick={() => setOpenEditUser(true)}>
-          <FiUser />
-          Olá, {user}
-        </h2>
-        <nav>
-          <ul>
-            <NavLink
-              selected={
-                pathname === "/Groups" ||
-                pathname === "/YourGroups" ||
-                pathname === "/AllGroups"
-              }
-              to="/Groups"
-            >
-              Grupos
-            </NavLink>
-            <NavLink selected={pathname === "/Habits"} to="/Habits">
-              Hábitos
-            </NavLink>
-          </ul>
-        </nav>
-        <FiLogOut onClick={logout} />
-      </Content>
+    <>
+      <Container>
+        <Content>
+          <h2 onClick={() => setOpenEditUser(true)}>
+            <FiUser />
+            Olá, {user}
+          </h2>
+          <nav>
+            <ul>
+              <NavLink
+                selected={
+                  pathname === "/Groups" ||
+                  pathname === "/YourGroups" ||
+                  pathname === "/AllGroups"
+                }
+                to="/Groups"
+              >
+                Grupos
+              </NavLink>
+              <NavLink selected={pathname === "/Habits"} to="/Habits">
+                Hábitos
+              </NavLink>
+            </ul>
+          </nav>
+          <FiLogOut onClick={logout} />
+        </Content>
+      </Container>
       {openEditUser && <ModalEditUser />}
-    </Container>
+    </>
   );
 };
 

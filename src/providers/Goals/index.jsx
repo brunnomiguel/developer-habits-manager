@@ -9,14 +9,20 @@ export const GoalsContext = createContext();
 export const GoalsProvider = ({ children }) => {
   const { token } = useContext(UserContext);
   const [goals, setGoals] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [groupPage, setGroupPage] = useState(1);
 
   async function loadGoals(groupId) {
-    const responseGoals = await api.get(`/goals/?group=${groupId}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const responseGoals = await api.get(
+      `/goals/?group=${groupId}&page=${groupPage}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     const dataGoals = responseGoals.data.results.filter(
       (goal) => goal.achieved === false
     );
+    setTotal(responseGoals.data.count);
     setGoals(dataGoals);
   }
 
@@ -62,7 +68,16 @@ export const GoalsProvider = ({ children }) => {
 
   return (
     <GoalsContext.Provider
-      value={{ goals, loadGoals, addNewGoal, updateGoal, deleteGoal }}
+      value={{
+        goals,
+        loadGoals,
+        addNewGoal,
+        updateGoal,
+        deleteGoal,
+        groupPage,
+        setGroupPage,
+        total,
+      }}
     >
       {children}
     </GoalsContext.Provider>

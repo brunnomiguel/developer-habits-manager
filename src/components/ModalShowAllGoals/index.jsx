@@ -7,9 +7,11 @@ import {
   ModalContent,
   AddBttn,
   CardsContainer,
+  PageButtons,
+
 } from "./styles";
 
-import { FiX, FiPlus } from "react-icons/fi";
+import { FiX, FiPlus, FiChevronLeft, FiChevronRight} from "react-icons/fi";
 
 import Button from "../Button";
 import ModalAddNewGoal from "../../components/ModalAddNewGoal";
@@ -19,11 +21,21 @@ import CardGoal from "../CardGoal";
 const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   const { openAddNewGoal, setOpenAddNewGoal, setOpenAllGoals } =
     useContext(ModalContext);
-  const { goals, loadGoals } = useContext(GoalsContext);
+  const { goals, loadGoals, groupPage, setGroupPage, total } = useContext(GoalsContext);
 
   useEffect(() => {
     loadGoals(capturedGroup.id);
-  }, [capturedGroup.id]);
+  }, [capturedGroup.id, goals]);
+
+  const nextPage = () => {
+    const totalPage = Math.ceil(total / 15);
+    console.log(goals, groupPage)
+    if (groupPage < totalPage ) return setGroupPage(groupPage + 1);
+  };
+
+  const previusPage = () => {
+    if (groupPage > 1) return setGroupPage(groupPage - 1);
+  };
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
@@ -60,6 +72,15 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
             );
           })}
         </CardsContainer>
+        <PageButtons>
+          <Button white onClick={() => previusPage()}>
+            <FiChevronLeft size={20} />
+          </Button>
+          <span>{groupPage}</span>
+          <Button white onClick={() => nextPage()}>
+            <FiChevronRight size={20} />
+          </Button>
+        </PageButtons>
       </ModalContent>
     </>
   );

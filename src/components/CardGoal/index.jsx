@@ -1,5 +1,5 @@
 import { Container, Header, Content, ContainerBtn } from "./style";
-import { FiEdit, FiDelete } from "react-icons/fi";
+import { FiCheckSquare, FiDelete } from "react-icons/fi";
 
 import { useContext } from "react";
 import { GoalsContext } from "../../providers/Goals";
@@ -29,7 +29,7 @@ const CardGoal = ({ goal, capturedGroupId }) => {
       </Content>
       <ContainerBtn>
         <Button white onClick={() => handleUpdateGoal()}>
-          <FiEdit size={20} />
+          <FiCheckSquare size={20} />
         </Button>
         <Button white onClick={() => handleDeleteGoal()}>
           <FiDelete size={20} />

@@ -7,7 +7,7 @@ export const Container = styled.main`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 
   .adjustment {
     max-width: 1180px;

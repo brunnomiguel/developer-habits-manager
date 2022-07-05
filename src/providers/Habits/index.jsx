@@ -48,6 +48,7 @@ export const HabitsProvider = ({ children }) => {
     const { how_much_achieved } = data;
     if (how_much_achieved === 100) {
       data.achieved = true;
+      toast.success("Hábito concluído!");
     } else {
       data.achieved = false;
     }
@@ -56,7 +57,9 @@ export const HabitsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((_) => {
-        toast.success("Hábito atualizado");
+        if (how_much_achieved < 100) {
+          toast.success("Hábito atualizado");
+        }
         loadHabits();
       });
   };

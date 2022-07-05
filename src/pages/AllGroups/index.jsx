@@ -71,7 +71,7 @@ const AllGroups = () => {
               value={inputGroup}
               inputHabits={inputGroup}
               searchHabit={searchGroup}
-              placeholder={"Busque um grupo específico"}
+              placeholder={"Buscar grupo"}
               onChange={(ev) => {
                 setInputGroup(ev.target.value);
                 searchGroup(ev.target.value);

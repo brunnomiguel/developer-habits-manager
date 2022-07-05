@@ -26,8 +26,8 @@ export const ImgContainer = styled.figure`
     width: 50%;
 
     img {
-      width: 704px;
-      height: 551px;
+      width: 100%;
+      height: 100%;
     }
   }
 `;

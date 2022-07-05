@@ -47,7 +47,7 @@ export const EditHabitModalHeader = styled.div`
 
 export const Content = styled.div`
   width: 280px;
-  height: 200px;
+  height: 180px;
 
   background-color: var(--gray-4);
   border-radius: 0 0 5px 5px;

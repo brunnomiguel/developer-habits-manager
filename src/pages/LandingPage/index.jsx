@@ -20,10 +20,10 @@ const LandingPage = () => {
       <Content>
         <h2>Developer Habits Manager</h2>
         <p>
-          O Developer Habits Manager (DHM) ajuda você a organizar seus estudos
+          O <strong>Developer Habits Manager (DHM)</strong> ajuda você a organizar seus estudos
           através da criação de hábitos e grupos. Inscreva-se na plataforma ou
           faça seu login para gerenciar sua evolução nas linguagens e tópicos de
-          estudo, crie também atividades e metas nos seus grupos e as matenha
+          estudo. Crie também atividades e metas nos seus grupos e as matenha
           atualizadas de acordo com seu progresso.
         </p>
         <Button

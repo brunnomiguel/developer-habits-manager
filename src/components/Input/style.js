@@ -27,7 +27,7 @@ export const InputContainer = styled.div`
   height: ${(props) => (props.search ? "37px" : props.modal ? "36px" : "50px")};
 
   margin-top: ${(props) => (props.search ? "0" : "5px")};
-  padding: ${(props) => (props.search ? "0 0 0 10px" : "5px")};
+  padding-left: 10px;
 
   background-color: ${(props) =>
     props.search ? "var(--green-2)" : "var(--white-1)"};
@@ -73,6 +73,7 @@ export const InputContainer = styled.div`
     &:hover {
       opacity: 0.7;
       transition: 0.2s ease-out;
+      cursor: pointer;
     }
 
     svg {

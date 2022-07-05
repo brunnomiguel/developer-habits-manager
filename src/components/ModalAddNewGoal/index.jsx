@@ -45,9 +45,11 @@ const ModalAddNewGoal = ({ id = "modalAddNewMeta", capturedGroupId }) => {
     <Container id={id} onClick={handleOutsideClick}>
       <ModalHeader>
         <p>Nova meta</p>
-        <Button onClick={() => setOpenAddNewGoal(false)}>
-          <FiX size={20} />
-        </Button>
+        <abbr title="Adicionar meta">
+          <Button onClick={() => setOpenAddNewGoal(false)}>
+            <FiX size={20} />
+          </Button>
+        </abbr>
       </ModalHeader>
       <ModalEdit>
         <div className="adjustment">

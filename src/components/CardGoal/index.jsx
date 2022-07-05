@@ -28,12 +28,16 @@ const CardGoal = ({ goal, capturedGroupId }) => {
         <p>{difficulty}</p>
       </Content>
       <ContainerBtn>
-        <Button white onClick={() => handleUpdateGoal()}>
-          <FiCheckSquare size={20} />
-        </Button>
-        <Button white onClick={() => handleDeleteGoal()}>
-          <FiDelete size={20} />
-        </Button>
+        <abbr title="Concluir meta">
+          <Button white onClick={() => handleUpdateGoal()}>
+            <FiCheckSquare size={20} />
+          </Button>
+        </abbr>
+        <abbr title="Deletar meta">
+          <Button white onClick={() => handleDeleteGoal()}>
+            <FiDelete size={20} />
+          </Button>
+        </abbr>
       </ContainerBtn>
     </Container>
   );

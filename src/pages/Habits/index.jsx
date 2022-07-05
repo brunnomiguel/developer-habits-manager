@@ -80,7 +80,7 @@ const Habits = () => {
           <Tittle>
             <h2>Seus Hábitos</h2>
             <AddBttn>
-              <span>Adicione um novo hábito</span>
+              <span>Adicionar hábito</span>
               <Button white onClick={() => setOpenAddNewHabit(true)}>
                 <FiPlus size={20} />
               </Button>
@@ -102,7 +102,7 @@ const Habits = () => {
               <FiSearch />
             </Input>
             <AddBttn>
-              <span>Adicione um novo hábito</span>
+              <span>Adicionar hábito</span>
               <Button white onClick={() => setOpenAddNewHabit(true)}>
                 <FiPlus size={20} />
               </Button>

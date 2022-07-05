@@ -24,10 +24,12 @@ const Navbar = () => {
     <>
       <Container>
         <Content>
-          <h2 onClick={() => setOpenEditUser(true)}>
-            <FiUser />
-            Olá, {user}
-          </h2>
+          <abbr title="Edite seu usuário">
+            <h2 onClick={() => setOpenEditUser(true)}>
+              <FiUser />
+              Olá, {user}
+            </h2>
+          </abbr>
           <nav>
             <ul>
               <NavLink
@@ -45,7 +47,9 @@ const Navbar = () => {
               </NavLink>
             </ul>
           </nav>
-          <FiLogOut onClick={logout} />
+          <abbr title="Sair">
+            <FiLogOut onClick={logout} />
+          </abbr>
         </Content>
       </Container>
       {openEditUser && <ModalEditUser />}

@@ -26,18 +26,22 @@ const CardActivity = ({ activity, capturedGroupId, captureActivity }) => {
         <p>{realization_time}</p>
       </DateTime>
       <Buttons>
-        <Button
-          white
-          onClick={() => {
-            setOpenEditActivity(true);
-            captureActivity(id);
-          }}
-        >
-          <FiEdit size={20} />
-        </Button>
-        <Button white onClick={() => handleClickFinish()}>
-          <FiDelete size={20} />
-        </Button>
+        <abbr title="Editar atividade">
+          <Button
+            white
+            onClick={() => {
+              setOpenEditActivity(true);
+              captureActivity(id);
+            }}
+          >
+            <FiEdit size={20} />
+          </Button>
+        </abbr>
+        <abbr title="Deletar atividade">
+          <Button white onClick={() => handleClickFinish()}>
+            <FiDelete size={20} />
+          </Button>
+        </abbr>
       </Buttons>
     </Container>
   );

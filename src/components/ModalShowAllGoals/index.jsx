@@ -53,9 +53,11 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
         </ModalHeader>
         <AddBttn>
           <span>Crie uma nova meta</span>
-          <Button small white onClick={() => setOpenAddNewGoal(true)}>
-            <FiPlus size={20} />
-          </Button>
+          <abbr title="Adicionar meta">
+            <Button small white onClick={() => setOpenAddNewGoal(true)}>
+              <FiPlus size={20} />
+            </Button>
+          </abbr>
           {openAddNewGoal && (
             <ModalAddNewGoal capturedGroupId={capturedGroup.id} />
           )}

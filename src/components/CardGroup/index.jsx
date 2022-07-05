@@ -28,16 +28,18 @@ const CardGroup = ({ group, captureGroup }) => {
         <div>
           <span>{category}</span>
           {creator.id === decodeJwt.user_id ? (
-            <Button
-              white
-              ativMetaMobile
-              onClick={() => {
-                setOpenEditGroup(true);
-                captureGroup(id);
-              }}
-            >
-              <FiEdit size={20} />
-            </Button>
+            <abbr title="Editar grupo">
+              <Button
+                white
+                ativMetaMobile
+                onClick={() => {
+                  setOpenEditGroup(true);
+                  captureGroup(id);
+                }}
+              >
+                <FiEdit size={20} />
+              </Button>
+            </abbr>
           ) : null}
         </div>
       </ContainerHeader>
@@ -46,46 +48,54 @@ const CardGroup = ({ group, captureGroup }) => {
         <p>{description}</p>
         <div>
           <div>
-            <Button
-              ativMetaDesk
-              onClick={() => {
-                setOpenAllActivities(true);
-                captureGroup(id);
-              }}
-            >
-              Atividades
-            </Button>
-            <Button
-              ativMetaDesk
-              onClick={() => {
-                setOpenAllGoals(true);
-                captureGroup(id);
-              }}
-            >
-              Metas
-            </Button>
+            <abbr title="Ver todas as atiidades">
+              <Button
+                ativMetaDesk
+                onClick={() => {
+                  setOpenAllActivities(true);
+                  captureGroup(id);
+                }}
+              >
+                Atividades
+              </Button>
+            </abbr>
+            <abbr title="Ver todas as metas">
+              <Button
+                ativMetaDesk
+                onClick={() => {
+                  setOpenAllGoals(true);
+                  captureGroup(id);
+                }}
+              >
+                Metas
+              </Button>
+            </abbr>
           </div>
           <div>
             {verifySubscribed !== undefined ? (
-              <Button
-                white
-                ativMetaMobile
-                onClick={() => {
-                  unSubscribeGroup(id);
-                }}
-              >
-                <FiUserX size={20} />
-              </Button>
+              <abbr title="Desinscreva-se">
+                <Button
+                  white
+                  ativMetaMobile
+                  onClick={() => {
+                    unSubscribeGroup(id);
+                  }}
+                >
+                  <FiUserX size={20} />
+                </Button>
+              </abbr>
             ) : (
-              <Button
-                white
-                ativMetaMobile
-                onClick={() => {
-                  subscribeToTheGroup(id);
-                }}
-              >
-                <FiUserPlus size={20} />
-              </Button>
+              <abbr title="Inscreva-se">
+                <Button
+                  white
+                  ativMetaMobile
+                  onClick={() => {
+                    subscribeToTheGroup(id);
+                  }}
+                >
+                  <FiUserPlus size={20} />
+                </Button>
+              </abbr>
             )}
           </div>
         </div>

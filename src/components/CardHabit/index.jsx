@@ -27,20 +27,24 @@ const CardHabit = ({ habit, captureHabit }) => {
         Alcançado: <span>{how_much_achieved}%</span>
       </p>
       <div>
-        <Button
-          white
-          ativMetaDesk
-          onClick={() => {
-            setOpenEditHabit(true);
-            captureHabit(id);
-          }}
-        >
-          <FiEdit size={20} />
-        </Button>
+        <abbr title="Editar sua evolução">
+          <Button
+            white
+            ativMetaDesk
+            onClick={() => {
+              setOpenEditHabit(true);
+              captureHabit(id);
+            }}
+          >
+            <FiEdit size={20} />
+          </Button>
+        </abbr>
 
-        <Button white ativMetaDesk onClick={() => deleteHabit(id)}>
-          <FiDelete size={20} />
-        </Button>
+        <abbr title="Deletar hábito">
+          <Button white ativMetaDesk onClick={() => deleteHabit(id)}>
+            <FiDelete size={20} />
+          </Button>
+        </abbr>
       </div>
     </Container>
   );

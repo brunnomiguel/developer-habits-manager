@@ -74,9 +74,11 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
 
         <AddBttn>
           <span>Crie uma atividade</span>
-          <Button white onClick={() => setOpenAddNewActivity(true)}>
-            <FiPlus size={20} />
-          </Button>
+          <abbr title="Adicionar atividade">
+            <Button white onClick={() => setOpenAddNewActivity(true)}>
+              <FiPlus size={20} />
+            </Button>
+          </abbr>
         </AddBttn>
         <CardsContainer>
           {activities.map((activity) => {

@@ -84,9 +84,20 @@ export const ContainerMain = styled.div`
       align-items: center;
       gap: 5px;
 
-      button {
-        font-size: 16px;
-        font-weight: 700;
+      abbr {
+        button {
+          font-size: 16px;
+          font-weight: 700;
+          width: 100%;
+          padding: 5px;
+
+          @media (min-width: 568px) {
+            padding: 10px;
+            height: 40px;
+
+            font-size: 18px;
+          }
+        }
       }
     }
     div:last-child {
@@ -94,8 +105,11 @@ export const ContainerMain = styled.div`
       display: flex;
       justify-content: end;
 
-      button {
-        width: 40px;
+      abbr {
+        button {
+          width: 40px;
+          padding: 0;
+        }
       }
     }
   }

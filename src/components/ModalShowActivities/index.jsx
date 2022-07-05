@@ -4,7 +4,7 @@ import {
   CardsContainer,
   ModalContent,
   Overlay,
-  PageButtons
+  PageButtons,
 } from "./styles";
 
 import { FiPlus, FiX, FiChevronRight, FiChevronLeft } from "react-icons/fi";
@@ -25,7 +25,14 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
     setOpenAddNewActivity,
     openEditActivity,
   } = useContext(ModalContext);
-  const { loadActivities, activities, pageActivities, setPageActivities, total } = useContext(ActivitiesContext);
+  
+  const {
+    loadActivities,
+    activities,
+    pageActivities,
+    setPageActivities,
+    total,
+  } = useContext(ActivitiesContext);
 
   const [capturedActivity, setCapturedActivity] = useState({});
 
@@ -47,8 +54,9 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
   };
 
   const nextPage = () => {
-    const totalPage = Math.ceil( total / 15);
-    if (pageActivities < totalPage) return setPageActivities(pageActivities + 1);
+    const totalPage = Math.ceil(total / 15);
+    if (pageActivities < totalPage)
+      return setPageActivities(pageActivities + 1);
   };
 
   const previusPage = () => {

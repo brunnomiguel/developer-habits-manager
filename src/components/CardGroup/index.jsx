@@ -1,5 +1,5 @@
 import { Container, ContainerHeader, ContainerMain } from "./style";
-import { FiEdit, FiUserX } from "react-icons/fi";
+import { FiEdit, FiUserPlus, FiUserX } from "react-icons/fi";
 
 import { useContext } from "react";
 
@@ -9,7 +9,7 @@ import { UserContext } from "../../providers/User";
 
 import Button from "../Button";
 
-const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
+const CardGroup = ({ group, captureGroup }) => {
   const { id, name, category, description, creator, users_on_group } = group;
 
   const { decodeJwt } = useContext(UserContext);
@@ -84,7 +84,7 @@ const CardGroup = ({ group, captureGroup, capturedGroupId }) => {
                   subscribeToTheGroup(id);
                 }}
               >
-                <FiEdit size={20} />
+                <FiUserPlus size={20} />
               </Button>
             )}
           </div>

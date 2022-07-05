@@ -30,6 +30,11 @@ export const CardHeader = styled.div`
     font-family: var(--font-lexend);
     padding-bottom: 5px;
     color: var(--black-1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 11px;
+    margin-right: 11px;
   }
 
   hr {

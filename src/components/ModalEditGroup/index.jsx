@@ -7,14 +7,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useContext } from "react";
 import { ModalContext } from "../../providers/Modal";
-import { HabitsContext } from "../../providers/Habits";
+import { GroupsContext } from "../../providers/Groups";
 
 import Input from "../Input";
 import Button from "../Button";
 
-const ModalEditGroup = ({ id = "editNewGroup" }) => {
+const ModalEditGroup = ({ id = "editNewGroup", captureGroupId }) => {
   const { setOpenEditGroup } = useContext(ModalContext);
-  const { editGroup } = useContext(HabitsContext);
+  const { editGroup } = useContext(GroupsContext);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
@@ -38,7 +38,7 @@ const ModalEditGroup = ({ id = "editNewGroup" }) => {
   });
 
   const onSubmitFunction = (data) => {
-    editGroup(data);
+    editGroup(data, captureGroupId);
     reset();
   };
 
@@ -84,7 +84,7 @@ const ModalEditGroup = ({ id = "editNewGroup" }) => {
               type="text"
             />
 
-            <Button white share loginDesk darkSchema>
+            <Button white share loginDesk darkSchema type="submit">
               Editar Grupo
             </Button>
           </form>

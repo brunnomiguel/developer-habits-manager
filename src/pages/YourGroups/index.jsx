@@ -28,6 +28,7 @@ import CardGroup from "../../components/CardGroup";
 import ModalShowActivities from "../../components/ModalShowActivities";
 import ModalShowAllGoals from "../../components/ModalShowAllGoals";
 import ModalAddNewGroup from "../../components/ModalAddNewGroup";
+import ModalEditGroup from "../../components/ModalEditGroup";
 
 const YourGroups = () => {
   const { groupsSubscribed, loading } = useContext(GroupsContext);
@@ -35,6 +36,7 @@ const YourGroups = () => {
     openAllActivities,
     openAllGoals,
     openAddNewGroup,
+    openEditGroup,
     setOpenAddNewGroup,
   } = useContext(ModalContext);
 
@@ -168,6 +170,7 @@ const YourGroups = () => {
         )}
         {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
         {openAddNewGroup && <ModalAddNewGroup />}
+        {openEditGroup && <ModalEditGroup captureGroupId={capturedGroup.id} />}
       </Container>
     </>
   );

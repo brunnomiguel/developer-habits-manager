@@ -18,7 +18,7 @@ export const Container = styled.main`
 export const Tittle = styled.div`
   padding: 20px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   @media screen and (min-width: 600px) {
     justify-content: center;
@@ -49,7 +49,7 @@ export const AddBttn = styled.div`
 export const CardsContainer = styled.div`
   max-width: 810px;
   width: 100%;
-  height: 500px;
+  height: 350px;
   margin: 0 auto;
   padding: 20px;
 
@@ -68,7 +68,11 @@ export const CardsContainer = styled.div`
   display: grid;
   grid-template-columns: minmax(300px, 1fr);
   justify-items: center;
-  gap: 20px;  
+  gap: 20px;
+
+  @media (min-width: 568px) {
+    height: 500px;
+  }
 `;
 
 export const PageButtons = styled.div`

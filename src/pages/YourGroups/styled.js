@@ -49,8 +49,8 @@ export const AddBttn = styled.div`
 export const CardsContainer = styled.div`
   max-width: 810px;
   width: 100%;
-  height: 500px;
-  margin: 0 auto;
+  height: 350px;
+  margin: 20px auto 0 auto;
   padding: 20px;
 
   overflow: auto;
@@ -74,6 +74,10 @@ export const CardsContainer = styled.div`
     a {
       color: var(--blue-link);
     }
+  }
+
+  @media (min-width: 568px) {
+    height: 500px;
   }
 `;
 

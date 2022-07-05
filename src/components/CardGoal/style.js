@@ -9,9 +9,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-
+  
+  
   background-color: var(--white-1);
-  box-shadow: 1px 1px 3px var(--gray-2);
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px var(--gray-2);
 
   @media screen and (min-width: 769px) {
     width: 300px;
@@ -23,6 +25,7 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   width: 100%;
+  justify-content: center;
 
   h3 {
     text-align: center;
@@ -30,11 +33,16 @@ export const Header = styled.div`
     font-family: var(--font-lexend);
     padding-bottom: 5px;
     color: var(--black-1);
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   hr {
-    width: 90%;
+    width: 100%;
     height: 2px;
     background-color: var(--gray-4);
+    margin-bottom: 5px;
   }
 `;
 

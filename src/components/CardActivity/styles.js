@@ -11,7 +11,8 @@ export const Container = styled.div`
   text-align: center;
 
   background-color: var(--white-1);
-  box-shadow: 1px 1px 3px var(--gray-2);
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px var(--gray-2);
 
   @media screen and (min-width: 769px) {
     width: 300px;

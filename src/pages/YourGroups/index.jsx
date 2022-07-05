@@ -48,11 +48,8 @@ const YourGroups = () => {
   const [nextPage, setNextPage] = useState(15);
   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log(groupsSubscribed);
-
   const upPages = () => {
     const totalPage = Math.ceil(groupsSubscribed.length / 15);
-    console.log(totalPage);
     if (currentPage < totalPage) {
       setNextPage(nextPage + 15);
       setPreviuPage(previuPage + 15);
@@ -78,8 +75,6 @@ const YourGroups = () => {
     );
     setDisplayGroup(filteredGroup);
   };
-
-  console.log(groupsSubscribed);
 
   const captureGroup = (groupId) => {
     const verifyGroup = groupsSubscribed.filter(

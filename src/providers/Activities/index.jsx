@@ -8,15 +8,8 @@ export const ActivitiesContext = createContext();
 
 export const ActivitiesProvider = ({ children }) => {
   const { token } = useContext(UserContext);
-  
-  const [activities, setActivities] = useState([]);
-  const [pageActivities, setPageActivities] = useState(1)
-  const [total, setTotal] = useState(0)
 
-  async function loadActivities(groupId) {
-    const responseActivities = await api.get(`/activities/?group=${groupId}&page=${pageActivities}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+  const [activities, setActivities] = useState([]);
   const [pageActivities, setPageActivities] = useState(1);
   const [total, setTotal] = useState(0);
 

@@ -4,7 +4,7 @@ import {
   CardsContainer,
   ModalContent,
   Overlay,
-  PageButtons
+  PageButtons,
 } from "./styles";
 
 import { FiPlus, FiX, FiChevronRight, FiChevronLeft } from "react-icons/fi";

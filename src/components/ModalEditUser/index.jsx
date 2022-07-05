@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../../providers/User";
 import { ModalContext } from "../../providers/Modal";
 
-import { Container, Header, Content, Modal } from "./style";
+import { Container, Header, Content } from "./style";
 import { FiX } from "react-icons/fi";
 
 import * as yup from "yup";
@@ -23,8 +23,8 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
   };
 
   const editSchema = yup.object().shape({
-    username: yup.string().required("Informe novo nome"),
-    email: yup.string().required("insira novo email").email("Email inválido"),
+    username: yup.string().required("Campo obrigatório"),
+    email: yup.string().required("Campo obrigatório").email("Email inválido"),
   });
 
   const {
@@ -46,34 +46,35 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
   };
 
   return (
-
-      <Container id={id} onClick={closeModalEvent}>
-        <Header>
-          <h3>Editar suas informções</h3>
-          <button onClick={() => setOpenEditUser(false)}>
-            <FiX />
-          </button>
-        </Header>
-        <Content>
-          <form onSubmit={handleSubmit(handleUpdateUser)}>
-            <Input
-              register={register}
-              name={"username"}
-              label={"Novo usuário:"}
-              error={errors.username?.message}
-            />
-            <Input
-              register={register}
-              name={"email"}
-              label={"Novo e-mail:"}
-              error={errors.email?.message}
-            />
-            <Button loginDesk darkSchema white type="submit">
-              Editar suas informações
-            </Button>
-          </form>
-        </Content>
-      </Container>
+    <Container id={id} onClick={closeModalEvent}>
+      <Header>
+        <p>Editar suas informações</p>
+        <Button small onClick={() => setOpenEditUser(false)}>
+          <FiX size={20} />
+        </Button>
+      </Header>
+      <Content>
+        <form onSubmit={handleSubmit(handleUpdateUser)}>
+          <Input
+            modal
+            register={register}
+            name={"username"}
+            label={"Novo usuário:"}
+            error={errors.username?.message}
+          />
+          <Input
+            modal
+            register={register}
+            name={"email"}
+            label={"Novo e-mail:"}
+            error={errors.email?.message}
+          />
+          <Button loginDesk darkSchema white type="submit">
+            Editar suas informações
+          </Button>
+        </form>
+      </Content>
+    </Container>
   );
 };
 

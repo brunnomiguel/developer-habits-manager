@@ -59,7 +59,7 @@ export const ModalEdit = styled.div`
     }
     button {
       height: 39px;
-      margin: 20px 0;
+      margin-bottom: 10px;
     }
   }
 `;

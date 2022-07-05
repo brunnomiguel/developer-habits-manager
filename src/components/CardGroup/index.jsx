@@ -73,7 +73,7 @@ const CardGroup = ({ group, captureGroup }) => {
           </div>
           <div>
             {verifySubscribed !== undefined ? (
-              <abbr title="Desinscreva-se">
+              <abbr title="Desinscrever">
                 <Button
                   white
                   ativMetaMobile

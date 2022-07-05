@@ -36,11 +36,20 @@ export const Header = styled.div`
   height: 46px;
   padding: 0 15px;
 
+  border-radius: 5px 5px 0 0;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   background-color: var(--green-2);
+
+  p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    font-family: var(--font-share-tech);
+  }
 
   button {
     background-color: transparent;
@@ -54,8 +63,10 @@ export const Header = styled.div`
 export const Content = styled.div`
   margin: 0 auto;
   width: 280px;
+  height: 270px;
   padding: 10px 20px;
   background-color: var(--gray-4);
+  border-radius: 0 0 5px 5px;
 
   form {
     div {
@@ -66,6 +77,7 @@ export const Content = styled.div`
 
     button {
       margin-top: 10px;
+      height: 39px;
       &:hover {
         transition: 0.2s ease-in;
         opacity: 0.7;

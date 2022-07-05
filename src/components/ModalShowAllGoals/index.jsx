@@ -11,7 +11,7 @@ import {
   PageButtons,
 } from "./styles";
 
-import { FiX, FiPlus, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiX, FiPlus, FiChevronLeft, FiChevronRight} from "react-icons/fi";
 
 import Button from "../Button";
 import ModalAddNewGoal from "../../components/ModalAddNewGoal";
@@ -20,6 +20,7 @@ import CardGoal from "../CardGoal";
 const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   const { openAddNewGoal, setOpenAddNewGoal, setOpenAllGoals } =
     useContext(ModalContext);
+
   const { goals, loadGoals, groupPage, setGroupPage, total } =
     useContext(GoalsContext);
 
@@ -29,7 +30,6 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
 
   const nextPage = () => {
     const totalPage = Math.ceil(total / 15);
-    console.log(goals, groupPage);
     if (groupPage < totalPage) return setGroupPage(groupPage + 1);
   };
 

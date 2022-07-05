@@ -16,15 +16,23 @@ export const Modal = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 300px;
-  height: 325px;
+  width: 100%;
+  height: 100%;
 
-  background-color: var(--gray-5);
-  box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.7);
+  position: fixed;
+  z-index: 10;
+  top: -0px;
+  left: 0px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(18, 18, 20, 0.5);
 `;
 
 export const Header = styled.div`
-  width: 100%;
+  width: 280px;
   height: 46px;
   padding: 0 15px;
 
@@ -45,8 +53,9 @@ export const Header = styled.div`
 
 export const Content = styled.div`
   margin: 0 auto;
-  width: 75%;
-  height: auto;
+  width: 280px;
+  padding: 10px 20px;
+  background-color: var(--gray-4);
 
   form {
     div {

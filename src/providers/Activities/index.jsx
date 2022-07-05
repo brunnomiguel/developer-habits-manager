@@ -8,7 +8,15 @@ export const ActivitiesContext = createContext();
 
 export const ActivitiesProvider = ({ children }) => {
   const { token } = useContext(UserContext);
+  
   const [activities, setActivities] = useState([]);
+  const [pageActivities, setPageActivities] = useState(1)
+  const [total, setTotal] = useState(0)
+
+  async function loadActivities(groupId) {
+    const responseActivities = await api.get(`/activities/?group=${groupId}&page=${pageActivities}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
   const [pageActivities, setPageActivities] = useState(1);
   const [total, setTotal] = useState(0);
 
@@ -19,7 +27,6 @@ export const ActivitiesProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-
     const dataActivities = responseActivities.data.results.map((activity) => ({
       ...activity,
       realization_time: new Date(activity.realization_time).toLocaleDateString(

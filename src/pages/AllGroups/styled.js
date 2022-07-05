@@ -79,7 +79,7 @@ export const PageButtons = styled.div`
   display: flex;
   justify-content: center;
   align-self: center;
-
+  gap: 10px;
   margin: 20px 0;
 
   button {

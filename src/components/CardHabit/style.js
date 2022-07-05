@@ -11,13 +11,17 @@ export const Container = styled.div`
   padding: 20px;
   margin: 20px;
 
-  border-radius: 5px none;
-  box-shadow: 1px 1px 3px var(--gray-2);
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px var(--gray-2);
   font-family: var(--font-share-tech);
 
   h3 {
     color: var(--black-1);
     font-size: 16px;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   hr {

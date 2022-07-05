@@ -11,10 +11,9 @@ export const Container = styled.div`
   width: 100%;
   height: 200px;
   margin: 10px 0;
-
-  border-radius: 5px 0;
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px var(--gray-2);
   padding: 10px 20px 10px 20px;
-  box-shadow: 1px 1px 3px var(--gray-2);
 
   hr {
     width: 100%;
@@ -33,7 +32,10 @@ export const ContainerHeader = styled.div`
   font-weight: 700;
 
   p {
-    width: 100%;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     padding: 10px 0;
     font-size: 16px;
     color: var(--black-2);

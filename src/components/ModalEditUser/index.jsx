@@ -46,8 +46,8 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
   };
 
   return (
-    <Modal id={id} onClick={closeModalEvent}>
-      <Container>
+
+      <Container id={id} onClick={closeModalEvent}>
         <Header>
           <h3>Editar suas informções</h3>
           <button onClick={() => setOpenEditUser(false)}>
@@ -74,7 +74,6 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
           </form>
         </Content>
       </Container>
-    </Modal>
   );
 };
 

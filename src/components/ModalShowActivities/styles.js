@@ -102,6 +102,7 @@ export const PageButtons = styled.div`
   align-self: center;
 
   margin: 20px 0;
+  gap: 10px;
 
   button {
     width: 35px;

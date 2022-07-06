@@ -63,6 +63,7 @@ const ModalEditHabit = ({ id = "modalEditHabit", capturedHabit }) => {
           <Input
             type="range"
             name="how_much_achieved"
+            defaultValue={capturedHabit.how_much_achieved}
             min="0"
             max="100"
             register={register}

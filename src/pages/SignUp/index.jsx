@@ -43,7 +43,7 @@ const SignUp = () => {
       <SignupData>
         <h1>Developer Habits Manager</h1>
 
-        <h3>Faça seu cadastro</h3>
+        <h2>Faça seu cadastro</h2>
 
         <form onSubmit={handleSubmit(onSubmitFunction)}>
           <Input

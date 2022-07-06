@@ -27,16 +27,19 @@ export const CardHeader = styled.div`
 
   p {
     text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: var(--font-lexend);
-    padding-bottom: 5px;
-    color: var(--black-1);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    font-size: 16px;
+    font-weight: bold;
+    font-family: var(--font-lexend);
+
     margin-left: 11px;
     margin-right: 11px;
+    padding-bottom: 5px;
+
+    color: var(--black-1); 
   }
 
   hr {

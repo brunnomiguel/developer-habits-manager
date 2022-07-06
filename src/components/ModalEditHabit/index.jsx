@@ -63,12 +63,9 @@ const ModalEditHabit = ({ id = "modalEditHabit", capturedHabit }) => {
         <form onSubmit={handleSubmit(update)}>
           <Input
             type="range"
-            list="tickmarks"
             name="how_much_achieved"
-            defaultValue={value}
             min="0"
             max="100"
-            onChange={(ev) => setValue(ev.target.value)}
             register={register}
           />
           <Button type="submit" modal white darkSchema>

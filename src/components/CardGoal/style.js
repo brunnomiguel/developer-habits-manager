@@ -9,8 +9,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  
-  
+
   background-color: var(--white-1);
   border-radius: 5px;
   box-shadow: 1px 1px 7px var(--gray-2);
@@ -29,14 +28,17 @@ export const Header = styled.div`
 
   h3 {
     text-align: center;
-    font-size: 16px;
-    font-family: var(--font-lexend);
-    padding-bottom: 5px;
-    color: var(--black-1);
-    max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    font-size: 16px;
+    font-family: var(--font-lexend);
+
+    color: var(--black-1);
+
+    padding-bottom: 5px;
+    max-width: 100%;
   }
   hr {
     width: 100%;

@@ -7,6 +7,7 @@ import { FiX } from "react-icons/fi";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+
 import { useContext } from "react";
 import { ModalContext } from "../../providers/Modal";
 import { ActivitiesContext } from "../../providers/Activities";

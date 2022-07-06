@@ -68,7 +68,7 @@ const ModalAddNewActivity = ({ id = "addActivity", capturedGroupId }) => {
               placeholder="Digite a data"
               register={register}
               name="realization_time"
-              label="Título:"
+              label="Data:"
               error={errors.realization_time?.message}
             />
 

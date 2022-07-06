@@ -16,7 +16,6 @@ import Input from "../Input";
 const ModalEditHabit = ({ id = "modalEditHabit", capturedHabit }) => {
   const { setOpenEditHabit } = useContext(ModalContext);
   const { updateHabit } = useContext(HabitsContext);
-  const [value, setValue] = useState(0);
 
   const editSchema = yup.object().shape({
     how_much_achieved: yup.number(),
@@ -63,12 +62,9 @@ const ModalEditHabit = ({ id = "modalEditHabit", capturedHabit }) => {
         <form onSubmit={handleSubmit(update)}>
           <Input
             type="range"
-            list="tickmarks"
             name="how_much_achieved"
-            defaultValue={value}
             min="0"
             max="100"
-            onChange={(ev) => setValue(ev.target.value)}
             register={register}
           />
           <Button type="submit" modal white darkSchema>

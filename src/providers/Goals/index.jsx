@@ -9,13 +9,12 @@ export const GoalsContext = createContext();
 export const GoalsProvider = ({ children }) => {
   const { token } = useContext(UserContext);
   const [goals, setGoals] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [groupPage, setGroupPage] = useState(0);
-  const [data, setData] = useState("")
+  const [groupPage, setGroupPage] = useState(1);
+  const [data, setData] = useState("");
 
   async function loadGoals(groupId) {
     const responseGoals = await api.get(
-     `/goals/?group=${groupId}&page=${groupPage || 1}`,
+      `/goals/?group=${groupId}&page=${groupPage || 1}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -23,9 +22,7 @@ export const GoalsProvider = ({ children }) => {
     const dataGoals = responseGoals.data.results.filter(
       (goal) => goal.achieved === false
     );
-
-    setTotal(responseGoals.data.count);
-    setData(responseGoals.data)
+    setData(responseGoals.data);
     setGoals(dataGoals);
   }
 
@@ -65,6 +62,9 @@ export const GoalsProvider = ({ children }) => {
       .then((_) => {
         toast.success("Meta excluída!");
         loadGoals(groupId);
+        if (groupPage > 1) {
+          setGroupPage(groupPage - 1);
+        }
       })
       .catch((_) => toast.error("Ops... algo deu errado."));
   };
@@ -79,8 +79,7 @@ export const GoalsProvider = ({ children }) => {
         deleteGoal,
         groupPage,
         setGroupPage,
-        total,
-        data
+        data,
       }}
     >
       {children}

@@ -8,10 +8,9 @@ import {
   AddBttn,
   CardsContainer,
   PageButtons,
-
 } from "./styles";
 
-import { FiX, FiPlus, FiChevronLeft, FiChevronRight} from "react-icons/fi";
+import { FiX, FiPlus, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 import Button from "../Button";
 import ModalAddNewGoal from "../../components/ModalAddNewGoal";
@@ -21,27 +20,25 @@ import CardGoal from "../CardGoal";
 const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   const { openAddNewGoal, setOpenAddNewGoal, setOpenAllGoals } =
     useContext(ModalContext);
-  const { goals, loadGoals, groupPage, setGroupPage, data } = useContext(GoalsContext);
-
-  useEffect(() => {
-    loadGoals(capturedGroup.id);
-  }, [capturedGroup.id,groupPage]);
+  const { goals, loadGoals, groupPage, setGroupPage, data } =
+    useContext(GoalsContext);
 
   const nextPage = () => {
-    if(data.next !== null){
-      console.log(data)
-      setGroupPage(groupPage + 1)
+    if (data.next !== null) {
+      setGroupPage(groupPage + 1);
     }
-
   };
 
   const previusPage = () => {
-
-    if (data.previous !== null && groupPage !== 0){
-      console.log(data,"aa")
+    if (data.previous !== null && groupPage !== 0) {
       setGroupPage(groupPage - 1);
-    } 
+    }
   };
+
+  useEffect(() => {
+    loadGoals(capturedGroup.id);
+   
+  }, [capturedGroup.id, groupPage]);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {

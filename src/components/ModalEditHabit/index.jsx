@@ -16,7 +16,6 @@ import Input from "../Input";
 const ModalEditHabit = ({ id = "modalEditHabit", capturedHabit }) => {
   const { setOpenEditHabit } = useContext(ModalContext);
   const { updateHabit } = useContext(HabitsContext);
-  const [value, setValue] = useState(0);
 
   const editSchema = yup.object().shape({
     how_much_achieved: yup.number(),

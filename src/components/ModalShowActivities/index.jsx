@@ -47,12 +47,6 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
     loadActivities(capturedGroup.id);
   }, [capturedGroup.id, pageActivities]);
 
-  const handleOutsideClick = (event) => {
-    if (event.target.id === id) {
-      setOpenAllActivities(false);
-    }
-  };
-
   const nextPage = () => {
     const totalPage = Math.ceil(total / 15);
     if (pageActivities < totalPage) {
@@ -63,6 +57,12 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
   const previusPage = () => {
     if (pageActivities > 1) {
       setPageActivities(pageActivities - 1);
+    }
+  };
+
+  const handleOutsideClick = (event) => {
+    if (event.target.id === id) {
+      setOpenAllActivities(false);
     }
   };
 

@@ -10,11 +10,11 @@ export const GoalsProvider = ({ children }) => {
   const { token } = useContext(UserContext);
   const [goals, setGoals] = useState([]);
   const [total, setTotal] = useState(0);
-  const [groupPage, setGroupPage] = useState(1);
+  const [goalPage, setGoalPage] = useState(1);
 
   async function loadGoals(groupId) {
     const responseGoals = await api.get(
-      `/goals/?group=${groupId}&page=${groupPage}`,
+      `/goals/?group=${groupId}&page=${goalPage}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -74,8 +74,8 @@ export const GoalsProvider = ({ children }) => {
         addNewGoal,
         updateGoal,
         deleteGoal,
-        groupPage,
-        setGroupPage,
+        goalPage,
+        setGoalPage,
         total,
       }}
     >

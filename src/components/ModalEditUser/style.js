@@ -78,6 +78,7 @@ export const Content = styled.div`
     button {
       margin-top: 10px;
       height: 39px;
+      font-family: var(--font-share-tech);
       &:hover {
         transition: 0.2s ease-in;
         opacity: 0.7;

@@ -55,12 +55,15 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
 
   const nextPage = () => {
     const totalPage = Math.ceil(total / 15);
-    if (pageActivities < totalPage)
-      return setPageActivities(pageActivities + 1);
+    if (pageActivities < totalPage) {
+      setPageActivities(pageActivities + 1);
+    }
   };
 
   const previusPage = () => {
-    if (pageActivities > 1) return setPageActivities(pageActivities - 1);
+    if (pageActivities > 1) {
+      setPageActivities(pageActivities - 1);
+    }
   };
 
   return (

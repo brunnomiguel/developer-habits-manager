@@ -11,7 +11,7 @@ import {
   PageButtons,
 } from "./styles";
 
-import { FiX, FiPlus, FiChevronLeft, FiChevronRight} from "react-icons/fi";
+import { FiX, FiPlus, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 import Button from "../Button";
 import ModalAddNewGoal from "../../components/ModalAddNewGoal";
@@ -21,20 +21,24 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   const { openAddNewGoal, setOpenAddNewGoal, setOpenAllGoals } =
     useContext(ModalContext);
 
-  const { goals, loadGoals, groupPage, setGroupPage, total } =
+  const { goals, loadGoals, goalPage, setGoalPage, total } =
     useContext(GoalsContext);
 
   useEffect(() => {
     loadGoals(capturedGroup.id);
-  }, [capturedGroup.id, goals]);
+  }, [capturedGroup.id, goalPage]);
 
   const nextPage = () => {
     const totalPage = Math.ceil(total / 15);
-    if (groupPage < totalPage) return setGroupPage(groupPage + 1);
+    if (goalPage < totalPage) {
+      setGoalPage(goalPage + 1);
+    }
   };
 
   const previusPage = () => {
-    if (groupPage > 1) return setGroupPage(groupPage - 1);
+    if (goalPage > 1) {
+      setGoalPage(goalPage - 1);
+    }
   };
 
   const handleOutsideClick = (event) => {
@@ -78,7 +82,7 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
           <Button white onClick={() => previusPage()}>
             <FiChevronLeft size={20} />
           </Button>
-          <span>{groupPage}</span>
+          <span>{goalPage}</span>
           <Button white onClick={() => nextPage()}>
             <FiChevronRight size={20} />
           </Button>

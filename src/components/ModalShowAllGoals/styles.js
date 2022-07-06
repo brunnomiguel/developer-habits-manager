@@ -27,8 +27,6 @@ export const ModalHeader = styled.div`
   font-size: 20px;
 
   svg {
-    background: transparent;
-    color: var(--green-1);
     font-size: 16px;
     cursor: pointer;
   }

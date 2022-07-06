@@ -40,6 +40,7 @@ export const Container = styled.div`
 
     width: 100%;
   }
+  
   span {
     color: var(--gray-2);
     margin-bottom: 20px;

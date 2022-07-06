@@ -1,6 +1,5 @@
 import { useContext, useEffect } from "react";
 import { ModalContext } from "../../providers/Modal";
-import { GoalsContext } from "../../providers/Goals";
 
 import {
   Overlay,
@@ -9,32 +8,39 @@ import {
   AddBttn,
   CardsContainer,
   PageButtons,
+
 } from "./styles";
 
 import { FiX, FiPlus, FiChevronLeft, FiChevronRight} from "react-icons/fi";
 
 import Button from "../Button";
 import ModalAddNewGoal from "../../components/ModalAddNewGoal";
+import { GoalsContext } from "../../providers/Goals";
 import CardGoal from "../CardGoal";
 
 const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   const { openAddNewGoal, setOpenAddNewGoal, setOpenAllGoals } =
     useContext(ModalContext);
-
-  const { goals, loadGoals, groupPage, setGroupPage, total } =
-    useContext(GoalsContext);
+  const { goals, loadGoals, groupPage, setGroupPage, data } = useContext(GoalsContext);
 
   useEffect(() => {
     loadGoals(capturedGroup.id);
-  }, [capturedGroup.id, goals]);
+  }, [capturedGroup.id,groupPage]);
 
   const nextPage = () => {
-    const totalPage = Math.ceil(total / 15);
-    if (groupPage < totalPage) return setGroupPage(groupPage + 1);
+    if(data.next !== null){
+      console.log(data)
+      setGroupPage(groupPage + 1)
+    }
+
   };
 
   const previusPage = () => {
-    if (groupPage > 1) return setGroupPage(groupPage - 1);
+
+    if (data.previous !== null && groupPage !== 0){
+      console.log(data,"aa")
+      setGroupPage(groupPage - 1);
+    } 
   };
 
   const handleOutsideClick = (event) => {
@@ -49,15 +55,13 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
       <ModalContent>
         <ModalHeader>
           <p>Metas</p>
-          <FiX size={20} onClick={() => setOpenAllGoals(false)} />
+          <FiX onClick={() => setOpenAllGoals(false)} />
         </ModalHeader>
         <AddBttn>
-          <span>Crie uma nova meta</span>
-          <abbr title="Adicionar meta">
-            <Button small white onClick={() => setOpenAddNewGoal(true)}>
-              <FiPlus size={20} />
-            </Button>
-          </abbr>
+          <span>Crie uma nova meta para este grupo</span>
+          <Button small white onClick={() => setOpenAddNewGoal(true)}>
+            <FiPlus size={20} />
+          </Button>
           {openAddNewGoal && (
             <ModalAddNewGoal capturedGroupId={capturedGroup.id} />
           )}

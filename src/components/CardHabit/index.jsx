@@ -10,11 +10,13 @@ import Button from "../Button";
 const CardHabit = ({ habit, captureHabit }) => {
   const { id, title, category, difficulty, how_much_achieved } = habit;
 
-  const { deleteHabit } = useContext(HabitsContext);
+  const { deleteHabit, habits } = useContext(HabitsContext);
   const { setOpenEditHabit } = useContext(ModalContext);
-
+  
+  console.log(habits)
   return (
     <Container>
+
       <h3>{title}</h3>
       <hr></hr>
       <p>

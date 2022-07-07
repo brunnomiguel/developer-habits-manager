@@ -9,7 +9,6 @@ import { HabitsContext } from "../../providers/Habits";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-
 import Button from "../Button";
 import Input from "../Input";
 
@@ -20,7 +19,7 @@ const ModalEditHabit = ({ id = "modalEditHabit", capturedHabit }) => {
   const editSchema = yup.object().shape({
     how_much_achieved: yup.number(),
   });
-
+  
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(editSchema),
   });

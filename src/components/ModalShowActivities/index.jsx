@@ -31,7 +31,7 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
     activities,
     pageActivities,
     setPageActivities,
-    total,
+    data
   } = useContext(ActivitiesContext);
 
   const [capturedActivity, setCapturedActivity] = useState({});
@@ -43,22 +43,20 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
     setCapturedActivity(...verifyActivity);
   };
 
-  useEffect(() => {
-    loadActivities(capturedGroup.id);
-  }, [capturedGroup.id, pageActivities]);
-
   const nextPage = () => {
-    const totalPage = Math.ceil(total / 15);
-    if (pageActivities < totalPage) {
-      setPageActivities(pageActivities + 1);
-    }
+    if (data.next !== null)
+      return setPageActivities(pageActivities + 1);
   };
 
   const previusPage = () => {
-    if (pageActivities > 1) {
-      setPageActivities(pageActivities - 1);
+    if (data.previous !== null && pageActivities !== 0) { 
+      return setPageActivities(pageActivities - 1);
     }
   };
+  
+  useEffect(() => {
+    loadActivities(capturedGroup.id);
+  }, [capturedGroup.id, pageActivities]);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {

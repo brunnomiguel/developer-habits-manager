@@ -12,6 +12,7 @@ export const HabitsProvider = ({ children }) => {
 
   const [habits, setHabits] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   async function loadHabits() {
     const responseHabits = await api.get("/habits/personal/", {
@@ -24,6 +25,7 @@ export const HabitsProvider = ({ children }) => {
 
     setLoading(false);
     setHabits(dataHabits);
+    console.log(responseHabits)
   }
 
   useEffect(() => {
@@ -46,6 +48,7 @@ export const HabitsProvider = ({ children }) => {
 
   const updateHabit = (data, habitId) => {
     const { how_much_achieved } = data;
+    console.log(how_much_achieved)
     if (how_much_achieved === 100) {
       data.achieved = true;
       toast.success("Hábito concluído!");
@@ -85,6 +88,8 @@ export const HabitsProvider = ({ children }) => {
         addNewHabit,
         deleteHabit,
         updateHabit,
+        currentPage,
+        setCurrentPage
       }}
     >
       {children}

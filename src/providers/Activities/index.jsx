@@ -11,7 +11,8 @@ export const ActivitiesProvider = ({ children }) => {
 
   const [activities, setActivities] = useState([]);
   const [pageActivities, setPageActivities] = useState(1);
-  const [total, setTotal] = useState(0);
+  const [data, setdata] = useState("");
+
 
   async function loadActivities(groupId) {
     const responseActivities = await api.get(
@@ -31,8 +32,8 @@ export const ActivitiesProvider = ({ children }) => {
         }
       ),
     }));
-    setTotal(responseActivities.data.count);
     setActivities(dataActivities);
+    setdata(responseActivities.data)
   }
 
   const addNewActivity = (data, groupId) => {
@@ -74,6 +75,9 @@ export const ActivitiesProvider = ({ children }) => {
       .then((_) => {
         toast.success("Atividade excluída!");
         loadActivities(groupId);
+        if(pageActivities > 1){
+          setPageActivities(pageActivities - 1)
+        }
       })
       .catch((_) => toast.error("Ops... algo deu errado."));
   };
@@ -88,7 +92,7 @@ export const ActivitiesProvider = ({ children }) => {
         deleteActivity,
         pageActivities,
         setPageActivities,
-        total,
+        data
       }}
     >
       {children}

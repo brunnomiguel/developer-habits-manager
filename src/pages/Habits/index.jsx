@@ -28,7 +28,7 @@ import ModalAddNewHabit from "../../components/ModalAddNewHabit";
 import ModalEditHabit from "../../components/ModalEditHabit";
 
 const Habits = () => {
-  const { habits, loading } = useContext(HabitsContext);
+  const { habits, loading, currentPage, setCurrentPage} = useContext(HabitsContext);
   const { openAddNewHabit, setOpenAddNewHabit, openEditHabit } =
     useContext(ModalContext);
 
@@ -38,7 +38,6 @@ const Habits = () => {
 
   const [previuPage, setPreviuPage] = useState(0);
   const [nextPage, setNextPage] = useState(6);
-  const [currentPage, setCurrentPage] = useState(0);
 
   const upPages = () => {
     if (nextPage < habits.length) {
@@ -142,7 +141,7 @@ const Habits = () => {
           <Button white onClick={() => downPages()}>
             <FiChevronLeft size={20} />
           </Button>
-          <span>{currentPage + 1}</span>
+          <span>{currentPage}</span>
           <Button white onClick={() => upPages()}>
             <FiChevronRight size={20} />
           </Button>

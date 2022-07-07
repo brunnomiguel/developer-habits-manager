@@ -43,26 +43,26 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
     setCapturedActivity(...verifyActivity);
   };
 
-  const handleOutsideClick = (event) => {
-    if (event.target.id === id) {
-      setOpenAllActivities(false);
-    }
-  };
-
   const nextPage = () => {
-  
     if (data.next !== null)
       return setPageActivities(pageActivities + 1);
   };
 
   const previusPage = () => {
-    if (data.previous !== null && pageActivities !== 0) return setPageActivities(pageActivities - 1);
+    if (data.previous !== null && pageActivities !== 0) { 
+      return setPageActivities(pageActivities - 1);
+    }
   };
   
-  
-    useEffect(() => {
-      loadActivities(capturedGroup.id);
-    }, [capturedGroup.id, pageActivities]);
+  useEffect(() => {
+    loadActivities(capturedGroup.id);
+  }, [capturedGroup.id, pageActivities]);
+
+  const handleOutsideClick = (event) => {
+    if (event.target.id === id) {
+      setOpenAllActivities(false);
+    }
+  };
 
   return (
     <>

@@ -31,7 +31,6 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   };
 
   const previusPage = () => {
-
     if (data.previous !== null && goalPage !== 0) {
       setGoalPage(goalPage - 1);
     }
@@ -39,7 +38,6 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
 
   useEffect(() => {
     loadGoals(capturedGroup.id);
-   
   }, [capturedGroup.id, goalPage]);
 
   const handleOutsideClick = (event) => {

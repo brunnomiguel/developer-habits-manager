@@ -15,7 +15,6 @@ export const GoalsProvider = ({ children }) => {
   async function loadGoals(groupId) {
     const responseGoals = await api.get(
       `/goals/?group=${groupId}&page=${goalPage || 1}`,
-
       {
         headers: { Authorization: `Bearer ${token}` },
       }

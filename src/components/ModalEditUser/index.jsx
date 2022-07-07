@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import Input from "../Input";
 import Button from "../Button";
 
-const ModalEditUser = ({ id = "modalEditUser" }) => {
+const ModalEditUser = ({ id = "modalEditUser", user }) => {
   const { updateUser } = useContext(UserContext);
   const { setOpenEditUser } = useContext(ModalContext);
 
@@ -60,6 +60,7 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
             register={register}
             name={"username"}
             label={"Novo usuário:"}
+            defaultValue={user.username}
             error={errors.username?.message}
           />
           <Input
@@ -67,6 +68,7 @@ const ModalEditUser = ({ id = "modalEditUser" }) => {
             register={register}
             name={"email"}
             label={"Novo e-mail:"}
+            defaultValue={user.email}
             error={errors.email?.message}
           />
           <Button loginDesk darkSchema white type="submit">

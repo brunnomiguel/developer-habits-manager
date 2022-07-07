@@ -30,9 +30,9 @@ export const UserProvider = ({ children }) => {
 
   async function searchUser() {
     const responseUser = await api.get(`/users/${decodeJwt.user_id}/`);
-    const { username } = responseUser.data;
-    setUser(username);
-    localStorage.setItem("DHM/user", username);
+    const { username, email } = responseUser.data;
+    setUser({ username: username, email: email });
+    localStorage.setItem("DHM/user", { username: username, email: email });
   }
 
   const updateUser = (data, closeEdit) => {
@@ -42,8 +42,8 @@ export const UserProvider = ({ children }) => {
       })
       .then((_) => {
         toast.success("Usuário Atualizado");
-        localStorage.setItem("DHM/user", data.username);
-        setUser(data.username);
+        localStorage.setItem("DHM/user", data);
+        setUser(data);
         closeEdit(true);
       })
       .catch((_) => {

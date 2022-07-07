@@ -165,7 +165,7 @@ const YourGroups = () => {
         )}
         {openAllGoals && <ModalShowAllGoals capturedGroup={capturedGroup} />}
         {openAddNewGroup && <ModalAddNewGroup />}
-        {openEditGroup && <ModalEditGroup captureGroupId={capturedGroup.id} />}
+        {openEditGroup && <ModalEditGroup capturedGroup={capturedGroup} />}
       </Container>
     </>
   );

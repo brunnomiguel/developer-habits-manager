@@ -56,7 +56,7 @@ const SignIn = () => {
               name="password"
               error={errors.password?.message}
             />
-            <Button loginDesk darkSchema type="submit">
+            <Button loginDesk share darkSchema type="submit">
               Login
             </Button>
           </form>

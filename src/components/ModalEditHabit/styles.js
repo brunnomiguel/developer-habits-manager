@@ -21,8 +21,6 @@ export const EditHabitModalHeader = styled.div`
   width: 280px;
   height: 46px;
 
-  border-radius: 5px 5px 0 0;
-
   background-color: var(--green-2);
 
   display: flex;
@@ -50,7 +48,6 @@ export const Content = styled.div`
   height: 180px;
 
   background-color: var(--gray-4);
-  border-radius: 0 0 5px 5px;
 
   display: flex;
   flex-direction: column;
@@ -94,7 +91,7 @@ export const Content = styled.div`
       &:hover {
         border: none;
       }
-      
+
       input {
         width: 230px;
         margin: 10px 0;

@@ -20,25 +20,27 @@ import CardGoal from "../CardGoal";
 const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
   const { openAddNewGoal, setOpenAddNewGoal, setOpenAllGoals } =
     useContext(ModalContext);
-  const { goals, loadGoals, groupPage, setGroupPage, data } =
+
+  const { goals, loadGoals, goalPage, setGoalPage, data } =
     useContext(GoalsContext);
 
   const nextPage = () => {
     if (data.next !== null) {
-      setGroupPage(groupPage + 1);
+      setGoalPage(goalPage + 1);
     }
   };
 
   const previusPage = () => {
-    if (data.previous !== null && groupPage !== 0) {
-      setGroupPage(groupPage - 1);
+
+    if (data.previous !== null && goalPage !== 0) {
+      setGoalPage(goalPage - 1);
     }
   };
 
   useEffect(() => {
     loadGoals(capturedGroup.id);
    
-  }, [capturedGroup.id, groupPage]);
+  }, [capturedGroup.id, goalPage]);
 
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
@@ -55,10 +57,12 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
           <FiX onClick={() => setOpenAllGoals(false)} />
         </ModalHeader>
         <AddBttn>
-          <span>Crie uma nova meta para este grupo</span>
-          <Button small white onClick={() => setOpenAddNewGoal(true)}>
-            <FiPlus size={20} />
-          </Button>
+          <span>Crie uma meta</span>
+          <abbr title="Adicionar meta">
+            <Button small white onClick={() => setOpenAddNewGoal(true)}>
+              <FiPlus size={20} />
+            </Button>
+          </abbr>
           {openAddNewGoal && (
             <ModalAddNewGoal capturedGroupId={capturedGroup.id} />
           )}
@@ -79,7 +83,7 @@ const ModaShowAllGoals = ({ id = "modalShowAllGoals", capturedGroup }) => {
           <Button white onClick={() => previusPage()}>
             <FiChevronLeft size={20} />
           </Button>
-          <span>{groupPage}</span>
+          <span>{goalPage}</span>
           <Button white onClick={() => nextPage()}>
             <FiChevronRight size={20} />
           </Button>

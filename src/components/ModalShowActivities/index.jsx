@@ -42,7 +42,7 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
     );
     setCapturedActivity(...verifyActivity);
   };
-  
+
   const handleOutsideClick = (event) => {
     if (event.target.id === id) {
       setOpenAllActivities(false);

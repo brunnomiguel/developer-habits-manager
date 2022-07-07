@@ -104,12 +104,15 @@ export const PageButtons = styled.div`
   span {
     width: 35px;
     height: 30px;
+    padding: 4px;
+
     border-radius: 5px;
+
     background-color: var(--gray-6);
     color: var(--black-1);
+
     font-family: var(--font-lexend);
     font-size: 16px;
     text-align: center;
-    padding: 4px;
   }
 `;

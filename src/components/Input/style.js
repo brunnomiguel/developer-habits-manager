@@ -28,7 +28,7 @@ export const InputContainer = styled.div`
 
   margin-top: ${(props) => (props.search ? "0" : "5px")};
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: ${(props) => (props.search ? "0" : "10px")};
 
   background-color: ${(props) =>
     props.search ? "var(--green-2)" : "var(--white-1)"};

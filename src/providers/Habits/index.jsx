@@ -12,6 +12,7 @@ export const HabitsProvider = ({ children }) => {
 
   const [habits, setHabits] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   async function loadHabits() {
     const responseHabits = await api.get("/habits/personal/", {
@@ -87,6 +88,8 @@ export const HabitsProvider = ({ children }) => {
         addNewHabit,
         deleteHabit,
         updateHabit,
+        currentPage,
+        setCurrentPage
       }}
     >
       {children}

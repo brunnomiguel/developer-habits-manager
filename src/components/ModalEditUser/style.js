@@ -36,8 +36,6 @@ export const Header = styled.div`
   height: 46px;
   padding: 0 15px;
 
-  border-radius: 5px 5px 0 0;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,7 +64,6 @@ export const Content = styled.div`
   height: 270px;
   padding: 10px 20px;
   background-color: var(--gray-4);
-  border-radius: 0 0 5px 5px;
 
   form {
     div {
@@ -78,6 +75,7 @@ export const Content = styled.div`
     button {
       margin-top: 10px;
       height: 39px;
+      font-family: var(--font-share-tech);
       &:hover {
         transition: 0.2s ease-in;
         opacity: 0.7;

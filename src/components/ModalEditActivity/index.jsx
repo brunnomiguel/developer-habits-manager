@@ -14,7 +14,7 @@ import { ActivitiesContext } from "../../providers/Activities";
 
 const ModalEditActivity = ({
   id = "addActivity",
-  activityId,
+  capturedActivity,
   capturedGroupId,
 }) => {
   const { setOpenEditActivity } = useContext(ModalContext);
@@ -34,7 +34,7 @@ const ModalEditActivity = ({
   });
 
   const handleClickUpdate = (data) => {
-    updateActivity(data, activityId, capturedGroupId);
+    updateActivity(data, capturedActivity.id, capturedGroupId);
     reset();
   };
 
@@ -62,6 +62,7 @@ const ModalEditActivity = ({
               register={register}
               name="title"
               label="Título:"
+              defaultValue={capturedActivity.title}
               error={errors.title?.message}
             />
 

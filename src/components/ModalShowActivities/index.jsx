@@ -111,7 +111,7 @@ const ModalShowActivities = ({ id = "modalActivities", capturedGroup }) => {
       )}
       {openEditActivity && (
         <ModalEditActivity
-          activityId={capturedActivity.id}
+          capturedActivity={capturedActivity}
           capturedGroupId={capturedGroup.id}
         />
       )}

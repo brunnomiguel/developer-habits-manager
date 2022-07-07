@@ -12,7 +12,7 @@ import { GroupsContext } from "../../providers/Groups";
 import Input from "../Input";
 import Button from "../Button";
 
-const ModalEditGroup = ({ id = "editNewGroup", captureGroupId }) => {
+const ModalEditGroup = ({ id = "editNewGroup", capturedGroup }) => {
   const { setOpenEditGroup } = useContext(ModalContext);
   const { editGroup } = useContext(GroupsContext);
 
@@ -38,7 +38,7 @@ const ModalEditGroup = ({ id = "editNewGroup", captureGroupId }) => {
   });
 
   const onSubmitFunction = (data) => {
-    editGroup(data, captureGroupId);
+    editGroup(data, capturedGroup.id);
     reset();
   };
 
@@ -60,6 +60,7 @@ const ModalEditGroup = ({ id = "editNewGroup", captureGroupId }) => {
               register={register}
               name="name"
               label="Nome do grupo: "
+              defaultValue={capturedGroup.name}
               error={errors.name?.message}
               type="text"
             />
@@ -70,6 +71,7 @@ const ModalEditGroup = ({ id = "editNewGroup", captureGroupId }) => {
               register={register}
               name="description"
               label="Descrição: "
+              defaultValue={capturedGroup.description}
               error={errors.description?.message}
               type="text"
             />
@@ -80,6 +82,7 @@ const ModalEditGroup = ({ id = "editNewGroup", captureGroupId }) => {
               register={register}
               name="category"
               label="Categoria: "
+              defaultValue={capturedGroup.category}
               error={errors.category?.message}
               type="text"
             />

@@ -27,7 +27,7 @@ const Navbar = () => {
           <abbr title="Edite seu usuário">
             <h2 onClick={() => setOpenEditUser(true)}>
               <FiUser />
-              Olá, {user}
+              Olá, {user.username}
             </h2>
           </abbr>
           <nav>
@@ -52,7 +52,7 @@ const Navbar = () => {
           </abbr>
         </Content>
       </Container>
-      {openEditUser && <ModalEditUser />}
+      {openEditUser && <ModalEditUser user={user} />}
     </>
   );
 };

@@ -48,6 +48,7 @@ export const Content = styled.div`
 
   button {
     margin-bottom: 23px;
+    font-size: 18px;
     &:hover {
       opacity: 0.7;
       transition: 0.2s ease-out;
@@ -66,6 +67,7 @@ export const Content = styled.div`
 
     button {
       width: 70%;
+      font-size: 20px;
     }
   }
 `;

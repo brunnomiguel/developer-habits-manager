@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Developer Habits Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Um gestor de hábitos para desenvolvedores, dinâmico e rápido.
+> Live demo [_here_](https://developer-habits-manager.vercel.app/).
 
-## Available Scripts
+## Tabela de conteúdos
 
-In the project directory, you can run:
+- [**Developer Habits Manager**](#developer-habits-manager)
+  - [Tabela de conteúdos](#tabela-de-conteúdos)
+  - [Sobre o Projeto](#sobre-o-projeto)
+  - [Tecnologias usadas](#tecnologias-usadas)
+  - [Features](#features)
+  - [Screenshots](#screenshots)
+  - [Project Status](#project-status)
+  - [Contact](#contact)
+  
+## Sobre o Projeto
 
-### `yarn start`
+Considerando o aumento de novos estudantes na área de desenvolvimento e programação, mais pessoas precisam desenvolver rotinas de estudos (hábitos) para atingir seus objetivos, seja a finalização de um curso específico ou de uma nova tecnologia.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Levando em consideração o problema citado, a aplicação será criada com o objetivo do usuário poder criar seus hábitos de estudos, seja de um curso, tecnologia ou conceito, podendo editá-lo conforme os avanços que poderão ter, além de poder criar um grupo de estudos, se inscrever em grupos existentes, e também criar metas e atividades para os grupos.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tecnologias usadas
 
-### `yarn test`
+- React V18
+- React-router-dom@5;
+- Axios;
+- React-hook-form;
+- @hookform/resolvers;
+- Yup;
+- Jwt-decode;
+- Styled-components;
+- MaterialUI;
+- React-icons;
+- React-toastify;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `yarn build`
+- Landing Page;
+- Sign up;
+- Sign in;
+- Dashboard com visualização dos hábitos;
+- Página de todos os grupos;
+- Página de grupos do usuário;
+- Página de metas do grupo;
+- Página de atividades do grupo;
+- Not found page;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Screenshots
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Status
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**completed!** 🥳
 
-### `yarn eject`
+## Contact
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Created with ❤️ by this amazing group - feel free to contact us! 👋
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<ul>
+  <li>Tech Leader: <a href="http://github.com/brunnomiguel">Brunno Miguel</a></li>
+  <li>Scrum Master: <a href="https://github.com/thiagolbf">Thiago Barcelos</a></li>
+  <li>Product Owner: <a href="https://github.com/eduardo-223">Eduardo Rangel</a></li>
+  <li>Quality Assurance: <a href="https://github.com/Ericjcf">Eric James</a></li>
+  <li>Quality Assurance: <a href="https://github.com/vanagila">Vanágila Xavier</a></li>
+</ul>
